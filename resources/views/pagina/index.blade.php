@@ -50,7 +50,6 @@
             margin-inline-end: 0px;
             font-weight: bold;
             position: relative;
-            font-family: merienda;
 
         }
 
