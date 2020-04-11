@@ -43,11 +43,7 @@
 
         .carousel-caption h1{
             display: block;
-            font-size: 2em;
-            margin-block-start: 0.67em;
-            margin-block-end: 0.67em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
+            font-size: 34px;
             font-weight: bold;
             position: relative;
 
@@ -59,10 +55,8 @@
             display: inline-block;
             color: #fff;
             margin-top: 15px;
-            text-decoration: none;
             font-family: "Montserrat", sans serif;
             font-weight: bold;
-            position: relative;
 
         }
 
@@ -70,8 +64,6 @@
             background-color: #6931f9;
             width: 200px;
             border: 2px solid #6931f9;
-            word-break: break-word;
-            flex-shrink: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -106,15 +98,12 @@
         }
 
 
-
-
         .noticias{
-            flex-shrink: 0;
             padding-top: 70px;
             padding-bottom: 50px;
         }
 
-        .section-header{
+        .header-seccion{
             margin-bottom: 40px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(10,12,17,0.14);
@@ -129,7 +118,7 @@
 
 
 
-        .noticias .news-grid{
+        .noticias .grid-noticias{
             display: flex;
             flex-wrap: wrap;
             margin: 0 -8px;
@@ -139,104 +128,87 @@
 
 
         @media screen and (max-width: 1270px){
-            .noticias .news-grid{
+            .noticias .grid-noticias{
                 justify-content: space-evenly;
             }
         }
 
-        .noticias .news-grid article{
-            position: relative;
-            background-color: black;
+        .noticias .grid-noticias article{
             width: 260px;
             height: 350px;
             background-size: cover;
-            background-repeat: no-repeat;
             background-position: center;
             cursor: pointer;
-            margin: 8px;
+            margin: 10px;
             display: flex;
             transition: 1s all;
         }
 
-        .noticias .news-grid article .overlay{
-            position: relative;
-            z-index: 1;
+        .noticias .grid-noticias article .overlay{
             padding: 26px;
-            width: 100%;
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             background: linear-gradient(transparent, rgba(0,0,0,0.9));
         }
 
-        .category{
+        .categoria{
             background-color: #6931f9;
             font-family: "Montserrat", sans serif;
-            display: block;
             width: fit-content;
-            line-height: 1;
-            margin: 0px;
             padding: 6px 8px;
         }
 
         h3{
-            display: block;
             margin: 10px 0;
             font-family: "Montserrat", sans serif;
-            color: white;
-            max-width: 220px;
         }
 
-        .details{
+        .detalles{
             display: flex;
-            line-height: 1;
             font-family: "Montserrat", sans serif;
             color: #b9b9b9;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .noticias .news-grid article .overlay .details span{
+        .noticias .grid-noticias article .overlay .detalles span{
             font-size: 12px;
-            font-family: 'Nunito', sans-serif;
         }
 
-        .noticias .news-grid article .overlay a{
+        .noticias .grid-noticias article .overlay a{
             color: white;
-            text-decoration: none;
         }
 
 
-        .noticias .news-grid article:hover{
+        .noticias .grid-noticias article:hover{
             filter: opacity(75%);
         }
 
         .torneos{
             background: #1a191e;
-            padding: 68px 0;
+            padding: 68px;
         }
 
-        .torneo-box{
+        .caja-torneos{
             display: -webkit-flex;
             display: flex;
             -webkit-flex-direction: column;
             flex-direction: column;
-            -webkit-transition: all .4s;
-            transition: all .4s;
-            background: #000;
-            background-position: center top;
-            background-blend-mode: luminosity;
-            background-size: cover;
-            flex-shrink: 0;
             max-width: 555px;
             width: 100%;
-            min-height: 310px;
-            color: #fff;
+            height: 310px;
+            background-size: cover;
+            background-position: center;
         }
 
+
         @media screen and (max-width: 1270px){
-            .torneo-box{
+            .caja-torneos{
+                justify-content: space-evenly;
+            }
+
+            .footer-menu{
                 justify-content: space-evenly;
             }
         }
@@ -247,14 +219,12 @@
             -webkit-flex-direction: column;
             flex-direction: column;
             padding: 28px;
-            z-index: 2;
         }
 
 
-        .torneos-list .torneo-box .torneo-body .torneo-name{
+        .lista-torneos .caja-torneos .torneo-body .torneo-nombre{
             color: #636f7d;
             font-family: "Montserrat", sans serif;
-            margin-bottom: 6px;
             font-size: 25px;
         }
 
@@ -262,11 +232,9 @@
 
         a{
             color: white;
-            text-decoration: none;
-            display: inline-block;
         }
 
-        .torneos .section-header h2{
+        .torneos .header-seccion h2{
             margin-bottom: 0;
             color: white;
             font-family: "Montserrat", sans serif;
@@ -283,23 +251,18 @@
         .torneo-footer{
             display: -webkit-flex;
             display: flex;
-            -webkit-align-items: flex-end;
             align-items: flex-end;
             margin-top: auto;
-            z-index: 2;
         }
 
         .col{
             margin-left: 28px;
-            display: flex;
-            display: -webkit-flex;
             text-transform: uppercase;
         }
 
         h5{
             color: #636f7d;
             font-family: "Montserrat", sans serif;
-            margin-bottom: 4px;
             font-size: 15px;
         }
 
@@ -310,18 +273,9 @@
             font-weight: bold;
         }
 
-        .align-right{
-            margin-left: auto;
-        }
-
         .botonTorneo{
             background: #6931f9;
-            min-width: 165px;
             height: 52px;
-            border-color: #6931f9;
-            margin-left: 24px;
-            border-radius: 0;
-            transition: all .4s;
             font-family: "Montserrat", sans serif;
             text-transform: uppercase;
             width: 200px;
@@ -336,18 +290,16 @@
         .botonTorneo:hover{
             transition: 0.8s;
             color: white;
-            box-shadow: -20px 0px rgba(105,49,249,0.7);
+            box-shadow: -20px 0 rgba(105,49,249,0.7);
         }
 
-        .torneos-list .torneo-box .botonTorneo i{
+        .lista-torneos .caja-torneos .botonTorneo i{
             margin-left: 15px;
         }
 
-        .container{
-            width: 1200px;
-        }
 
-        .torneos-list{
+
+        .lista-torneos{
             display: flex;
             flex-wrap: wrap;
             display: -webkit-flex;
@@ -357,11 +309,10 @@
 
         ul{
             padding: 0;
-            margin: 0;
             list-style-type: none;
         }
 
-        .torneos .torneos-list li{
+        .torneos .lista-torneos li{
             margin: 0;
         }
 
@@ -370,49 +321,43 @@
         footer{
             background-color: black;
             overflow: hidden;
-            display: block;
         }
 
-        footer .footer-content{
+        footer .footer-contenido{
             display: -webkit-flex;
             display: flex;
             -webkit-flex-wrap: wrap;
             flex-wrap: wrap;
-            margin: 60px 0;
+            margin-top: 60px;
+            margin-bottom: 60px;
         }
 
-        footer .footer-content .footer-widget-logo{
+        footer .footer-contenido .footer-apartado-logo{
             margin-right: 80px;
         }
 
-        footer .footer-content .footer-widget{
+        footer .footer-contenido .footer-apartado{
             margin-right: auto;
         }
 
-        footer .footer-content .footer-widget.contacto{
-            margin-left: 0;
-            max-width: 230px;
+        footer .footer-contenido .footer-apartado.contacto{
+            width: 230px;
             font-weight: bold;
         }
 
-        footer .footer-content .footer-widget.footer-noticias{
-            max-width: 230px;
+        footer .footer-contenido .footer-apartado.footer-noticias{
+            width: 230px;
         }
 
-        footer .custom-logo-link img{
-            max-width: 240px;
-            max-height: 60px;
-            height: auto;
+        footer .logo img{
+            width: 200px;
+            height: 200px;
         }
 
         .cajaLogo ul{
             margin-top: 23px;
             display: -webkit-flex;
             display: flex;
-        }
-
-        .cajaLogo ul li{
-            margin-right: 25px;
         }
 
         .cajaLogo ul li a{
@@ -426,59 +371,51 @@
             color: #6931f9;
         }
 
-        footer .footer-content .footer-widget ul li{
+        footer .footer-contenido .footer-apartado ul li{
             display: -webkit-flex;
             display: flex;
             -webkit-align-items: center;
             align-items: center;
-            margin-bottom: 30px;
-            margin-top: 0;
         }
 
-        footer .footer-content .footer-widget .tituloFooter{
+        footer .footer-contenido .footer-apartado .tituloFooter{
             font-family: "Montserrat", sans serif;
             font-size: 28px;
-            margin-bottom: 44px;
             color: white;
         }
 
-        footer .footer-content .footer-widget ul li i{
+        footer .footer-contenido .footer-apartado ul li i{
             color: #586370;
             margin-right: 14px;
         }
 
-        footer .footer-content .footer-widget ul li .details{
+        footer .footer-contenido .footer-apartado ul li .detalles{
             display: -webkit-flex;
             display: flex;
             -webkit-flex-direction: column;
             flex-direction: column;
-            -webkit-justify-content: center;
-            justify-content: center;
         }
 
-        footer .footer-content .footer-widget ul li .details span{
-            font-family: "Montserrat", sans serif;
+        footer .footer-contenido .footer-apartado ul li .detalles span{
             font-size: 16px;
-            margin-bottom: 9px;
             color: white;
         }
 
-        footer .footer-content .footer-widget ul li .details a{
+        footer .footer-contenido .footer-apartado ul li .detalles a{
             font-size: 13px;
             color: #636f7d;
             text-transform: none;
-            font-family: "Montserrat", sans serif;
             font-weight: bold;
             letter-spacing: normal;
         }
 
-        footer .footer-content .footer-widget.footer-noticias .footer-noticia{
+        footer .footer-contenido .footer-apartado.footer-noticias .footer-noticia{
             padding-bottom: 10px;
             margin-bottom: 10px;
             border-bottom: 1px solid #12171c;
         }
 
-        footer .footer-content .footer-widget.footer-noticias a{
+        footer .footer-contenido .footer-apartado.footer-noticias a{
             color: #636f7d;
             font-family: "Montserrat", sans serif;
             font-size: 15px;
@@ -486,29 +423,26 @@
             -webkit-transition: color 0.8s;
         }
 
-        footer .footer-content .footer-widget.footer-noticias a:hover{
+        footer .footer-contenido .footer-apartado.footer-noticias a:hover{
             color: white;
         }
 
-        footer .footer-content .footer-widget.footer-noticias .todas-noticias a{
+        footer .footer-contenido .footer-apartado.footer-noticias .todas-noticias a{
             color: white;
             font-size: 17px;
             font-weight: bold;
         }
 
-        footer .footer-content .footer-widget.footer-noticias .todas-noticias a i{
+        footer .footer-contenido .footer-apartado.footer-noticias .todas-noticias a i{
             color: white;
-            font-size: 17px;
-            font-weight: bold;
             margin-left: 6px;
-            margin-bottom: 0;
         }
 
-        footer .footer-content .footer-widget.footer-menu ul li:not(:first-of-type){
+        footer .footer-contenido .footer-apartado.footer-menu ul li:not(:first-of-type){
             margin-bottom: 15px;
         }
 
-        footer .footer-content .footer-widget.footer-menu ul li a{
+        footer .footer-contenido .footer-apartado.footer-menu ul li a{
             font-family: "Montserrat", sans serif;
             font-size: 14px;
             text-transform: uppercase;
@@ -518,7 +452,7 @@
             font-weight: bold;
         }
 
-        footer .footer-content .footer-widget.footer-menu ul li a:hover{
+        footer .footer-contenido .footer-apartado.footer-menu ul li a:hover{
             color: white;
         }
 
@@ -528,7 +462,7 @@
             display: flex;
             justify-content: center;
             -webkit-justify-content: center;
-            padding: 44px 0;
+            padding: 40px;
             border-top: 1px solid #141a21;
         }
 
@@ -537,16 +471,13 @@
             display: flex;
             -webkit-flex-direction: column;
             flex-direction: column;
-            -webkit-flex-shrink: 0;
-            flex-shrink: 0;
-            height: 72px;
+            height: 70px;
         }
 
         footer .ubicacion .info .ciudad{
             color: white;
             font-family: "Montserrat", sans serif;
             font-size: 22px;
-            margin-bottom: 14px;
         }
 
         footer .ubicacion .info .ciudad i{
@@ -557,7 +488,7 @@
             color: #636f7d;
             font-family: "Montserrat", sans serif;
             font-size: 15px;
-            margin-left: 28px;
+            margin-left: 30px;
             font-weight: bold;
         }
 
@@ -565,8 +496,7 @@
             background-color: #6931f9;
             display: -webkit-flex;
             display: flex;
-            color: white;
-            height: 134px;
+            height: 140px;
         }
 
         footer .barra-footer .container{
@@ -574,15 +504,8 @@
             display: flex;
             -webkit-align-items: center;
             align-items: center;
-            -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
         }
 
-        footer .barra-footer p{
-            font-family: "Montserrat", sans serif;
-            font-size: 15px;
-            color: white;
-        }
 
         footer .volver-arriba{
             display: -webkit-flex;
@@ -591,7 +514,6 @@
             align-items: center;
             -webkit-justify-content: center;
             justify-content: center;
-            z-index: 2;
             right: 0;
             top: -60px;
             background-color: white;
@@ -643,61 +565,61 @@
 
     <section class="noticias">
         <div class="container">
-            <div class="section-header">
-                <div class="section-title normal">
+            <div class="header-seccion">
+                <div class="titulo-seccion">
                     <h2>Nuevas Noticias</h2>
                 </div>
             </div>
-            <div class="tab-content content">
-                <div class="news-grid active">
-                    <article style="background-image: url('http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/news_thumb_14.jpg')">
+            <div>
+                <div class="grid-noticias active">
+                    <article style="background-image: url('https://1.bp.blogspot.com/-AbEpLyFeaWg/XTtj3s_gDaI/AAAAAAAAJdY/qxLuTDjEy9sfS9bFZyd92WJmisQ1uZRaQCLcBGAs/w0/teemo-lol-little-devil-splash-art-uhdpaper.com-4K-244-wp.thumbnail.jpg')">
                         <div class="overlay">
-                            <a class="category">
+                            <a class="categoria">
                                 Noticia
                             </a>
-                            <h3><a href="#">Teemo iaasd as dfaosidfas dasdf </a></h3>
-                            <div class="details">
-                                <span class="date">
-                                    Mayo 01, 2020
+                            <h3><a href="#">Nuevo rework a Teemo</a></h3>
+                            <div class="detalles">
+                                <span>
+                                    19 Febrero 2020
                                 </span>
                             </div>
                         </div>
                     </article>
-                    <article style="background-image: url('http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/news_thumb_09.jpg')">
+                    <article style="background-image: url('https://i.pinimg.com/originals/a5/18/5f/a5185f1c4a0e636e63c8b25c08213fd9.jpg')">
                         <div class="overlay">
-                            <a class="category">
-                                Gaming
+                            <a class="categoria">
+                                Torneo
                             </a>
-                            <h3><a href="#">Play5 añlsdnflñ asndfasd a asd fasdf ñl</a></h3>
-                            <div class="details">
-                                <span class="date">
-                                    Enero 10, 2019
+                            <h3><a href="#">Hearthstone Bankyugi vs xBlizes</a></h3>
+                            <div class="detalles">
+                                <span>
+                                    10 Julio 2020
                                 </span>
                             </div>
                         </div>
                     </article>
-                    <article style="background-image: url('http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/news_thumb_10.jpg')">
+                    <article style="background-image: url('https://pbs.twimg.com/media/ESNJvMVWkAAwE2s.jpg')">
                         <div class="overlay">
-                            <a class="category">
+                            <a class="categoria">
                                 Noticia
                             </a>
-                            <h3><a href="#">kraken alñsndf aospdfh  asdf a dsfa sdfasd f </a></h3>
-                            <div class="details">
-                                <span class="date">
-                                    Septiembre 10, 2020
+                            <h3><a href="#">Tft llega a dispositivos móviles</a></h3>
+                            <div class="detalles">
+                                <span>
+                                    17 Marzo 2020
                                 </span>
                             </div>
                         </div>
                     </article>
-                    <article style="background-image: url('http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/news_thumb_14.jpg')">
+                    <article style="background-image: url('https://i.ytimg.com/vi/elnHfBCePyc/maxresdefault.jpg')">
                         <div class="overlay">
-                            <a class="category">
-                                Esports
+                            <a class="categoria">
+                                Noticia
                             </a>
-                            <h3><a href="#">Teemo iaaasd asdf a sdfasd fas d dsfsdf f </a></h3>
-                            <div class="details">
-                                <span class="date">
-                                    Octubre 23, 2018
+                            <h3><a href="#">El nuevo brawler se llama Sprout</a></h3>
+                            <div class="detalles">
+                                <span>
+                                    11 Abril 2020
                                 </span>
                             </div>
                         </div>
@@ -711,77 +633,77 @@
 
     <section class="torneos">
         <div class="container">
-            <div class="section-header border-bottom">
-                <div class="section-title">
+            <div class="header-seccion border-bottom">
+                <div class="titulo-seccion">
                     <h2>Torneos</h2>
                 </div>
             </div>
             <div class="content">
-                <ul class="torneos-list active">
-                    <li class="torneo-box" style="background-image: url('http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/thumbnail_tournament.jpg')">
+                <ul class="lista-torneos active">
+                    <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://wallpaperaccess.com/full/1371611.jpg')">
                         <div class="torneo-body">
-                            <a class="torneo-name">Torneo Fortnite Mobile</a>
-                            <span class="fechaTorneo">Oct.09.2019 - 02:35pm</span>
+                            <a class="torneo-nombre">Torneo Fortnite Mobile</a>
+                            <span class="fechaTorneo">29/05/2020 - 04:00 PM</span>
                         </div>
                         <div class="torneo-footer">
                             <div class="col">
-                                <div class="col-item">
+                                <div>
                                     <h5>Premios</h5>
-                                    <p>2.500.000 €</p>
+                                    <p>500.000 €</p>
                                 </div>
                             </div>
-                            <div class="col align-right">
+                            <div class="col">
                                 <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </li>
-                    <li class="torneo-box" style="background-image: url('http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/base-copy-2.jpg')">
+                    <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://lacongeladora.com/wp-content/uploads/2020/02/br.jpg')">
                         <div class="torneo-body">
-                            <a class="torneo-name">Brawl Stars Championship 3v3</a>
-                            <span class="fechaTorneo">Jan.09.2020 - 00:00am</span>
+                            <a class="torneo-nombre">Brawl Stars Championship 3v3</a>
+                            <span class="fechaTorneo">09/06/2020 - 11:00 AM</span>
                         </div>
                         <div class="torneo-footer">
                             <div class="col">
-                                <div class="col-item">
+                                <div>
                                     <h5>Premios</h5>
-                                    <p>1.400 €</p>
+                                    <p>25.000 €</p>
                                 </div>
                             </div>
-                            <div class="col align-right">
+                            <div class="col">
                                 <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </li>
-                    <li class="torneo-box" style="background-image: url('http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/base-copy-2.jpg')">
+                    <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://i11c.3djuegos.com/juegos/9766/hearthstone_heroes_of_warcraft/fotos/maestras/hearthstone_heroes_of_warcraft-3548890.jpg')">
                         <div class="torneo-body">
-                            <a class="torneo-name">Hearthstone Torneo Europa</a>
-                            <span class="fechaTorneo">Dec.20.2020 - 01:10pm</span>
+                            <a class="torneo-nombre">Hearthstone Torneo Europa</a>
+                            <span class="fechaTorneo">20/12/2020 - 08:00 AM</span>
                         </div>
                         <div class="torneo-footer">
                             <div class="col">
-                                <div class="col-item">
+                                <div>
                                     <h5>Premios</h5>
-                                    <p>1.000.000 €</p>
+                                    <p>100.000 €</p>
                                 </div>
                             </div>
-                            <div class="col align-right">
+                            <div class="col">
                                 <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </li>
-                    <li class="torneo-box" style="background-image: url('http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/thumbnail_tournament.jpg')">
+                    <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://www.xtrafondos.com/wallpapers/call-of-duty-mobile-4007.jpg')">
                         <div class="torneo-body">
-                            <a class="torneo-name">Call of Duty Mobile Torneo Global 5v5</a>
-                            <span class="fechaTorneo">Nov.1.2020 - 14:00am</span>
+                            <a class="torneo-nombre">Call of Duty Mobile Torneo Global 5v5</a>
+                            <span class="fechaTorneo">01/11/2020 - 06:00 PM</span>
                         </div>
                         <div class="torneo-footer">
                             <div class="col">
-                                <div class="col-item">
+                                <div>
                                     <h5>Premios</h5>
-                                    <p>3.500 €</p>
+                                    <p>250.000 €</p>
                                 </div>
                             </div>
-                            <div class="col align-right">
+                            <div class="col">
                                 <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -795,14 +717,11 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-widget-logo">
+            <div class="footer-contenido">
+                <div class="footer-apartado-logo">
                     <div class="cajaLogo">
-                        <a href="#" class="custom-logo-link" rel="home">
-                            <span>
-                                Logo
-                            </span>
-                            <img width="462" height="84" src="" class="custom-logo">
+                        <a href="#" class="logo" rel="home">
+                            <img src="{{ asset('images/BrawlStars.png') }}" alt="Logo Gamid">
                         </a>
                         <ul>
                             <li>
@@ -828,21 +747,21 @@
                         </ul>
                     </div>
                 </div>
-                <div class="footer-widget contacto">
+                <div class="footer-apartado contacto">
                     <ul>
                         <li class="tituloFooter">
                             Contacto
                         </li>
                         <li>
                             <i class="fas fa-bell"></i>
-                            <div class="details">
+                            <div class="detalles">
                                 <span>Media</span>
                                 <a>enriquevalverde45@gmail.com</a>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="footer-widget footer-noticias">
+                <div class="footer-apartado footer-noticias">
                     <ul>
                         <li class="tituloFooter">
                             Ultimas noticias
@@ -858,7 +777,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="footer-widget footer-menu">
+                <div class="footer-apartado footer-menu">
                     <ul>
                         <li class="tituloFooter">
                             Menu 1
@@ -885,7 +804,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="footer-widget footer-menu">
+                <div class="footer-apartado footer-menu">
                     <ul>
                         <li class="tituloFooter">
                             Menu 2
