@@ -16,7 +16,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="animate.min.css">
-    <title>Hello, world!</title>
+
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}" />
+
+    <title>GAMID</title>
 </head>
 
 <body>
@@ -25,6 +30,8 @@
 <div>
     @yield('content')
 </div>
+
+@include('partials.footer')
 
 
 

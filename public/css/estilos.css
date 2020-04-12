@@ -1,4 +1,348 @@
+.gris{
+    background: rgba(0, 0, 0, 0.199);
+}
 
+.top-nav-collapse{
+    background: rgba(0, 0, 0, 0.744) !important;
+}
+
+.top-nav-collapse .navbar-nav a:hover .top-nav-collapse .navbar-nav a:focus{
+    background: rgba(0, 0, 0, 10);
+}
+
+.navbar-nav a{
+    font-family: poppins;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navbar-brand{
+    color: #fff;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navbar-nav a:hover,  .navbar-nav a:focus{
+    background-color: rgba(0, 0, 0, 0.800);
+}
+
+li{
+    margin: 18px;
+}
+
+
+
+.carousel-caption{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 600px;
+    max-width: 624px;
+    text-align: left;
+}
+
+@media screen and (max-width: 992px){
+    .carousel-caption{
+        -webkit-align-items: center;
+        max-width: initial;
+        text-align: center;
+        height: 400px;
+    }
+}
+
+img{
+    background-color: rgba(0,0,0,0.6);
+}
+
+.carousel-caption span{
+    color: #6931f9;
+    font-family: "Montserrat", sans serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 14px;
+    font-weight: bold;
+    position: relative;
+
+}
+
+.carousel-caption h1{
+    display: block;
+    font-size: 34px;
+    font-weight: bold;
+    position: relative;
+
+}
+
+.carousel-caption a{
+    text-transform: uppercase;
+    padding-top: 16px;
+    display: inline-block;
+    color: #fff;
+    margin-top: 15px;
+    font-family: "Montserrat", sans serif;
+    font-weight: bold;
+
+}
+
+.boton{
+    background-color: #6931f9;
+    width: 200px;
+    border: 2px solid #6931f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.boton:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-color: white;
+}
+
+.imagen{
+    height: 988px;
+    padding-top: 152px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    display: -webkit-flex;
+}
+
+.imagen:before {
+    content:'';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+
+
+.noticias{
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+.header-seccion{
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(10,12,17,0.14);
+    display: flex;
+}
+
+h2{
+    font-family: "Montserrat", sans serif;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+
+
+.noticias .grid-noticias{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+}
+
+
+@media screen and (max-width: 1270px){
+    .noticias .grid-noticias{
+        justify-content: space-evenly;
+    }
+}
+
+.noticias .grid-noticias article{
+    width: 260px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    margin: 10px;
+    display: flex;
+    transition: 1s all;
+}
+
+.noticias .grid-noticias article .overlay{
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+
+.categoria{
+    background-color: #6931f9;
+    font-family: "Montserrat", sans serif;
+    width: fit-content;
+    padding: 6px 8px;
+}
+
+h3{
+    margin: 10px 0;
+    font-family: "Montserrat", sans serif;
+}
+
+.detalles{
+    display: flex;
+    font-family: "Montserrat", sans serif;
+    color: #b9b9b9;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.noticias .grid-noticias article .overlay .detalles span{
+    font-size: 12px;
+}
+
+.noticias .grid-noticias article .overlay a{
+    color: white;
+}
+
+
+.noticias .grid-noticias article:hover{
+    filter: opacity(75%);
+}
+
+.torneos{
+    background: #1a191e;
+    padding: 68px;
+}
+
+.caja-torneos{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    max-width: 555px;
+    width: 100%;
+    height: 310px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+@media screen and (max-width: 1270px){
+    .caja-torneos{
+        justify-content: space-evenly;
+    }
+
+}
+
+.torneo-body{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    padding: 28px;
+}
+
+
+.lista-torneos .caja-torneos .torneo-body .torneo-nombre{
+    color: #636f7d;
+    font-family: "Montserrat", sans serif;
+    font-size: 25px;
+}
+
+
+
+a{
+    color: white;
+}
+
+.torneos .header-seccion h2{
+    margin-bottom: 0;
+    color: white;
+    font-family: "Montserrat", sans serif;
+}
+
+.fechaTorneo{
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-family: "Montserrat", sans serif;
+    font-weight: bold;
+}
+
+.torneo-footer{
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-end;
+    margin-top: auto;
+}
+
+.col{
+    margin-left: 28px;
+    text-transform: uppercase;
+}
+
+h5{
+    color: #636f7d;
+    font-family: "Montserrat", sans serif;
+    font-size: 15px;
+}
+
+p{
+    font-family: "Montserrat", sans serif;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.botonTorneo{
+    background: #6931f9;
+    height: 52px;
+    font-family: "Montserrat", sans serif;
+    text-transform: uppercase;
+    width: 200px;
+    align-items: center;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.botonTorneo:hover{
+    transition: 0.8s;
+    color: white;
+    box-shadow: -20px 0 rgba(105,49,249,0.7);
+}
+
+.lista-torneos .caja-torneos .botonTorneo i{
+    margin-left: 15px;
+}
+
+
+
+.lista-torneos{
+    display: flex;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+}
+
+
+ul{
+    padding: 0;
+    list-style-type: none;
+}
+
+.torneos .lista-torneos li{
+    margin: 0;
+}
 
 
 footer{
