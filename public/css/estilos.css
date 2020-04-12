@@ -1,0 +1,210 @@
+
+
+
+footer{
+    background-color: black;
+    overflow: hidden;
+}
+
+footer .footer-contenido{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+footer .footer-contenido .footer-apartado-logo{
+    margin-right: 80px;
+}
+
+footer .footer-contenido .footer-apartado{
+    margin-right: auto;
+}
+
+footer .footer-contenido .footer-apartado.contacto{
+    width: 230px;
+    font-weight: bold;
+}
+
+footer .footer-contenido .footer-apartado.footer-noticias{
+    width: 230px;
+}
+
+footer .logo img{
+    width: 200px;
+    height: 200px;
+}
+
+.cajaLogo ul{
+    margin-top: 23px;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.cajaLogo ul li a{
+    color: #636f7d;
+    font-size: 19px;
+    -webkit-transition: color .6s;
+    transition: color .6s;
+}
+
+.cajaLogo ul li a:hover{
+    color: #6931f9;
+}
+
+footer .footer-contenido .footer-apartado ul li{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+footer .footer-contenido .footer-apartado .tituloFooter{
+    font-family: "Montserrat", sans serif;
+    font-size: 28px;
+    color: white;
+}
+
+footer .footer-contenido .footer-apartado ul li i{
+    color: #586370;
+    margin-right: 14px;
+}
+
+footer .footer-contenido .footer-apartado ul li .detalles{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+footer .footer-contenido .footer-apartado ul li .detalles span{
+    font-size: 16px;
+    color: white;
+}
+
+footer .footer-contenido .footer-apartado ul li .detalles a{
+    font-size: 13px;
+    color: #636f7d;
+    text-transform: none;
+    font-weight: bold;
+    letter-spacing: normal;
+}
+
+footer .footer-contenido .footer-apartado.footer-noticias .footer-noticia{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #12171c;
+}
+
+footer .footer-contenido .footer-apartado.footer-noticias a{
+    color: #636f7d;
+    font-family: "Montserrat", sans serif;
+    font-size: 15px;
+    transition: color 0.8s;
+    -webkit-transition: color 0.8s;
+}
+
+footer .footer-contenido .footer-apartado.footer-noticias a:hover{
+    color: white;
+}
+
+footer .footer-contenido .footer-apartado.footer-noticias .todas-noticias a{
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+footer .footer-contenido .footer-apartado.footer-noticias .todas-noticias a i{
+    color: white;
+    margin-left: 6px;
+}
+
+footer .footer-contenido .footer-apartado.footer-menu ul li:not(:first-of-type){
+    margin-bottom: 15px;
+}
+
+footer .footer-contenido .footer-apartado.footer-menu ul li a{
+    font-family: "Montserrat", sans serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #636f7d;
+    -webkit-transition: color .8s;
+    transition: color .8s;
+    font-weight: bold;
+}
+
+footer .footer-contenido .footer-apartado.footer-menu ul li a:hover{
+    color: white;
+}
+
+
+footer .ubicacion{
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    padding: 40px;
+    border-top: 1px solid #141a21;
+}
+
+footer .ubicacion .info{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 70px;
+}
+
+footer .ubicacion .info .ciudad{
+    color: white;
+    font-family: "Montserrat", sans serif;
+    font-size: 22px;
+}
+
+footer .ubicacion .info .ciudad i{
+    color: #6931f9;
+}
+
+footer .ubicacion .info .domicilio{
+    color: #636f7d;
+    font-family: "Montserrat", sans serif;
+    font-size: 15px;
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+footer .barra-footer{
+    background-color: #6931f9;
+    display: -webkit-flex;
+    display: flex;
+    height: 140px;
+}
+
+footer .barra-footer .container{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+footer .volver-arriba{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    right: 0;
+    top: -60px;
+    background-color: white;
+    color: #6931f9;
+    font-size: 26px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+}
+
