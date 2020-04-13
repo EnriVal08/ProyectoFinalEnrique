@@ -14,8 +14,20 @@ class CreateCestaTable extends Migration
     public function up()
     {
         Schema::create('cesta', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_producto')->nullable();
+
+            $table->unsignedBigInteger('id_usuario')->nullable();
+
             $table->timestamps();
+        });
+
+        Schema::table('cesta', function($table) {
+            $table->foreign('id_producto')->references('id')->on('productos');
+        });
+
+        Schema::table('cesta', function($table) {
+            $table->foreign('id_usuario')->references('id')->on('users');
         });
     }
 

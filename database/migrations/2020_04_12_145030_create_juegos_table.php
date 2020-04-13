@@ -14,7 +14,13 @@ class CreateJuegosTable extends Migration
     public function up()
     {
         Schema::create('juegos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('titulo');
+            $table->string('descripcion');
+            $table->string('foto');
+            $table->string('video');
+
             $table->timestamps();
         });
     }

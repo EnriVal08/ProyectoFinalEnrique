@@ -4,13 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Noticias extends Model
+class Noticia extends Model
 {
     protected $table = "noticias";
 
-    public function users(){
+    public function usuario(){
         return $this->hasOne('App\User', 'id_creador');
     }
 
-    public
+    public function comentarios(){
+        return $this->hasMany('App\Comentario', 'id_noticia');
+    }
+
 }

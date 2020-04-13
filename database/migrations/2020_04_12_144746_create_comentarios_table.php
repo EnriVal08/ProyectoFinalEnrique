@@ -14,8 +14,22 @@ class CreateComentariosTable extends Migration
     public function up()
     {
         Schema::create('comentarios', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('descripcion', 1000);
+
+            $table->unsignedBigInteger('id_noticia')->nullable();
+
+            $table->unsignedBigInteger('id_usuario')->nullable();
+
             $table->timestamps();
+        });
+
+        Schema::table('comentarios', function($table) {
+            $table->foreign('id_noticia')->references('id')->on('noticias');
+        });
+
+        Schema::table('comentarios', function($table) {
+            $table->foreign('id_usuario')->references('id')->on('users');
         });
     }
 
