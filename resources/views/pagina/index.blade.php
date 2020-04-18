@@ -17,7 +17,7 @@
                 @endif
                         <div class="imagen" style="background-image: url('{{$objeto->foto}}')">
                         </div>
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption">
                             <span>{{$objeto->nombre}}</span>
                             <h1>{{$objeto->titulo}}</h1>
                             <a href="#" class="boton">Saber más <i class="fas fa-arrow-right"></i></a>
@@ -26,14 +26,7 @@
             @endforeach
                     </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Siguiente</span>
-        </a>
+
     </div>
 
     <section class="noticias">
@@ -91,7 +84,7 @@
                                     <p>{{$torneo->premio}} €</p>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col aling-right">
                                 <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>

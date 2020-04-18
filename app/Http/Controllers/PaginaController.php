@@ -15,10 +15,20 @@ class PaginaController extends Controller
 
         $primerJuego=Juego::find(1);
 
-        $noticias=Noticia::all();
+        $noticias=Noticia::take(3)->get();
 
         $torneos=Torneo::all();
 
         return view('pagina.index')->with(compact('juegos'))->with('primerJuego',$primerJuego)->with(compact('noticias'))->with(compact('torneos'));
+
+
+    }
+
+    public function getNoticias(){
+
+        $noticias=Noticia::all();
+        return view('pagina.noticias')->with(compact('noticias'));
+
+        return view('pagina.noticias');
     }
 }

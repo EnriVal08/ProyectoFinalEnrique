@@ -12,7 +12,7 @@
                     <a class="nav-link" href="#">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Noticias</a>
+                    <a class="nav-link" href="{{url('/noticias')}}">Noticias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Torneos</a>
@@ -22,6 +22,5 @@
     </div>
 
 </nav>
-
 
 
