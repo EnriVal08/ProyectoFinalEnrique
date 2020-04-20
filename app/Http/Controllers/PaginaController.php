@@ -27,8 +27,9 @@ class PaginaController extends Controller
     public function getNoticias(){
 
         $noticias=Noticia::all();
-        return view('pagina.noticias')->with(compact('noticias'));
+        $ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get();
 
-        return view('pagina.noticias');
+        return view('pagina.noticias')->with(compact('noticias'))->with(compact('ultimas_noticias'));
+
     }
 }

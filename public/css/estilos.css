@@ -636,3 +636,147 @@ footer .volver-arriba{
     position: relative;
 }
 
+
+/*Pagina noticias*/
+
+.inicio-noticias{
+    display: -webkit-flex;
+    display: flex;
+    height: 550px;
+    margin-bottom: 10px;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.inicio-noticias:before {
+    content:'';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.inicio-noticias h2{
+    font-size: 2.25em;
+    color: white;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.inicio-noticias h4{
+    font-size: .875em;
+    color: #6931f9;
+    line-height: 1;
+}
+
+
+
+.pagina-noticias-container{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+
+.pagina-noticias-container .caja-noticias{
+    max-width: 1200px;
+    width: 100%;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    padding: 70px 25px 50px;
+}
+
+
+aside{
+    margin-top: 90px;
+    width: 280px;
+    margin-left: 30px;
+    margin-bottom: 60px;
+    display: block;
+}
+
+aside .barra-ultimas-noticias{
+    margin-bottom: 40px;
+}
+
+aside form{
+    border: 1px solid #6931f9;
+    display: -webkit-flex;
+    display: flex;
+    padding: 5px;
+}
+
+aside form button{
+    border-left: 1px solid #bababa;
+    color: black;
+    width: 75px;
+    order: 2;
+}
+
+button{
+    border: none;
+    background: transparent;
+}
+
+aside form input{
+    padding: 0 5px;
+    border: 0;
+}
+
+aside .barra-ultimas-noticias h3{
+    font: 500 1.625em/1.1 "Montserrat",sans-serif;
+    color: black;
+    margin-bottom: 20px;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+
+aside .barra-ultimas-noticias ul li:not(:last-child){
+    padding-bottom: 5px;
+}
+
+aside .barra-ultimas-noticias .post-list li{
+    padding: 20px 0;
+    border-top: 1px solid rgba(159,159,159,0.25);
+}
+
+aside .barra-ultimas-noticias ul li .categories{
+    margin-bottom: 6px;
+    line-height: 1;
+}
+
+aside .barra-ultimas-noticias ul li .categories a{
+    font: 700 0.75em/1 "Montserrat",sans-serif;
+    color: #6931f9;
+    display: inline-block;
+}
+
+aside .barra-ultimas-noticias ul li a.title {
+    font: 600 1.125em/22px "Montserrat",sans-serif;
+    color: #000;
+    margin-bottom: 6px;
+    display: block;
+}
+
+aside .barra-ultimas-noticias ul li .date {
+    font: 700 0.75em/1 "Montserrat",sans-serif;
+    color: #6d6d6d;
+}
+
+aside .barra-ultimas-noticias .post-list li span {
+    display: block;
+    line-height: 1;
+}
+

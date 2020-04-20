@@ -3,7 +3,7 @@
         <div class="footer-contenido">
             <div class="footer-apartado-logo">
                 <div class="cajaLogo">
-                    <a href="#" class="logo" rel="home">
+                    <a href="{{url('/')}}" class="logo" rel="home">
                         <img src="{{ asset('images/BrawlStars(LogoParaPruebas).png') }}" alt="Logo Gamid">
                     </a>
                     <ul>
@@ -56,7 +56,7 @@
                         <a href="#">Titulo noticia 2 asdf asdfasdf asdfasd fasd ff</a>
                     </li>
                     <li class="todas-noticias">
-                        <a href="#">Ver todas las noticias <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{url('/noticias')}}">Ver todas las noticias <i class="fas fa-arrow-right"></i></a>
                     </li>
                 </ul>
             </div>
@@ -81,7 +81,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/noticias')}}">
                             <span>Noticias</span>
                         </a>
                     </li>
@@ -93,7 +93,7 @@
                         Menu 2
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/noticias')}}">
                             <span>Noticias</span>
                         </a>
                     </li>
