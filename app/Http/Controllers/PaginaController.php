@@ -15,7 +15,7 @@ class PaginaController extends Controller
 
         $primerJuego=Juego::find(1);
 
-        $noticias=Noticia::take(3)->get();
+        $noticias=Noticia::take(3)->orderby('id', 'DESC')->get();
 
         $torneos=Torneo::all();
 
@@ -31,5 +31,13 @@ class PaginaController extends Controller
 
         return view('pagina.noticias')->with(compact('noticias'))->with(compact('ultimas_noticias'));
 
+
     }
+
+    public function getNoticiaIndividual(){
+
+        return view('pagina.noticiaindividual');
+    }
+
+
 }
