@@ -21,7 +21,6 @@
 
         .caja-figura img{
             max-height: 100%;
-            width: 100%;
         }
 
 
@@ -62,7 +61,6 @@
             padding-top: 20px;
             padding-bottom: 20px;
             margin-bottom: 20px;
-            border-bottom: 1px solid #777;
 
         }
 
@@ -138,8 +136,9 @@
             font-weight: normal;
         }
 
-        .comentario{
-            margin-left: 178px;
+
+        .comentarios{
+            border-top: 1px solid #6931f9;
         }
     </style>
 
@@ -149,7 +148,7 @@
     <section class="noticia-individual">
         <div class="container">
             <figure class="caja-figura">
-                <img src="https://1.bp.blogspot.com/-AbEpLyFeaWg/XTtj3s_gDaI/AAAAAAAAJdY/qxLuTDjEy9sfS9bFZyd92WJmisQ1uZRaQCLcBGAs/w0/teemo-lol-little-devil-splash-art-uhdpaper.com-4K-244-wp.thumbnail.jpg">
+                <img class="img-fluid" src="{{$noticia->foto}}">
             </figure>
             <div class="wrapper">
                 <div class="redes-sociales">
@@ -166,65 +165,85 @@
                     </ul>
                 </div>
                 <div class="contenido-noticia">
-                    <h1 class="titulo-post">Teemo tendrá un rework en la próxima actualización de Summoners Rift</h1>
-                    <span class="detalles-post">Publicado por <span class="autor">Enrique</span> el 22 de Abril de 2020</span>
-                    <p>asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif asdfo aopsdhfop hasdofhoahsdfpo hoapisd hfpoah sdfpoh aiusdhbfiad sif</p>
+                    <h1 class="titulo-post">{{$noticia->titulo}}</h1>
+                    <span class="detalles-post">Publicado por <span class="autor">{{$autor->nombre}}</span> el {{$noticia->fecha}}</span>
+
+                    <p class="text-justify">
+                        {!! nl2br(e($noticia->descripcion), false) !!}
+</p>
+
+                @foreach($noticia->fotos as $foto)
+                            <img class="img-fluid z-depth-4" width="800px" src="{{$foto->foto}}" alt="Generic placeholder image">
+                    @endforeach
                 </div>
             </div>
 
-            <section class="comentario">
-            <div class="mb-4">
-
-                <h2 class="h1-responsive font-weight-bold my-4">Comentarios</h2>
-
-                <div class="row">
-
-                    <div class="col-md-9 mb-md-0 mb-5">
-                        <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <div class="md-form mb-0">
-                                        <input type="text" id="name" name="name" class="form-control">
-                                        <label for="name" class="">Nombre*</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="md-form mb-0">
-                                        <input type="text" id="email" name="email" class="form-control">
-                                        <label for="email" class="">Email*</label>
-                                    </div>
-                                </div>
-
-                            </div>
 
 
-                            <div class="row">
+            <section class="comentarios">
 
-                                <div class="col-md-12">
+                <div class="m-3">
+                    <h4>{{($noticia->comentarios)->count()}} comentarios <a class="btn purple-gradient" data-toggle="modal" data-target="#modalContactForm">Añade el tuyo</a>
+                    </h4>
+                </div>
 
-                                    <div class="md-form">
-                                        <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                                        <label for="message">Comentario</label>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </form>
-
-                        <div class="text-center text-md-left">
-                            <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                <ul class="list-unstyled">
+                    @foreach($noticia->comentarios as $comentario)
+                    <li class="media m-3 mb-5">
+                        <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1 font-weight-bold">{{$comentario->nombre_usuario}}</h5>
+                            {{$comentario->descripcion}}
                         </div>
-                        <div class="status"></div>
-                    </div>
-
-                </div>
-
-            </div>
+                    </li>
+                    @endforeach
+                </ul>
             </section>
+
+            <form method="POST" action="">
+
+                {{csrf_field()}}
+
+            <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Comentario</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-5">
+                                <i class="fas fa-user prefix grey-text"></i>
+                                <input type="text" id="nombre" name="nombre" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="nombre">Nombre</label>
+                            </div>
+
+                            <div class="md-form mb-5">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <input type="email" id="email" name="email" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="email">Email</label>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fas fa-pencil prefix grey-text"></i>
+                                <textarea type="text" id="texto" name="texto" class="md-textarea form-control" rows="4"></textarea>
+                                <label data-error="wrong" data-success="right" for="texto">Comentario</label>
+                            </div>
+
+                            <input type="hidden" name="idNoticia" value="{{$noticia->id}}">
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn purple-gradient">Publicar <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
         </div>
     </section>
+
 @endsection

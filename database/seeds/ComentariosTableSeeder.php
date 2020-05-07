@@ -14,19 +14,19 @@ class ComentariosTableSeeder extends Seeder
         DB::table('comentarios')->insert([
             ['descripcion' => 'asdkljh oasd asodhfo afshodphf aosdhpf',
                 'id_noticia' => '1',
-                'id_usuario' => '1'],
+                'nombre_usuario' => 'PEPE',
+                'email_usuario' => 'enrique@gmail.com'],
+
 
             ['descripcion' => 'sdkljh oasd asodhfo afshodphf aosdhpf',
                 'id_noticia' => '1',
-                'id_usuario' => '2'],
+                'nombre_usuario' => 'PEPE',
+                'email_usuario' => 'pepito@gmail.com'],
 
             ['descripcion' => 'asdkljh oasd asodhfo afshodphf aosdhpf',
                 'id_noticia' => '3',
-                'id_usuario' => '2'],
-
-            ['descripcion' => 'asdkljh oasd asodhfo afshodphf aosdhpf',
-                'id_noticia' => '4',
-                'id_usuario' => '2']
+                'nombre_usuario' => 'PEPE',
+                'email_usuario' => 'pepe@gmail.com']
         ]);
     }
 }

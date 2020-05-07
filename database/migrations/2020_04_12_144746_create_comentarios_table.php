@@ -19,7 +19,10 @@ class CreateComentariosTable extends Migration
 
             $table->unsignedBigInteger('id_noticia')->nullable();
 
-            $table->unsignedBigInteger('id_usuario')->nullable();
+            $table->string('nombre_usuario', 1000);
+
+            $table->string('email_usuario', 1000);
+
 
             $table->timestamps();
         });
@@ -28,9 +31,6 @@ class CreateComentariosTable extends Migration
             $table->foreign('id_noticia')->references('id')->on('noticias');
         });
 
-        Schema::table('comentarios', function($table) {
-            $table->foreign('id_usuario')->references('id')->on('users');
-        });
     }
 
     /**

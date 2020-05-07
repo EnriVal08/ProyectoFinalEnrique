@@ -712,7 +712,9 @@ footer .volver-arriba{
     line-height: 1;
 }
 
-
+h3{
+    color: white;
+}
 
 .pagina-noticias-container{
     display: -webkit-flex;

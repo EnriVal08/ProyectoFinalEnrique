@@ -49,12 +49,11 @@
                     <li class="tituloFooter">
                         Ultimas noticias
                     </li>
+                    @foreach($ultimas_noticias as $noticia)
                     <li class="footer-noticia">
-                        <a href="#">Titulo noticia 1 asdf asd asdf asdfsadf asdf</a>
+                        <a href="{{url('/noticia/'.$noticia->id)}}">{{$noticia->titulo}}</a>
                     </li>
-                    <li class="footer-noticia">
-                        <a href="#">Titulo noticia 2 asdf asdfasdf asdfasd fasd ff</a>
-                    </li>
+                    @endforeach
                     <li class="todas-noticias">
                         <a href="{{url('/noticias')}}">Ver todas las noticias <i class="fas fa-arrow-right"></i></a>
                     </li>
@@ -117,7 +116,7 @@
                         Lucena, Córdoba
                     </span>
                 <span class="domicilio">
-                        C/Tras la Parra nº8
+                        C/Tras la Parra
                     </span>
             </div>
         </div>
@@ -135,3 +134,13 @@
         </div>
     </div>
 </footer>
+
+<script>
+    document.querySelector('.volver-arriba')
+        .addEventListener('click', () =>{
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+</script>

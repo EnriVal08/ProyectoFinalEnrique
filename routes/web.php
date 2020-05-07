@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PaginaController@getIndex');
 
 Route::get('noticias','PaginaController@getNoticias');
+
+Route::get('noticia/{id}','PaginaController@getNoticiaIndividual');
+
+Route::post('noticia/{id}','FormController@postComentario');

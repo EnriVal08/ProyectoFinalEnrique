@@ -13,10 +13,14 @@ class NoticiasTableSeeder extends Seeder
     public function run()
     {
         DB::table('noticias')->insert([
-            ['titulo' => 'Nuevo rework a Teemo',
-                'descripcion' => 'asdkljh oasd asodhfo afshodphf aosdhpf',
-                'fecha' => '19-February-2020',
-                'foto' => 'https://1.bp.blogspot.com/-AbEpLyFeaWg/XTtj3s_gDaI/AAAAAAAAJdY/qxLuTDjEy9sfS9bFZyd92WJmisQ1uZRaQCLcBGAs/w0/teemo-lol-little-devil-splash-art-uhdpaper.com-4K-244-wp.thumbnail.jpg',
+            ['titulo' => 'Call of Duty: Mobile 6º temporada, estas son las novedades',
+                'descripcion' =>
+
+            'Call of Duty Mobile inicia su sexta temporada con Once Upon a Time in Rust, una nueva actualización que añade múltiples novedades a la versión para dispositivos móviles de la popular saga de Activision. El juego, desarrollado en colaboración con Tencent, se coloca el sombrero de vaquero para ofrecer a los jugadores una temática del Salvaje Oeste. La ley del más fuerte se traslada a los soldados, que vestirán y utilizarán armas de esa época.
+
+                La nueva temporada ya está disponible tanto en terminales Android cpmo en iOS, como ha anunciado la propia Activision a través de una nota de prensa. Durante este período, podremos disfrutar de personajes como Ghost cowboy y Seraph Desperada. Además, se añade el rifle de francotirador Outlaw y la MSMC del Salvaje Oeste. Como nueva habilidad de operador en el Pase de Batalla, se incluye Annihilator, procedente de Call of Duty: Black Ops IV.',
+                'fecha' => '4 de mayo de 2020',
+                'foto' => 'https://i.ytimg.com/vi/UVbXHqKYgqk/maxresdefault.jpg',
                 'id_creador' => 1],
 
             ['titulo' => 'Hearthstone Bankyugi vs xBlizes',

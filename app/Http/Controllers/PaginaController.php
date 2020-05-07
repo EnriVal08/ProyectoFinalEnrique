@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comentario;
 use App\Juego;
 use App\Noticia;
 use App\Torneo;
@@ -20,8 +21,6 @@ class PaginaController extends Controller
         $torneos=Torneo::all();
 
         return view('pagina.index')->with(compact('juegos'))->with('primerJuego',$primerJuego)->with(compact('noticias'))->with(compact('torneos'));
-
-
     }
 
     public function getNoticias(){
@@ -30,13 +29,16 @@ class PaginaController extends Controller
         $ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get();
 
         return view('pagina.noticias')->with(compact('noticias'))->with(compact('ultimas_noticias'));
-
-
     }
 
-    public function getNoticiaIndividual(){
+    public function getNoticiaIndividual($id){
 
-        return view('pagina.noticiaindividual');
+        $noticia = Noticia::findOrFail($id);
+
+
+        $autor = Noticia::find($noticia->id_creador)->usuario;
+
+        return view('pagina.noticiaindividual', array('noticia'=>$noticia), array('autor'=>$autor));
     }
 
 

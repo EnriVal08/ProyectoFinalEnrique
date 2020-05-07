@@ -27,13 +27,16 @@
 </head>
 
 <body>
+
 @include('partials.navbar')
 
 <div>
     @yield('content')
 </div>
-
-@include('partials.footer')
+@php
+use App\Noticia;$ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get();
+@endphp
+@include('partials.footer', array('ultimas_noticias'=>$ultimas_noticias))
 
 
 
@@ -45,5 +48,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/js/mdb.min.js"></script>
+
+
 </body>
 </html>
