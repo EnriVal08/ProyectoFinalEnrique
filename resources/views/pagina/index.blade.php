@@ -40,7 +40,7 @@
                 <div class="grid-noticias active">
 
                     @foreach($noticias as $noticia)
-                        <article style="background-image: url('{{$noticia->foto}}')" onclick="window.location.href = '{{ url('/noticia/' . $noticia->id ) }}';">
+                        <article style="background-image: url('{{$noticia->foto}}')" onclick="window.location.href = '{{ url('noticia/' . $noticia->id ) }}';">
                             <div class="overlay">
                                 <a class="categoria">
                                     Noticia
