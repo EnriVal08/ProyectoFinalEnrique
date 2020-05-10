@@ -36,9 +36,20 @@ class PaginaController extends Controller
         $noticia = Noticia::findOrFail($id);
 
 
+
         $autor = Noticia::find($noticia->id_creador)->usuario;
 
         return view('pagina.noticiaindividual', array('noticia'=>$noticia), array('autor'=>$autor));
+    }
+
+
+    public function getJuego($id){
+
+
+        $juego = Juego::findOrFail($id);
+
+
+        return view('pagina.juego', array('juego'=>$juego));
     }
 
 

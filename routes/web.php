@@ -20,3 +20,5 @@ Route::get('noticias','PaginaController@getNoticias');
 Route::get('noticia/{id}','PaginaController@getNoticiaIndividual');
 
 Route::post('noticia/{id}','FormController@postComentario');
+
+Route::get('juego/{id}','PaginaController@getJuego');

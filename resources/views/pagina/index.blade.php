@@ -20,7 +20,7 @@
                         <div class="carousel-caption">
                             <span>{{$objeto->nombre}}</span>
                             <h1>{{$objeto->titulo}}</h1>
-                            <a href="#" class="boton">Saber más <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{url('/juego/'.$objeto->id)}}" class="boton">Saber más <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
             @endforeach

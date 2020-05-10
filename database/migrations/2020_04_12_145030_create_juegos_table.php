@@ -17,7 +17,7 @@ class CreateJuegosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('titulo');
-            $table->string('descripcion');
+            $table->string('descripcion', 10000);
             $table->string('foto');
             $table->string('video');
 
