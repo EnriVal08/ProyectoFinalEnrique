@@ -688,7 +688,6 @@ footer .volver-arriba{
     display: -webkit-flex;
     display: flex;
     height: 650px;
-    margin-bottom: 10px;
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
@@ -837,7 +836,7 @@ aside .barra-ultimas-noticias .post-list li span {
 
 .articulo{
     position: relative;
-    top: -400px;
+    top: -380px;
 }
 
 .noticia-individual .caja-figura{

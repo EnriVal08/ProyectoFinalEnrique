@@ -52,5 +52,12 @@ class PaginaController extends Controller
         return view('pagina.juego', array('juego'=>$juego));
     }
 
+    public function getTorneos(){
+
+        $torneos=Torneo::all();
+
+
+        return view('pagina.torneos')->with(compact('torneos'));
+    }
 
 }
