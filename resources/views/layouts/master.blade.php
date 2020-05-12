@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="animate.min.css">
 
 
-
-
     <!-- Estilos -->
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}" />
 

@@ -32,11 +32,12 @@
                         {!! nl2br(e($noticia->descripcion), false) !!}
                     </p>
 
-                    @foreach($noticia->fotos as $foto)
+                @foreach($noticia->fotos as $foto)
                         <img class="img-fluid z-depth-4" width="800px" src="{{$foto->foto}}" alt="Generic placeholder image">
                     @endforeach
                 </div>
             </div>
+
 
 
 
@@ -109,3 +110,5 @@
     </form>
 
 @endsection
+
+
