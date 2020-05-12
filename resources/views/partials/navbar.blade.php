@@ -15,7 +15,7 @@
                     <a class="nav-link" href="{{url('noticias')}}">Noticias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('torneos/0') }}">Torneos</a>
+                    <a class="nav-link" href="{{ url('torneos') }}">Torneos</a>
                 </li>
             </ul>
         </div>
