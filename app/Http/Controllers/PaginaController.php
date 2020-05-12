@@ -52,9 +52,14 @@ class PaginaController extends Controller
         return view('pagina.juego', array('juego'=>$juego));
     }
 
-    public function getTorneos(){
+    public function getTorneos($id){
 
-        $torneos=Torneo::all();
+        if ($id != 0){
+            $torneos=Torneo::all()->where('id_juego', '=', $id);
+        } else{
+            $torneos=Torneo::all();
+        }
+
 
 
         return view('pagina.torneos')->with(compact('torneos'));

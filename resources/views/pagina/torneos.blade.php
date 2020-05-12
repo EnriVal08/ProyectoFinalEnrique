@@ -77,36 +77,26 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                    <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-fortnite" role="tab" aria-controls="pills-home" aria-selected="true">
                         <img src="https://i.pinimg.com/originals/4d/0d/e7/4d0de7d94f47f83c58dea2cdf1a93367.png" alt="Fortnite">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-hearthstone" role="tab" aria-controls="pills-profile" aria-selected="false">
                         <img src="{{ asset('images/LogoHearthstone.png') }}" alt="Hearthstone">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-brawl" role="tab" aria-controls="pills-contact" aria-selected="false">
                         <img src="{{ asset('images/LogoBS.png') }}" alt="Brawl Stars">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-callofduty" role="tab" aria-controls="pills-contact" aria-selected="false">
                         <img src="https://tic91011.files.wordpress.com/2017/10/cod_logo_eventpagev2_haazdrp.png?w=1000" alt="Brawl Stars">
                     </a>
                 </li>
             </ul>
-
-
-
-            <!--
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-            </div>
--->
 
         </div>
     </section>
@@ -119,27 +109,123 @@
                 </div>
             </div>
             <div class="content">
-                <ul class="lista-torneos active">
-                    @foreach($torneos as $torneo)
-                        <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{$torneo->foto}}')">
-                            <div class="torneo-body">
-                                <a class="torneo-nombre">{{$torneo->titulo}}</a>
-                                <span class="fechaTorneo">{{$torneo->fecha}}</span>
-                            </div>
-                            <div class="torneo-footer">
-                                <div class="col">
-                                    <div>
-                                        <h5>Premios</h5>
-                                        <p>{{$torneo->premio}} €</p>
-                                    </div>
-                                </div>
-                                <div class="col aling-right">
-                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><ul class="lista-torneos active">
+                                @foreach($torneos as $torneo)
+                                        <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{$torneo->foto}}')">
+                                            <div class="torneo-body">
+                                                <a class="torneo-nombre">{{$torneo->titulo}}</a>
+                                                <span class="fechaTorneo">{{$torneo->fecha}}</span>
+                                            </div>
+                                            <div class="torneo-footer">
+                                                <div class="col">
+                                                    <div>
+                                                        <h5>Premios</h5>
+                                                        <p>{{$torneo->premio}} €</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col aling-right">
+                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                @endforeach
+                            </ul></div>
+                        <div class="tab-pane fade" id="pills-fortnite" role="tabpanel" aria-labelledby="pills-profile-tab">@php $id = 4;@endphp  <ul class="lista-torneos active">
+                                @foreach($torneos as $torneo)
+                                    @if($torneo->id_juego == $id)
+                                        <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{$torneo->foto}}')">
+                                            <div class="torneo-body">
+                                                <a class="torneo-nombre">{{$torneo->titulo}}</a>
+                                                <span class="fechaTorneo">{{$torneo->fecha}}</span>
+                                            </div>
+                                            <div class="torneo-footer">
+                                                <div class="col">
+                                                    <div>
+                                                        <h5>Premios</h5>
+                                                        <p>{{$torneo->premio}} €</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col aling-right">
+                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul></div>
+                        <div class="tab-pane fade" id="pills-hearthstone" role="tabpanel" aria-labelledby="pills-contact-tab">@php $id = 1;@endphp  <ul class="lista-torneos active">
+                                @foreach($torneos as $torneo)
+                                    @if($torneo->id_juego == $id)
+                                        <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{$torneo->foto}}')">
+                                            <div class="torneo-body">
+                                                <a class="torneo-nombre">{{$torneo->titulo}}</a>
+                                                <span class="fechaTorneo">{{$torneo->fecha}}</span>
+                                            </div>
+                                            <div class="torneo-footer">
+                                                <div class="col">
+                                                    <div>
+                                                        <h5>Premios</h5>
+                                                        <p>{{$torneo->premio}} €</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col aling-right">
+                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul></div>
+                        <div class="tab-pane fade" id="pills-brawl" role="tabpanel" aria-labelledby="pills-contact-tab">@php $id = 3;@endphp  <ul class="lista-torneos active">
+                                @foreach($torneos as $torneo)
+                                    @if($torneo->id_juego == $id)
+                                        <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{$torneo->foto}}')">
+                                            <div class="torneo-body">
+                                                <a class="torneo-nombre">{{$torneo->titulo}}</a>
+                                                <span class="fechaTorneo">{{$torneo->fecha}}</span>
+                                            </div>
+                                            <div class="torneo-footer">
+                                                <div class="col">
+                                                    <div>
+                                                        <h5>Premios</h5>
+                                                        <p>{{$torneo->premio}} €</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col aling-right">
+                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul></div>
+                        <div class="tab-pane fade" id="pills-callofduty" role="tabpanel" aria-labelledby="pills-contact-tab">@php $id = 2;@endphp  <ul class="lista-torneos active">
+                                @foreach($torneos as $torneo)
+                                    @if($torneo->id_juego == $id)
+                                        <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{$torneo->foto}}')">
+                                            <div class="torneo-body">
+                                                <a class="torneo-nombre">{{$torneo->titulo}}</a>
+                                                <span class="fechaTorneo">{{$torneo->fecha}}</span>
+                                            </div>
+                                            <div class="torneo-footer">
+                                                <div class="col">
+                                                    <div>
+                                                        <h5>Premios</h5>
+                                                        <p>{{$torneo->premio}} €</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col aling-right">
+                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul></div>
+                    </div>
+
             </div>
         </div>
     </section>
