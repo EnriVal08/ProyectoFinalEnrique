@@ -25,6 +25,9 @@
         }
 
 
+        .torneos img{
+            background-color: rgba(0,0,0,0);
+        }
         .info-torneo{
             display: -webkit-flex;
             display: flex;
