@@ -78,7 +78,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-fortnite" role="tab" aria-controls="pills-home" aria-selected="true">
-                        <img src="https://i.pinimg.com/originals/4d/0d/e7/4d0de7d94f47f83c58dea2cdf1a93367.png" alt="Fortnite">
+                        <img src="{{ asset('images/logoFortnite.png') }}" alt="Fortnite">
                     </a>
                 </li>
                 <li class="nav-item">
@@ -93,7 +93,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-callofduty" role="tab" aria-controls="pills-contact" aria-selected="false">
-                        <img src="https://tic91011.files.wordpress.com/2017/10/cod_logo_eventpagev2_haazdrp.png?w=1000" alt="Brawl Stars">
+                        <img src="{{ asset('images/logoCallofduty.png') }}" alt="Call of Duty">
                     </a>
                 </li>
             </ul>
@@ -126,7 +126,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col aling-right">
-                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                    <a href="{{url('/torneo/'.$torneo->id)}}" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -148,7 +148,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col aling-right">
-                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                    <a href="{{url('/torneo/'.$torneo->id)}}" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -171,7 +171,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col aling-right">
-                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                    <a href="{{url('/torneo/'.$torneo->id)}}" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -194,7 +194,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col aling-right">
-                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                    <a href="{{url('/torneo/'.$torneo->id)}}" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -217,7 +217,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col aling-right">
-                                                    <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                                    <a href="{{url('/torneo/'.$torneo->id)}}" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </li>

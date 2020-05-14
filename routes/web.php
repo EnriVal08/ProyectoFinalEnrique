@@ -24,3 +24,5 @@ Route::post('noticia/{id}','FormController@postComentario');
 Route::get('juego/{id}','PaginaController@getJuego');
 
 Route::get('torneos','PaginaController@getTorneos');
+
+Route::get('torneo/{id}','PaginaController@getTorneoIndividual');

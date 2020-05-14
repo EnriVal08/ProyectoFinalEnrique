@@ -61,4 +61,17 @@ class PaginaController extends Controller
         return view('pagina.torneos')->with(compact('torneos'));
     }
 
+
+    public function getTorneoIndividual($id){
+
+        $torneo = Torneo::findOrFail($id);
+
+        $juego = Torneo::find($torneo->id_juego)->juego;
+
+
+        return view('pagina.torneoindividual', array('torneo'=>$torneo), array('juego'=>$juego));
+    }
+
+
+
 }

@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="col aling-right">
-                                <a href="#" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
+                                <a href="{{url('/torneo/'.$torneo->id)}}" class="botonTorneo">Mas detalles <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </li>

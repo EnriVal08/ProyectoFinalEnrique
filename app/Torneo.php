@@ -9,7 +9,7 @@ class Torneo extends Model
     protected $table = "torneos";
 
     public function juego (){
-        return $this->hasOne('App\Juego', 'id_juego');
+        return $this->hasOne('App\Juego', 'id');
     }
 
     public function equipos(){
