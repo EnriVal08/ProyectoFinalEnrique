@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('torneos') }}">Torneos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('tienda') }}">Tienda</a>
+                </li>
             </ul>
         </div>
     </div>

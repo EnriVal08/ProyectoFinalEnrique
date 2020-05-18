@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comentario;
 use App\Juego;
 use App\Noticia;
+use App\Producto;
 use App\Torneo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -70,6 +71,15 @@ class PaginaController extends Controller
 
 
         return view('pagina.torneoindividual', array('torneo'=>$torneo), array('juego'=>$juego));
+    }
+
+    public function getTienda(){
+
+        $productos = Producto::all();
+
+        return view('pagina.tienda')->with(compact('productos'));
+
+
     }
 
 

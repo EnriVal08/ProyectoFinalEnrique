@@ -26,3 +26,5 @@ Route::get('juego/{id}','PaginaController@getJuego');
 Route::get('torneos','PaginaController@getTorneos');
 
 Route::get('torneo/{id}','PaginaController@getTorneoIndividual');
+
+Route::get('tienda','PaginaController@getTienda');
