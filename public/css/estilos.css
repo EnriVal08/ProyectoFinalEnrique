@@ -1207,13 +1207,13 @@ figure{
 
 
 
-.titulo-producot{
+.pagina-producto .titulo-producot{
     margin-bottom: 40px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     font: 900 1.5em/32px "Montserrat",sans-serif;
 }
 
-.seccion-producto{
+.pagina-producto .seccion-producto{
     display: flex;
     display: -webkit-flex;
     align-items: center;
@@ -1221,7 +1221,7 @@ figure{
     margin-top: 100px;
 }
 
-.precio_producto{
+.pagina-producto .precio_producto{
     font: 900 1.25em/1 "Montserrat",sans-serif;
     text-transform: uppercase;
     color: black;
@@ -1231,7 +1231,7 @@ figure{
 }
 
 
-.cantidad{
+.pagina-producto .cantidad{
     border-radius: 4px;
     border: 1px solid #6931f9;
     padding: 10px;
@@ -1242,7 +1242,7 @@ figure{
     margin-bottom: 5px;
 }
 
-.boton-añadir{
+.pagina-producto .boton-añadir{
     font-size: 100%;
     margin: 0;
     line-height: 1;
@@ -1269,7 +1269,7 @@ figure{
     margin: 0 0 22px !important;
 }
 
-.tab-pane p{
+.pagina-producto .tab-pane p{
     color: black;
     font-size: 16px;
     font-weight: normal;
