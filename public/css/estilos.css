@@ -360,7 +360,7 @@ li{
 .lista-torneos .caja-torneos .torneo-body .torneo-nombre{
     color: #636f7d;
     font-family: "Montserrat", sans serif;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 
@@ -1038,6 +1038,10 @@ figure{
     height: 350px;
 }
 
+.img-torneo img{
+    width: 100%;
+}
+
 .img-torneo:before {
     content:'';
     position: absolute;
@@ -1065,9 +1069,6 @@ figure{
     margin: 0 42px 0 54px;
 }
 
-img{
-    width: 100%;
-}
 
 .detalles-torneo{
     display: -webkit-flex;
@@ -1175,5 +1176,102 @@ img{
     -webkit-align-items: center;
     align-items: center;
     z-index: 9;
+}
+
+/*Tienda*/
+
+
+.tienda{
+    margin-top: 120px;
+    margin-bottom: 100px;
+}
+
+.card-body{
+    text-align: center;
+}
+
+
+/*Producto detalles*/
+
+
+.pagina-producto .producto {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.seccion-producto .imagen_producto{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+.titulo-producot{
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    font: 900 1.5em/32px "Montserrat",sans-serif;
+}
+
+.seccion-producto{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    margin-top: 100px;
+}
+
+.precio_producto{
+    font: 900 1.25em/1 "Montserrat",sans-serif;
+    text-transform: uppercase;
+    color: black;
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration-color: #6931f9;
+}
+
+
+.cantidad{
+    border-radius: 4px;
+    border: 1px solid #6931f9;
+    padding: 10px;
+    outline: none;
+    width: 3.631em;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.boton-añadir{
+    font-size: 100%;
+    margin: 0;
+    line-height: 1;
+    cursor: pointer;
+    position: relative;
+    padding: .618em 1em;
+    font-weight: 700;
+    border-radius: 4px;
+    background-color: #6931f9;
+    color: white;
+}
+
+
+.pagina-producto a{
+    color: #6931f9;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.pagina-producto h2{
+    color: #0a0c11;
+    font: 900 1.5em/32px "Montserrat", sans-serif !important;
+    padding: 0 !important;
+    margin: 0 0 22px !important;
+}
+
+.tab-pane p{
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
 }
 

@@ -80,6 +80,14 @@ class PaginaController extends Controller
         return view('pagina.tienda')->with(compact('productos'));
 
 
+
+    }
+
+    public function getProducto($id){
+
+        $producto = Producto::findOrFail($id);
+
+        return view('pagina.detallesproducto', array('producto'=>$producto));
     }
 
 

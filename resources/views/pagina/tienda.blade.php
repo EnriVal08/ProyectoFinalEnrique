@@ -1,20 +1,6 @@
 @extends('layouts.master')
 @section('content')
 
-
-    <style>
-        .tienda{
-            margin-top: 120px;
-            margin-bottom: 100px;
-        }
-
-        .card-body{
-            text-align: center;
-
-        }
-
-
-    </style>
     <div class="row tienda justify-content-md-center">
     @foreach( $productos as $producto)
             <div class="card col-lg-2 mx-auto mb-5">
@@ -33,7 +19,7 @@
 
                     <p class="card-text">{{$producto->precio}} €</p>
 
-                    <a href="#" class="btn btn-primary">Saber más</a>
+                    <a href="{{url('/producto/'.$producto->id)}}" class="btn btn-primary">Saber más</a>
 
 
                 </div>
