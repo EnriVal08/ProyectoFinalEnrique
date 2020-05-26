@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Cesta;
 use App\Comentario;
 use App\Juego;
 use App\Noticia;
 use App\Producto;
 use App\Torneo;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function GuzzleHttp\Promise\all;
 
 class PaginaController extends Controller
 {
@@ -90,6 +93,19 @@ class PaginaController extends Controller
         return view('pagina.detallesproducto', array('producto'=>$producto));
     }
 
+
+    public function getCesta(){
+
+
+
+        $cesta = Cesta::all()->where('id_usuario', '=', '2');
+
+
+
+        return view('pagina.cesta', array('cesta'=>$cesta));
+
+
+    }
 
 
 }

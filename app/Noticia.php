@@ -20,4 +20,5 @@ class Noticia extends Model
         return $this->hasMany('App\Galeria', 'id_noticia');
     }
 
+
 }

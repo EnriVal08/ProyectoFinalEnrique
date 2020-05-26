@@ -30,3 +30,5 @@ Route::get('torneo/{id}','PaginaController@getTorneoIndividual');
 Route::get('tienda','PaginaController@getTienda');
 
 Route::get('producto/{id}', 'PaginaController@getProducto');
+
+Route::get('cesta','PaginaController@getCesta');
