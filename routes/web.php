@@ -32,3 +32,8 @@ Route::get('tienda','PaginaController@getTienda');
 Route::get('producto/{id}', 'PaginaController@getProducto');
 
 Route::get('cesta','PaginaController@getCesta');
+
+
+Route::get('cesta/update/{producto}/{cantidad?}',  [
+    'as' => 'cart-update',
+    'uses' => 'PaginaController@update']);

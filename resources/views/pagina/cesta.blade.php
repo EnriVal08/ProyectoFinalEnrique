@@ -1,5 +1,52 @@
 @extends('layouts.master')
 @section('content')
+<style>
+    .qt, .qt-plus, .qt-minus {
+        display: block;
+        float: left;
+    }
+
+    .qt {
+        font-size: 19px;
+        line-height: 50px;
+        width: 70px;
+        text-align: center;
+    }
+
+    .qt-plus, .qt-minus {
+        background: #fcfcfc;
+        border: none;
+        font-size: 30px;
+        font-weight: 300;
+        height: 100%;
+        padding: 0 20px;
+        -webkit-transition: background .2s linear;
+        -moz-transition: background .2s linear;
+        -ms-transition: background .2s linear;
+        -o-transition: background .2s linear;
+        transition: background .2s linear;
+    }
+
+    .qt-plus:hover, .qt-minus:hover {
+        background: #6931f9;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .qt-plus {
+        line-height: 50px;
+    }
+
+    .qt-minus {
+        line-height: 47px;
+    }
+</style>
+
+
+
+
+<body>
+
 
 
     <section class="tienda cesta">
@@ -15,7 +62,8 @@
                 <div class="card wish-list mb-3">
                     <div class="card-body">
 
-                        <h5 class="mb-4">Cart (<span>2</span> items)</h5>
+
+                        <h5 class="mb-4">Cesta</h5>
 
 
 
@@ -41,32 +89,33 @@
                                 <div>
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <h5></h5>
-                                            <p class="mb-3 text-muted text-uppercase small">Shirt - blue</p>
-                                            <p class="mb-2 text-muted text-uppercase small">Color: blue</p>
-                                            <p class="mb-3 text-muted text-uppercase small">Size: M</p>
+                                            <p class="mb-3 text-muted text-uppercase small">{{$prueba->nombre}}</p>
+                                            <p class="mb-2 text-muted text-uppercase small">{{$prueba->categoria}}</p>
+                                            <p class="mb-3 text-muted text-uppercase small">{{$prueba->precio}} €</p>
                                         </div>
                                         <div>
                                             <div class="def-number-input number-input safari_only mb-0 w-100">
-                                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                        class="minus"></button>
-                                                <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                        class="plus"></button>
+
+                                                <input class="quantity" min="1" max="100" name="quantity" id="product_{{$producto->id}}" type="number" value="{{$producto->cantidad}}">
+
+                                                <a class="btn btn-update-item boton-añadir" href="#" data-href="{{ route('cart-update', $producto->id ) }}" data-id="{{$producto->id}}"><i style="color: white" class="fas fa-sync"></i></a>
+
                                             </div>
                                             <small id="passwordHelpBlock" class="form-text text-muted text-center">
-                                                (Note, 1 piece)
+                                                Pulsa el botón al hacer cambios en la cantidad
                                             </small>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
                                             <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                                    class="fas fa-trash-alt mr-1"></i> Remove item </a>
+                                                    class="fas fa-trash-alt mr-1"></i> Quitar producto</a>
                                             <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
-                                                    class="fas fa-heart mr-1"></i> Move to wish list </a>
+                                                    class="fas fa-heart mr-1"></i> Mover a la lista de deseos </a>
                                         </div>
-                                        <p class="mb-0"><span><strong>$17.99</strong></span></p>
+
+                                        <p class="mb-0 full-price" ><span><strong>{{number_format($prueba->precio * $producto->cantidad,2)}}€</strong></span></p>
+
                                     </div>
                                 </div>
                             </div>
@@ -77,8 +126,7 @@
                         @endforeach
 
 
-                        <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
-                            items to your cart does not mean booking them.</p>
+                        <p class="text-primary mb-0"><i style="color: #6931f9" class="fas fa-info-circle mr-1"></i> </p>
 
                     </div>
                 </div>
@@ -87,9 +135,9 @@
                 <div class="card mb-3">
                     <div class="card-body">
 
-                        <h5 class="mb-4">Expected shipping delivery</h5>
+                        <h5 class="mb-4">Tiempo de envío estimado</h5>
 
-                        <p class="mb-0"> Thu., 12.03. - Mon., 16.03.</p>
+                        <p class="mb-0"> Miércoles 3 junio - Viernes 5 junio  </p>
                     </div>
                 </div>
 
@@ -98,7 +146,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
 
-                        <h5 class="mb-4">We accept</h5>
+                        <h5 class="mb-4">Aceptamos</h5>
 
                         <img class="mr-2" width="45px"
                              src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
@@ -126,29 +174,25 @@
                 <div class="card mb-3">
                     <div class="card-body">
 
-                        <h5 class="mb-3">The total amount of</h5>
+                        <h5 class="mb-3">Cantidad total</h5>
 
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                Temporary amount
-                                <span>$25.98</span>
-                            </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                Shipping
+                                Gastos de envío
                                 <span>Gratis</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                 <div>
-                                    <strong>The total amount of</strong>
+                                    <strong>Cantidad total</strong>
                                     <strong>
-                                        <p class="mb-0">(including VAT)</p>
+                                        <p class="mb-0">(incluido IVA)</p>
                                     </strong>
                                 </div>
-                                <span><strong>$53.98</strong></span>
+                                <span><strong>{{number_format($total,2)}} €</strong></span>
                             </li>
                         </ul>
 
-                        <button type="button" class="btn btn-primary btn-block waves-effect waves-light">go to checkout</button>
+                        <button type="button" class="btn boton-añadir btn-block waves-effect waves-light">Comprar</button>
 
                     </div>
                 </div>
@@ -160,7 +204,7 @@
 
                         <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample1"
                            aria-expanded="false" aria-controls="collapseExample1">
-                            Add a discount code (optional)
+                            Añadir código de descuento (opcional)
                             <span><i class="fas fa-chevron-down pt-1"></i></span>
                         </a>
 
@@ -168,7 +212,7 @@
                             <div class="mt-3">
                                 <div class="md-form md-outline mb-0">
                                     <input type="text" id="discount-code1" class="form-control font-weight-light"
-                                           placeholder="Enter discount code">
+                                           placeholder="Introducir código de descuento">
                                 </div>
                             </div>
                         </div>
@@ -177,7 +221,6 @@
 
 
             </div>
-
 
         </div>
 

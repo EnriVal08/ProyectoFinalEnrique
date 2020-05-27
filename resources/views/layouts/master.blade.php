@@ -15,7 +15,6 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="animate.min.css">
 
 
     <!-- Estilos -->
@@ -47,6 +46,33 @@ use App\Noticia;$ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get()
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/js/mdb.min.js"></script>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
+<script>
+
+    $(document).ready(function () {
+
+        $('.btn-update-item').on('click', function (e) {
+
+                e.preventDefault();
+
+
+                const id = $(this).data("id");
+
+
+                const href = $(this).data('href');
+
+
+                const cantidad = $("#product_" + id).val();
+
+
+                console.log("url="+href + "/" + cantidad);
+
+                window.location.href = href + "/" + cantidad;
+            });
+    });
+
+
+</script>
 </body>
 </html>

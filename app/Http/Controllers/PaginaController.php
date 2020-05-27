@@ -96,16 +96,50 @@ class PaginaController extends Controller
 
     public function getCesta(){
 
+        $cesta = Cesta::all()->where('id_usuario', '=', '1');
 
 
-        $cesta = Cesta::all()->where('id_usuario', '=', '2');
+        $total = $this->total();
 
-
-
-        return view('pagina.cesta', array('cesta'=>$cesta));
+        return view('pagina.cesta', array('cesta'=>$cesta), compact('total'));
 
 
     }
 
+
+
+    public function update($producto, $cantidad){
+
+        $cesta = Cesta::find($producto);
+
+        $cesta->cantidad = $cantidad;
+
+        $cesta->save();
+
+        return redirect('cesta');
+
+    }
+
+
+
+
+
+    private function total(){
+
+        $cesta = Cesta::all()->where('id_usuario', '=', '1');
+
+
+
+
+        $total = 0;
+
+        foreach($cesta as $productos){
+            foreach($productos->productos as $producto){
+                $total += $producto->precio * $productos->cantidad;
+            }
+        }
+
+        return $total;
+    }
 
 }
