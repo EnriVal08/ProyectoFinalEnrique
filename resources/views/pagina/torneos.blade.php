@@ -15,14 +15,6 @@
             background-color: rgba(0,0,0,0);
         }
 
-        .inicio-noticias{
-            display: -webkit-flex;
-            display: flex;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-align-items: center;
-            align-items: center;
-        }
 
         .celdas li{
             height: 50px;
@@ -53,7 +45,7 @@
             justify-content: center;
             -webkit-align-items: center;
             align-items: center;
-            height: 345px;
+            height: 200px;
             position: relative;
             z-index: 1;
             text-align: center;
@@ -66,48 +58,47 @@
     </style>
 
 
-    <section class="inicio-noticias" style="background-image: url('https://www.solofondos.com/wp-content/uploads/2015/12/eb030ae837c1c43420b377e290cd4937.jpg');">
-
-        <div class="filtrar">
-
-            <ul class="nav mb-3 celdas" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
-                        <i class="fas fa-list"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-fortnite" role="tab" aria-controls="pills-home" aria-selected="true">
-                        <img src="{{ asset('images/logoFortnite.png') }}" alt="Fortnite">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-hearthstone" role="tab" aria-controls="pills-profile" aria-selected="false">
-                        <img src="{{ asset('images/LogoHearthstone.png') }}" alt="Hearthstone">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-brawl" role="tab" aria-controls="pills-contact" aria-selected="false">
-                        <img src="{{ asset('images/LogoBS.png') }}" alt="Brawl Stars">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-callofduty" role="tab" aria-controls="pills-contact" aria-selected="false">
-                        <img src="{{ asset('images/logoCallofduty.png') }}" alt="Call of Duty">
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-    </section>
-
-    <section class="torneos">
+    <section class="torneos" style="padding-top: 140px">
         <div class="container">
             <div class="header-seccion border-bottom">
                 <div class="titulo-seccion">
                     <h2>Torneos</h2>
                 </div>
             </div>
+
+
+            <div class="filtrar mb-3">
+
+                <ul class="nav mb-3 celdas" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                            <i class="fas fa-list"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-fortnite" role="tab" aria-controls="pills-home" aria-selected="true">
+                            <img src="{{ asset('images/logoFortnite.png') }}" alt="Fortnite">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-hearthstone" role="tab" aria-controls="pills-profile" aria-selected="false">
+                            <img src="{{ asset('images/LogoHearthstone.png') }}" alt="Hearthstone">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-brawl" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            <img src="{{ asset('images/LogoBS.png') }}" alt="Brawl Stars">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-callofduty" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            <img src="{{ asset('images/logoCallofduty.png') }}" alt="Call of Duty">
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
             <div class="content">
 
                     <div class="tab-content" id="pills-tabContent">

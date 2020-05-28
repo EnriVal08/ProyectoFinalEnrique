@@ -169,8 +169,58 @@ class PaginaController extends Controller
 
             $user->save();
 
-            return redirect('/');
+            flash('Registro completado correctamente')->info();
+
+            return redirect('/login');
         }
+    }
+
+
+
+    public function añadir(Request $request){
+
+        $id_usuario = auth()->id();
+
+
+        $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
+
+        $existe = false;
+        foreach($cesta as $productoCesta){
+            if($productoCesta->id_producto == $request->id_producto){
+
+                $existe = true;
+
+                $productoCesta->update([
+                    'cantidad' => $productoCesta->cantidad + $request->input('cantidad'),
+                ]);
+
+
+            }
+        }
+
+        if($existe){
+
+            flash('Producto añadido a tu cesta correctamente')->info();
+
+            return redirect('/producto/'.$request->id_producto);
+
+
+        } else{
+
+            $productoNuevo = new Cesta();
+
+            $productoNuevo->id_producto = $request->id_producto;
+            $productoNuevo->id_usuario = $id_usuario;
+            $productoNuevo->cantidad = $request->cantidad;
+
+            $productoNuevo->save();
+
+            flash('Producto añadido a tu cesta correctamente')->info();
+
+            return redirect('/producto/'.$request->id_producto);
+
+        }
+
     }
 
 }

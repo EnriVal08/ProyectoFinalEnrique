@@ -41,3 +41,7 @@ Route::get('cesta/update/{producto}/{cantidad?}',  [
 Auth::routes();
 
 Route::post('registrar', 'PaginaController@registrarUsuario')->name('registrarUsuario');
+
+
+Route::post('añadir', 'PaginaController@añadir')->name('añadir');
+

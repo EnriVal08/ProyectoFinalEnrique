@@ -4,7 +4,10 @@
 
     <section class="pagina-producto">
         <div class="container">
+<div style="margin-top: 120px">
+    @include('flash::message')
 
+</div>
             <div class="seccion-producto row mb-5">
 
                 <div class="producto col-sm-6">
@@ -16,12 +19,15 @@
                 </div>
 
                 <div class="detalles_producto col-sm-6 mb-5">
+
                     <h1 class="titulo-producot">{{$producto->nombre}}</h1>
                     <p class="precio_producto">{{$producto->precio}} €</p>
-                    <form method="POST" action="" class="mb-5 row">
+                    <form method="POST" action="{{ route('añadir') }}" class="mb-5 row">
+                        @csrf
                         <div class="col-sm-3">
-                            <input type="number" class="cantidad" min="1" size="4" value="1">
+                            <input type="number" class="cantidad" id="cantidad" name="cantidad" min="1" size="4" value="1">
                         </div>
+                        <input type="hidden" name="id_producto" id="id_producto" value="{{$producto->id}}">
                         <div class="col-sm-9">
                             <button class="boton-añadir" type="submit" name="añadir" value="añadir">Añadir al carrito</button>
                         </div>

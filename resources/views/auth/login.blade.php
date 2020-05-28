@@ -6,11 +6,19 @@
 
 <section class="login-register">
 
+<div style="padding-top: 120px">
+    @include('flash::message')
+</div>
+
 <div class="login-register-box">
+
+
     <h1>Login</h1>
 
     <form method="POST" action="{{ route('login') }}">
 @csrf
+
+
 
         <div class="textbox">
             <i class="fa fa-user" aria-hidden="true"></i>

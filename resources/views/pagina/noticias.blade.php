@@ -4,8 +4,6 @@
 
     </style>
 
-    <section class="inicio-noticias" style="background-image: url('https://www.solofondos.com/wp-content/uploads/2015/12/eb030ae837c1c43420b377e290cd4937.jpg');">
-    </section>
 
         <section class="pagina-noticias-container">
 

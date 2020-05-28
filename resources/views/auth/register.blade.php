@@ -3,8 +3,11 @@
 @section('content')
 
 
-    @include('flash::message')
     <section class="login-register">
+
+        <div style="padding-top: 120px">
+            @include('flash::message')
+        </div>
 
         <div class="login-register-box">
             <h1>Registro</h1>
