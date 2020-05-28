@@ -20,6 +20,45 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('tienda') }}">Tienda</a>
                 </li>
+
+                <li>
+                    <div class="ml-3"></div>
+                </li>
+
+                @if( Auth::check() )
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('cesta') }}">Cesta</a>
+                    </li>
+
+                    <li><form action="{{ url('/logout') }}" method="POST" >
+                            {{ csrf_field() }}
+                            <button type="submit" class="boton-añadir mt-1" style="">
+                                Cerrar sesión
+                            </button>
+                        </form>
+                    </li>
+
+                    @endif
+
+                @if( Auth::check() == false )
+
+
+                    <li class="nav-item">
+                        <button type="button" onclick="location.href='{{ url('login') }}'" class="boton-añadir mt-1">
+                            Login
+                        </button>
+                    </li>
+
+                    <li class="nav-item">
+                        <button type="button" onclick="location.href='{{ url('register') }}'" class="boton-añadir mt-1">
+                            Registro
+                        </button>
+                    </li>
+
+                @endif
+
+
             </ul>
         </div>
     </div>

@@ -96,7 +96,10 @@ class PaginaController extends Controller
 
     public function getCesta(){
 
-        $cesta = Cesta::all()->where('id_usuario', '=', '1');
+        $id_usuario = auth()->id();
+
+
+        $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
 
         $total = $this->total();
@@ -126,8 +129,10 @@ class PaginaController extends Controller
 
     private function total(){
 
-        $cesta = Cesta::all()->where('id_usuario', '=', '1');
+        $id_usuario = auth()->id();
 
+
+        $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
 
 
@@ -140,6 +145,32 @@ class PaginaController extends Controller
         }
 
         return $total;
+    }
+
+
+
+
+    public function registrarUsuario(Request $request){
+
+        $email = $request->input('email');
+
+        if (User::where('email', $email)->exists()) {
+            flash('El usuario que has introducido ya se encuentra registrado en nuestra base de datos')->error()->important();
+            return redirect('/register');
+        } else{
+
+            $user = new User();
+
+            $user->nombre = $request->input('nombre');
+            $user->email = $email;
+            $user->password = bcrypt($request->input('password'));
+            $user->rol = 'cliente';
+            $user->avatar = 'imagenes/avatarDefault.jpg';
+
+            $user->save();
+
+            return redirect('/');
+        }
     }
 
 }

@@ -110,8 +110,6 @@
                                         <div>
                                             <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
                                                     class="fas fa-trash-alt mr-1"></i> Quitar producto</a>
-                                            <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
-                                                    class="fas fa-heart mr-1"></i> Mover a la lista de deseos </a>
                                         </div>
 
                                         <p class="mb-0 full-price" ><span><strong>{{number_format($prueba->precio * $producto->cantidad,2)}}€</strong></span></p>
