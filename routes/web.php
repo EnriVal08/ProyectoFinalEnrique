@@ -45,4 +45,5 @@ Route::post('registrar', 'PaginaController@registrarUsuario')->name('registrarUs
 
 Route::post('añadir', 'PaginaController@añadir')->name('añadir');
 
+
 Route::delete('/cesta/eliminar/{id}', 'PaginaController@eliminar');
