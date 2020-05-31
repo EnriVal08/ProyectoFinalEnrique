@@ -1,9 +1,10 @@
 @extends('layouts.master')
 @section('content')
 
-        <div class="row tienda justify-content-md-center pl-3 pr-3">
+    <div class="row tienda justify-content-md-center pl-3 pr-3 pb-0">
 
-        @foreach( $productos as $producto)
+
+    @foreach( $productos as $producto)
                 <div class="card col-lg-2 mx-auto mb-5">
 
                     <div class="view overlay">
@@ -28,7 +29,13 @@
                 </div>
 
         @endforeach
+
 </div>
+    <div class="tienda paginas">
+        <div class="margen">
+            {{ $productos->links('/vendor/pagination/bootstrap-4') }}
+        </div>
+    </div>
 
 @endsection
 

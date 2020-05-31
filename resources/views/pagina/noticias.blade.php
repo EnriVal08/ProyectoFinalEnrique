@@ -1,9 +1,5 @@
 @extends('layouts.master')
 @section('content')
-    <style>
-
-    </style>
-
 
         <section class="pagina-noticias-container">
 
@@ -29,7 +25,10 @@
                                 </div>
                             </article>
                         @endforeach
+
                     </div>
+
+                {{ $noticias->links('/vendor/pagination/bootstrap-4') }}
             </div>
 
 

@@ -1,63 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
-    <style>
-
-        .celdas{
-            -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
-            -webkit-justify-content: center;
-            justify-content: center;
-        }
-
-        .celdas img{
-            max-width: 120px;
-            background-color: rgba(0,0,0,0);
-        }
-
-
-        .celdas li{
-            height: 50px;
-            width: fit-content;
-            margin: 1px;
-        }
-
-        .celdas a{
-            padding: 0 30px;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-align-items: center;
-            align-items: center;
-            text-align: center;
-            height: 100%;
-            color: white !important;
-            text-decoration: none;
-        }
-
-        .celdas li a {
-            background-color: rgba(105, 49, 249, 0.42);
-        }
-
-        .filtrar{
-            display: -webkit-flex;
-            display: flex;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-align-items: center;
-            align-items: center;
-            height: 200px;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .celdas .active{
-            background-color: #6931f9;
-        }
-
-    </style>
-
-
     <section class="torneos" style="padding-top: 140px">
         <div class="container">
             <div class="header-seccion border-bottom">
@@ -122,7 +64,9 @@
                                             </div>
                                         </li>
                                 @endforeach
-                            </ul></div>
+                            </ul>
+                        </div>
+
                         <div class="tab-pane fade" id="pills-fortnite" role="tabpanel" aria-labelledby="pills-profile-tab">@php $id = 4;@endphp  <ul class="lista-torneos active">
                                 @foreach($torneos as $torneo)
                                     @if($torneo->id_juego == $id)
@@ -145,7 +89,8 @@
                                         </li>
                                     @endif
                                 @endforeach
-                            </ul></div>
+                            </ul>
+                        </div>
                         <div class="tab-pane fade" id="pills-hearthstone" role="tabpanel" aria-labelledby="pills-contact-tab">@php $id = 1;@endphp  <ul class="lista-torneos active">
                                 @foreach($torneos as $torneo)
                                     @if($torneo->id_juego == $id)
@@ -168,7 +113,8 @@
                                         </li>
                                     @endif
                                 @endforeach
-                            </ul></div>
+                            </ul>
+                        </div>
                         <div class="tab-pane fade" id="pills-brawl" role="tabpanel" aria-labelledby="pills-contact-tab">@php $id = 3;@endphp  <ul class="lista-torneos active">
                                 @foreach($torneos as $torneo)
                                     @if($torneo->id_juego == $id)
@@ -191,7 +137,8 @@
                                         </li>
                                     @endif
                                 @endforeach
-                            </ul></div>
+                            </ul>
+                        </div>
                         <div class="tab-pane fade" id="pills-callofduty" role="tabpanel" aria-labelledby="pills-contact-tab">@php $id = 2;@endphp  <ul class="lista-torneos active">
                                 @foreach($torneos as $torneo)
                                     @if($torneo->id_juego == $id)
@@ -214,8 +161,12 @@
                                         </li>
                                     @endif
                                 @endforeach
-                            </ul></div>
+                            </ul>
+                        </div>
+
+
                     </div>
+
 
             </div>
         </div>

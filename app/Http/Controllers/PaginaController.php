@@ -29,7 +29,7 @@ class PaginaController extends Controller
 
     public function getNoticias(){
 
-        $noticias=Noticia::all();
+        $noticias=Noticia::paginate(4);
         $ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get();
 
         return view('pagina.noticias')->with(compact('noticias'))->with(compact('ultimas_noticias'));
@@ -78,7 +78,7 @@ class PaginaController extends Controller
 
     public function getTienda(){
 
-        $productos = Producto::all();
+        $productos = Producto::paginate(3);
 
         return view('pagina.tienda')->with(compact('productos'));
 
@@ -181,45 +181,69 @@ class PaginaController extends Controller
 
         $id_usuario = auth()->id();
 
+        if($id_usuario != NULL){
+            $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
-        $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
+            $existe = false;
+            foreach($cesta as $productoCesta){
+                if($productoCesta->id_producto == $request->id_producto){
 
-        $existe = false;
-        foreach($cesta as $productoCesta){
-            if($productoCesta->id_producto == $request->id_producto){
+                    $existe = true;
 
-                $existe = true;
+                    $productoCesta->update([
+                        'cantidad' => $productoCesta->cantidad + $request->input('cantidad'),
+                    ]);
 
-                $productoCesta->update([
-                    'cantidad' => $productoCesta->cantidad + $request->input('cantidad'),
-                ]);
 
+                }
+            }
+
+            if($existe){
+
+                flash('Producto añadido a tu cesta correctamente')->info();
+
+                return redirect('/producto/'.$request->id_producto);
+
+
+            } else{
+
+                $productoNuevo = new Cesta();
+
+                $productoNuevo->id_producto = $request->id_producto;
+                $productoNuevo->id_usuario = $id_usuario;
+                $productoNuevo->cantidad = $request->cantidad;
+
+                $productoNuevo->save();
+
+                flash('Producto añadido a tu cesta correctamente')->info();
+
+                return redirect('/producto/'.$request->id_producto);
 
             }
-        }
-
-        if($existe){
-
-            flash('Producto añadido a tu cesta correctamente')->info();
-
-            return redirect('/producto/'.$request->id_producto);
-
 
         } else{
 
-            $productoNuevo = new Cesta();
-
-            $productoNuevo->id_producto = $request->id_producto;
-            $productoNuevo->id_usuario = $id_usuario;
-            $productoNuevo->cantidad = $request->cantidad;
-
-            $productoNuevo->save();
-
-            flash('Producto añadido a tu cesta correctamente')->info();
+            flash('Debes de logearte para poder añadir productos a tu cesta')->warning();
 
             return redirect('/producto/'.$request->id_producto);
 
         }
+
+
+    }
+
+    public function eliminar($id){
+
+
+        $cesta = Cesta::findOrFail($id);
+
+
+        $cesta->delete();
+                return redirect('/cesta');
+
+
+
+
 
     }
 

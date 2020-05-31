@@ -1,52 +1,8 @@
 @extends('layouts.master')
 @section('content')
-<style>
-    .qt, .qt-plus, .qt-minus {
-        display: block;
-        float: left;
-    }
-
-    .qt {
-        font-size: 19px;
-        line-height: 50px;
-        width: 70px;
-        text-align: center;
-    }
-
-    .qt-plus, .qt-minus {
-        background: #fcfcfc;
-        border: none;
-        font-size: 30px;
-        font-weight: 300;
-        height: 100%;
-        padding: 0 20px;
-        -webkit-transition: background .2s linear;
-        -moz-transition: background .2s linear;
-        -ms-transition: background .2s linear;
-        -o-transition: background .2s linear;
-        transition: background .2s linear;
-    }
-
-    .qt-plus:hover, .qt-minus:hover {
-        background: #6931f9;
-        color: #fff;
-        cursor: pointer;
-    }
-
-    .qt-plus {
-        line-height: 50px;
-    }
-
-    .qt-minus {
-        line-height: 47px;
-    }
-</style>
-
-
 
 
 <body>
-
 
 
     <section class="tienda cesta">
@@ -64,6 +20,7 @@
 
 
                         <h5 class="mb-4">Cesta</h5>
+                        @include('flash::message')
 
 
 
@@ -108,8 +65,17 @@
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                                    class="fas fa-trash-alt mr-1"></i> Quitar producto</a>
+
+                                            <form  action="{{action('PaginaController@eliminar', $producto->id)}}" method="POST" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="boton-añadir" style="display:inline">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                    Eliminar producto
+                                                </button>
+                                            </form>
+
+
                                         </div>
 
                                         <p class="mb-0 full-price" ><span><strong>{{number_format($prueba->precio * $producto->cantidad,2)}}€</strong></span></p>
@@ -146,15 +112,6 @@
 
                         <h5 class="mb-4">Aceptamos</h5>
 
-                        <img class="mr-2" width="45px"
-                             src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
-                             alt="Visa">
-                        <img class="mr-2" width="45px"
-                             src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
-                             alt="American Express">
-                        <img class="mr-2" width="45px"
-                             src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
-                             alt="Mastercard">
                         <img class="mr-2" width="45px"
                              src="https://z9t4u9f6.stackpathcdn.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
                              alt="PayPal acceptance mark">
@@ -195,7 +152,7 @@
                     </div>
                 </div>
 
-
+                <!--
 
                 <div class="card mb-3">
                     <div class="card-body">
@@ -216,7 +173,7 @@
                         </div>
                     </div>
                 </div>
-
+-->
 
             </div>
 
