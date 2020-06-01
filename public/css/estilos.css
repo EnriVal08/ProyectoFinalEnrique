@@ -235,7 +235,7 @@ h3{
 
 
 .torneos{
-    background: #1a191e;
+    background: #333;
     padding: 68px 25px;
 }
 
@@ -410,11 +410,12 @@ p{
 }
 
 .botonTorneo{
+    width: 100%;
     background: #6931f9;
     height: 52px;
     font-family: "Montserrat", sans serif;
     text-transform: uppercase;
-    width: 200px;
+    max-width: 200px;
     align-items: center;
     display: flex;
     display: -webkit-flex;
@@ -423,6 +424,7 @@ p{
     font-size: 15px;
     margin-bottom: 10px;
 }
+
 
 .botonTorneo:hover{
     transition: 0.8s;
