@@ -24,7 +24,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-hearthstone" role="tab" aria-controls="pills-profile" aria-selected="false">
-                            <img src="{{ asset('images/LogoHearthstone.png') }}" alt="Hearthstone">
+                            <img src="{{ asset('images/game-logo-overwatch.png') }}" alt="Overwatch">
                         </a>
                     </li>
                     <li class="nav-item">
@@ -91,7 +91,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="tab-pane fade" id="pills-hearthstone" role="tabpanel" aria-labelledby="pills-contact-tab">@php $id = 1;@endphp  <ul class="lista-torneos active">
+                        <div class="tab-pane fade" id="pills-hearthstone" role="tabpanel" aria-labelledby="pills-contact-tab">@php $id = 5;@endphp  <ul class="lista-torneos active">
                                 @foreach($torneos as $torneo)
                                     @if($torneo->id_juego == $id)
                                         <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{$torneo->foto}}')">

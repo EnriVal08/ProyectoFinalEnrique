@@ -84,10 +84,9 @@
             -ms-border-radius: 50%;
             -o-border-radius: 50%;
             border-radius: 50%;
-            height: 44px;
-            min-width: 44px;
-            max-width: 44px;
-            object-fit: cover;
+            height: 60px;
+            min-width: 50px;
+            max-width: 50px;
         }
 
         .miembros-equipo li:hover{
@@ -183,9 +182,9 @@
                             <h3><a href="#">{{$equipo->nombre}}</a></h3>
                             <span>{{$juego->nombre}}</span>
                             <ul class="miembros-equipo">
-                                <li><a href="#"><img class="imagen-jugador-equipo" src="http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/img.jpg"></a></li>
-                                <li><a href="#"><img class="imagen-jugador-equipo" src="http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/img.jpg"></a></li>
-                                <li><a href="#"><img class="imagen-jugador-equipo" src="http://themes.pixiesquad.com/pixiefreak/twisting-nether/wp-content/uploads/2018/10/img.jpg"></a></li>
+                                @foreach($equipo->jugadores as $jugador)
+                                <li><a href="#"><img class="imagen-jugador-equipo" src="{{$jugador->foto}}"></a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="foot-equipo">

@@ -70,7 +70,10 @@ class PaginaController extends Controller
 
         $torneo = Torneo::findOrFail($id);
 
-        $juego = Torneo::find($torneo->id_juego)->juego;
+        if ($torneo != NULL){
+            $juego = Torneo::find($torneo->id)->juego;
+        }
+
 
 
         return view('pagina.torneoindividual', array('torneo'=>$torneo), array('juego'=>$juego));
