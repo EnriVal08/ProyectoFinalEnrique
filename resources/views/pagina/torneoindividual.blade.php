@@ -183,7 +183,7 @@
                             <span>{{$juego->nombre}}</span>
                             <ul class="miembros-equipo">
                                 @foreach($equipo->jugadores as $jugador)
-                                <li><a href="#"><img class="imagen-jugador-equipo" src="{{$jugador->foto}}"></a></li>
+                                <li><a href="#"><img class="imagen-jugador-equipo" src="{{ asset($jugador->foto) }}"></a></li>
                                 @endforeach
                             </ul>
                         </div>
