@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cesta;
 use App\Comentario;
 use App\Juego;
+use App\Jugador;
 use App\Noticia;
 use App\Producto;
 use App\Torneo;
@@ -15,89 +16,95 @@ use function GuzzleHttp\Promise\all;
 
 class PaginaController extends Controller
 {
-    public function getIndex(){
-        $juegos=Juego::all();
+    public function getIndex()
+    {
+        $juegos = Juego::all();
 
-        $primerJuego=Juego::find(1);
+        $primerJuego = Juego::find(1);
 
-        $noticias=Noticia::take(3)->orderby('id', 'DESC')->get();
+        $noticias = Noticia::take(3)->orderby('id', 'DESC')->get();
 
-        $torneos=Torneo::all();
+        $torneos = Torneo::all();
 
-        return view('pagina.index')->with(compact('juegos'))->with('primerJuego',$primerJuego)->with(compact('noticias'))->with(compact('torneos'));
+        return view('pagina.index')->with(compact('juegos'))->with('primerJuego', $primerJuego)->with(compact('noticias'))->with(compact('torneos'));
     }
 
-    public function getNoticias(){
+    public function getNoticias()
+    {
 
-        $noticias=Noticia::paginate(4);
-        $ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get();
+        $noticias = Noticia::paginate(4);
+        $ultimas_noticias = Noticia::take(5)->orderby('id', 'DESC')->get();
 
         return view('pagina.noticias')->with(compact('noticias'))->with(compact('ultimas_noticias'));
     }
 
-    public function getNoticiaIndividual($id){
+    public function getNoticiaIndividual($id)
+    {
 
         $noticia = Noticia::findOrFail($id);
 
 
-
         $autor = Noticia::find($noticia->id_creador)->usuario;
 
-        return view('pagina.noticiaindividual', array('noticia'=>$noticia), array('autor'=>$autor));
+        return view('pagina.noticiaindividual', array('noticia' => $noticia), array('autor' => $autor));
     }
 
 
-    public function getJuego($id){
+    public function getJuego($id)
+    {
 
 
         $juego = Juego::findOrFail($id);
 
 
-        return view('pagina.juego', array('juego'=>$juego));
+        return view('pagina.juego', array('juego' => $juego));
     }
 
-    public function getTorneos(){
+    public function getTorneos()
+    {
 
 
-       $torneos=Torneo::all();
+        $torneos = Torneo::all();
 
 
         return view('pagina.torneos')->with(compact('torneos'));
     }
 
 
-    public function getTorneoIndividual($id){
+    public function getTorneoIndividual($id)
+    {
 
         $torneo = Torneo::findOrFail($id);
 
-        if ($torneo != NULL){
+        if ($torneo != NULL) {
             $juego = Torneo::find($torneo->id)->juego;
         }
 
 
-
-        return view('pagina.torneoindividual', array('torneo'=>$torneo), array('juego'=>$juego));
+        return view('pagina.torneoindividual', array('torneo' => $torneo), array('juego' => $juego));
     }
 
-    public function getTienda(){
+    public function getTienda()
+    {
 
         $productos = Producto::paginate(3);
 
         return view('pagina.tienda')->with(compact('productos'));
 
 
-
     }
 
-    public function getProducto($id){
+    public function getProducto($id)
+    {
 
         $producto = Producto::findOrFail($id);
 
-        return view('pagina.detallesproducto', array('producto'=>$producto));
+        return view('pagina.detallesproducto', array('producto' => $producto));
     }
 
 
-    public function getCesta(){
+    public function getCesta()
+    {
 
         $id_usuario = auth()->id();
 
@@ -107,14 +114,14 @@ class PaginaController extends Controller
 
         $total = $this->total();
 
-        return view('pagina.cesta', array('cesta'=>$cesta), compact('total'));
+        return view('pagina.cesta', array('cesta' => $cesta), compact('total'));
 
 
     }
 
 
-
-    public function update($producto, $cantidad){
+    public function update($producto, $cantidad)
+    {
 
         $cesta = Cesta::find($producto);
 
@@ -127,10 +134,8 @@ class PaginaController extends Controller
     }
 
 
-
-
-
-    private function total(){
+    private function total()
+    {
 
         $id_usuario = auth()->id();
 
@@ -138,11 +143,10 @@ class PaginaController extends Controller
         $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
 
-
         $total = 0;
 
-        foreach($cesta as $productos){
-            foreach($productos->productos as $producto){
+        foreach ($cesta as $productos) {
+            foreach ($productos->productos as $producto) {
                 $total += $producto->precio * $productos->cantidad;
             }
         }
@@ -151,16 +155,15 @@ class PaginaController extends Controller
     }
 
 
-
-
-    public function registrarUsuario(Request $request){
+    public function registrarUsuario(Request $request)
+    {
 
         $email = $request->input('email');
 
         if (User::where('email', $email)->exists()) {
             flash('El usuario que has introducido ya se encuentra registrado en nuestra base de datos')->error()->important();
             return redirect('/register');
-        } else{
+        } else {
 
             $user = new User();
 
@@ -179,17 +182,17 @@ class PaginaController extends Controller
     }
 
 
-
-    public function añadir(Request $request){
+    public function añadir(Request $request)
+    {
 
         $id_usuario = auth()->id();
 
-        if($id_usuario != NULL){
+        if ($id_usuario != NULL) {
             $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
             $existe = false;
-            foreach($cesta as $productoCesta){
-                if($productoCesta->id_producto == $request->id_producto){
+            foreach ($cesta as $productoCesta) {
+                if ($productoCesta->id_producto == $request->id_producto) {
 
                     $existe = true;
 
@@ -201,14 +204,14 @@ class PaginaController extends Controller
                 }
             }
 
-            if($existe){
+            if ($existe) {
 
                 flash('Producto añadido a tu cesta correctamente')->info();
 
-                return redirect('/producto/'.$request->id_producto);
+                return redirect('/producto/' . $request->id_producto);
 
 
-            } else{
+            } else {
 
                 $productoNuevo = new Cesta();
 
@@ -220,34 +223,49 @@ class PaginaController extends Controller
 
                 flash('Producto añadido a tu cesta correctamente')->info();
 
-                return redirect('/producto/'.$request->id_producto);
+                return redirect('/producto/' . $request->id_producto);
 
             }
 
-        } else{
+        } else {
 
             flash('Debes de logearte para poder añadir productos a tu cesta')->warning();
 
-            return redirect('/producto/'.$request->id_producto);
+            return redirect('/producto/' . $request->id_producto);
 
         }
 
 
     }
 
-    public function eliminar($id){
+    public function eliminar($id)
+    {
 
 
         $cesta = Cesta::findOrFail($id);
 
 
         $cesta->delete();
-                return redirect('/cesta');
+        return redirect('/cesta');
 
 
+    }
 
+
+    public function getJugador($id)
+    {
+
+        $jugador = Jugador::findOrFail($id);
+
+
+        $equipo = Jugador::find($jugador->id)->equipo;
+
+
+        return view('pagina.jugador', array('jugador' => $jugador), array('equipo' => $equipo));
 
 
     }
 
 }
+
+

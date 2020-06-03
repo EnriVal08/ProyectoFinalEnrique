@@ -47,3 +47,6 @@ Route::post('añadir', 'PaginaController@añadir')->name('añadir');
 
 
 Route::delete('/cesta/eliminar/{id}', 'PaginaController@eliminar');
+
+
+Route::get('jugador/{id}','PaginaController@getJugador');

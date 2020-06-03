@@ -9,6 +9,6 @@ class Jugador extends Model
     protected $table = "jugadores";
 
     public function equipo(){
-        return $this->hasOne('App\Equipo', 'id_equipo');
+        return $this->hasOne('App\Equipo', 'id', 'id_equipo');
     }
 }
