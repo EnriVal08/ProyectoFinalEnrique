@@ -236,7 +236,9 @@ h3{
 
 .torneos{
     background: #333;
-    padding: 68px 25px;
+    padding: 0px 25px;
+    padding-top: 200px !important;
+
 }
 
 .caja-torneos{
@@ -732,7 +734,7 @@ h3{
     -webkit-justify-content: center;
     justify-content: center;
 
-    margin-top: 70px;
+    margin-top: 150px;
 }
 
 
