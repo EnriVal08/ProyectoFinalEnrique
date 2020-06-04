@@ -236,8 +236,7 @@ h3{
 
 .torneos{
     background: #333;
-    padding: 0px 25px;
-    padding-top: 200px !important;
+    padding: 50px;
 
 }
 
@@ -1080,9 +1079,9 @@ figure{
     -webkit-align-items: center;
     align-items: center;
     height: 200px;
-    position: relative;
-    z-index: 1;
     text-align: center;
+    margin-bottom: 50px !important;
+    margin-top: 50px !important;
 }
 
 .celdas .active{
@@ -1163,7 +1162,6 @@ figure{
 .caja-torneoindividual{
     background-color: #202028;
     padding: 34px 30px;
-    margin-bottom: 50px;
 }
 
 .torneo-arriba{
@@ -1543,3 +1541,71 @@ figure{
         font-size: 16px;
     }
 }
+
+.paddingtop{
+    padding-top: 200px !important;
+    padding-bottom: 150px !important;
+}
+
+
+/*Jugador/Equipo*/
+
+
+
+
+.torneo-arriba span{
+    display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #60626D;
+}
+
+
+.nombre{
+    color: white !important;
+}
+
+.torneo-arriba li{
+    padding: 16px 40px 16px 0;
+    margin: 0 40px 0 0;
+    border-right: 1px solid #333;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+.detalles-jugador{
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.detalles-jugador ul{
+    display: flex;
+    display: -webkit-flex;
+}
+
+@media screen and (max-width: 992px){
+
+    .detalles-jugador ul{
+        justify-content: center;
+        margin-left: 20px;
+
+    }
+    .torneo-arriba li{
+        padding-left: 10px;
+        margin: 0;
+        border-right: none;
+    }
+
+}
+
+.equipos-logo figure{
+    width: 100px;
+}
+
+.equipos-logo li{
+    display: flex;
+    display: -webkit-flex;
+}
+

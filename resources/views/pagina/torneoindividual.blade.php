@@ -192,17 +192,13 @@
                                 <p>{{$equipo->pais}}</p>
                             </div>
                             <div class="col aling-right">
-                                <a href="#" class="botonTorneo">Más <i class="fas fa-arrow-right"></i></a>
+                                <a href="{{ url('/equipo/' . $equipo->id ) }}" class="botonTorneo">Más <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </ul>
         </div>
-
-
-
-
 
 
     </section>

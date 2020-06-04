@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <section class="torneos" style="padding-top: 140px">
+    <section class="torneos paddingtop" style="padding-top: 140px">
         <div class="container">
             <div class="header-seccion border-bottom">
                 <div class="titulo-seccion">
@@ -19,7 +19,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-fortnite" role="tab" aria-controls="pills-home" aria-selected="true">
-                            <img src="{{ asset('images/logoFortnite.png') }}" alt="Fortnite">
+                            <img src="{{ asset('images/lol-league-of-Legends-logo.png') }}" alt="LoL">
                         </a>
                     </li>
                     <li class="nav-item">
@@ -67,7 +67,7 @@
                             </ul>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-fortnite" role="tabpanel" aria-labelledby="pills-profile-tab">@php $id = 4;@endphp  <ul class="lista-torneos active">
+                        <div class="tab-pane fade" id="pills-fortnite" role="tabpanel" aria-labelledby="pills-profile-tab">@php $id = 6;@endphp  <ul class="lista-torneos active">
                                 @foreach($torneos as $torneo)
                                     @if($torneo->id_juego == $id)
                                         <li class="caja-torneos" style="background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{$torneo->foto}}')">

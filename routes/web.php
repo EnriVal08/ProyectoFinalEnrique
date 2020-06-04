@@ -50,3 +50,6 @@ Route::delete('/cesta/eliminar/{id}', 'PaginaController@eliminar');
 
 
 Route::get('jugador/{id}','PaginaController@getJugador');
+
+
+Route::get('equipo/{id}','PaginaController@getEquipo');

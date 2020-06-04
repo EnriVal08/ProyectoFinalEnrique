@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cesta;
 use App\Comentario;
+use App\Equipo;
 use App\Juego;
 use App\Jugador;
 use App\Noticia;
@@ -265,6 +266,19 @@ class PaginaController extends Controller
 
 
     }
+
+
+    public function getEquipo($id){
+
+            $equipos = Equipo::findOrFail($id);
+
+
+            return view('pagina.equipos', array('equipo' => $equipos));
+
+
+    }
+
+
 
 }
 
