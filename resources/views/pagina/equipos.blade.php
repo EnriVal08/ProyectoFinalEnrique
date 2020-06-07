@@ -19,6 +19,89 @@
         }
 
 
+
+        .card-list .card {
+            margin: 20px 15px;
+            display: -webkit-flex;
+            display: flex;
+            width: 350px;
+            max-width: 100%;
+            height: 230px;
+            background-color: #202028;
+            flex-direction: initial;
+        }
+
+        .card-list .card figure {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+            -webkit-align-items: flex-end;
+            align-items: flex-end;
+            width: 180px;
+            margin-top: -30px;
+        }
+
+        .card-list .card figure img {
+            max-width: 100%;
+            max-height: 260px;
+        }
+
+        .card-list .card .card-info {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            color: #fff;
+            width: 100%;
+            font-weight: normal;
+        }
+
+
+
+
+        .card-list .card .card-info {
+            margin: 24px 0 0px 24px;
+        }
+
+        .card-info .title{
+            font-size: 1.125em;
+            font-weight: 700;
+            line-height: 22px;
+        }
+
+        @media screen and (max-width: 500px) {
+            .card-list .card figure img {
+                max-width: 100%;
+            }
+
+            .card-list .card figure{
+                max-width: 80px;
+                max-height: 180px;
+            }
+
+        }
+
+
+        .card-list .card .card-info .botonTorneo {
+            margin-top: auto;
+            margin-left: auto;
+            width: 100%;
+            height: 56px;
+            margin-bottom: 0 !important;
+        }
+
+
+        .card-list{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
     </style>
 
 
@@ -84,6 +167,30 @@
 
     </div>
 
+
+    <div class="container articulo mt-5">
+        <div class="header-seccion border-bottom">
+            <div class="titulo-seccion">
+                <h2>Jugadores</h2>
+            </div>
+        </div>
+        <div class="">
+            <ul class="card-list">
+                @foreach($equipo->jugadores as $jugador)
+
+                <li class="card">
+                    <figure><img src="{{asset($jugador->foto)}}"></figure>
+                    <div class="card-info">
+                        <h4 class="title">{{$jugador->nombre}}</h4>
+                        <span class="card-subtitle">{{$jugador->pais}}</span>
+                        <a class="botonTorneo" href="{{ url('/jugador/' . $jugador->id ) }}">Perfil</a>
+                    </div>
+                </li>
+                @endforeach
+
+            </ul>
+        </div>
+    </div>
 
 </section>
 

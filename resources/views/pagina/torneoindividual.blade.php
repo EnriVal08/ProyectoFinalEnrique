@@ -85,7 +85,16 @@
             -o-border-radius: 50%;
             border-radius: 50%;
             height: 60px;
-            max-width: 50px;
+            max-width: 60px;
+        }
+
+        @media screen and (max-width: 460px){
+
+            .imagen-jugador-equipo{
+                height: 40px;
+                max-width: 40px;
+            }
+
         }
 
         .miembros-equipo li:hover{
