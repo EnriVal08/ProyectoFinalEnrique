@@ -23,6 +23,7 @@ class PaginaController extends Controller
     {
         $juegos = Juego::all();
 
+        /*Para poner el primer juego como active en el carousel*/
         $primerJuego = Juego::find(1);
 
         $noticias = Noticia::take(3)->orderby('id', 'DESC')->get();
@@ -79,12 +80,8 @@ class PaginaController extends Controller
 
         $torneo = Torneo::findOrFail($id);
 
-        if ($torneo != NULL) {
-            $juego = Torneo::find($torneo->id)->juego;
-        }
 
-
-        return view('pagina.torneoindividual', array('torneo' => $torneo), array('juego' => $juego));
+        return view('pagina.torneoindividual', array('torneo' => $torneo));
     }
 
     public function getTienda()
@@ -322,8 +319,25 @@ class PaginaController extends Controller
 
     }
 
+    public function getTodosJugadores(){
+
+        $jugadores = Jugador::paginate(9);
+
+        return view('pagina.todosjugadores', array('jugadores' => $jugadores));
 
 
+
+    }
+
+
+    public function getComprar(){
+
+
+        return view('pagina.comprar');
+
+
+
+    }
 
 
 }

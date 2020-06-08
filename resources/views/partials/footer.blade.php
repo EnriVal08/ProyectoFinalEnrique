@@ -65,23 +65,18 @@
                         Menu 1
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('torneos')}}">
                             <span>Torneos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('/equipos')}}">
+                        <a href="{{url('equipos')}}">
                             <span>Equipos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('jugadores')}}">
                             <span>Jugadores</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('/noticias')}}">
-                            <span>Noticias</span>
                         </a>
                     </li>
                 </ul>
@@ -92,18 +87,13 @@
                         Menu 2
                     </li>
                     <li>
-                        <a href="{{url('/noticias')}}">
+                        <a href="{{url('noticias')}}">
                             <span>Noticias</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('tienda')}}">
                             <span>Tienda</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>Sobre nosotros</span>
                         </a>
                     </li>
                 </ul>

@@ -36,7 +36,7 @@
                 <article class="torneo-arriba">
                     <div class="col mr-auto">
                         <figure>
-                            <img class="logo-torneo" src="{{ asset($juego->logo) }}">
+                            <img class="logo-torneo" src="{{$torneo->juego->logo}}">
                         </figure>
                     </div>
                     <div class="premio">
@@ -84,7 +84,11 @@
                     <div class="caja-equipo caja-torneos mb-5">
                         <div class="body-equipo">
                             <h3><a href="#">{{$equipo->nombre}}</a></h3>
-                            <span>{{$juego->nombre}}</span>
+                            <span>
+                                @foreach($equipo->torneos as $torneo)
+                                    {{$torneo->juego->nombre}}
+                                @endforeach
+                            </span>
                             <ul class="miembros-equipo">
                                 @foreach($equipo->jugadores as $jugador)
                                 <li><a href="{{ url('/jugador/' . $jugador->id ) }}"><img class="imagen-jugador-equipo" src="{{ asset($jugador->foto) }}"></a></li>

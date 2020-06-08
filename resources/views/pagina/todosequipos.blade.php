@@ -15,6 +15,11 @@
                 <div class="caja-equipo caja-torneos mb-5">
                     <div class="body-equipo">
                         <h3><a href="#">{{$equipo->nombre}}</a></h3>
+                        <span>
+                            @foreach($equipo->torneos as $torneo)
+                                {{$torneo->juego->nombre}}
+                            @endforeach
+                        </span>
                         <ul class="miembros-equipo">
                             @foreach($equipo->jugadores as $jugador)
                                 <li><a href="{{ url('/jugador/' . $jugador->id ) }}"><img class="imagen-jugador-equipo" src="{{ asset($jugador->foto) }}"></a></li>
