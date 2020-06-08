@@ -101,7 +101,7 @@
 
                         <h5 class="mb-4">Tiempo de envío estimado</h5>
 
-                        <p class="mb-0"> Miércoles 3 junio - Viernes 5 junio  </p>
+                        <p class="mb-0">{{ $envioFinal }}</p>
                     </div>
                 </div>
 

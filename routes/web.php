@@ -53,3 +53,5 @@ Route::get('jugador/{id}','PaginaController@getJugador');
 
 
 Route::get('equipo/{id}','PaginaController@getEquipo');
+
+Route::get('equipos','PaginaController@getTodosEquipos');

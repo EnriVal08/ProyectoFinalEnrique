@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/equipos')}}">
                             <span>Equipos</span>
                         </a>
                     </li>

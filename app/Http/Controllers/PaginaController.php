@@ -11,7 +11,9 @@ use App\Noticia;
 use App\Producto;
 use App\Torneo;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use function GuzzleHttp\Promise\all;
 
@@ -115,7 +117,39 @@ class PaginaController extends Controller
 
         $total = $this->total();
 
-        return view('pagina.cesta', array('cesta' => $cesta), compact('total'));
+
+
+
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+
+        $fecha = Carbon::now();
+
+
+        /*Fecha inicial envío*/
+
+
+        $suma = $fecha->addDay(5);
+
+        $mes = $meses[($suma->format('n')) - 1];
+
+        $envio = $suma->format('d') . ' de ' . $mes;
+
+
+        /*Fecha límite envío*/
+
+        $suma2 = $fecha->addDay(8);
+
+        $mes2 = $meses[($suma2->format('n')) - 1];
+
+        $envio2 = $suma2->format('d') . ' de ' . $mes2;
+
+
+        /*Fechas tiempo de envío estimado*/
+
+        $envioFinal = $envio . ' - ' . $envio2;
+
+        return view('pagina.cesta', array('cesta' => $cesta), compact('total', 'envioFinal'));
 
 
     }
@@ -277,6 +311,18 @@ class PaginaController extends Controller
 
 
     }
+
+    public function getTodosEquipos(){
+
+        $equipos = Equipo::all();
+
+        return view('pagina.todosequipos', array('equipos' => $equipos));
+
+
+
+    }
+
+
 
 
 
