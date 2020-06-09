@@ -15,6 +15,7 @@ use PayPal\Exception\PayPalConnectionException;
 use PayPal\Rest\ApiContext;
 
 class PagoController extends Controller
+
 {
     private $apiContext;
 
