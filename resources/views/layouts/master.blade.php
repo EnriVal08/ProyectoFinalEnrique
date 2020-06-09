@@ -73,6 +73,29 @@ use App\Noticia;$ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get()
     });
 
 
+    $(document).ready(function(){
+        $("#botonocultamuestra").click(function(){
+            $("#divocultamuestra").each(function() {
+                displaying = $(this).css("display");
+                if(displaying == "block") {
+                    $(this).fadeOut('slow',function() {
+                        $(this).css("display","none");
+                    });
+                } else {
+                    $(this).fadeIn('slow',function() {
+                        $(this).css("display","block");
+                    });
+                }
+            });
+        });
+    });
+
+    paypal.Button.render({
+        style: {
+            size: 'responsive'
+        }
+    });
+
 </script>
 </body>
 </html>

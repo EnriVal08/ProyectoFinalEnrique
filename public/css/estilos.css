@@ -1808,3 +1808,8 @@ ul.miembros-equipo{
     -webkit-justify-content: center;
     justify-content: center;
 }
+
+
+.md-form{
+    margin: 0!important;
+}

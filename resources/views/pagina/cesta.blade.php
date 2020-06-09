@@ -14,10 +14,16 @@
 
             <div class="col-lg-8">
 
-
                 <div class="card wish-list mb-3">
                     <div class="card-body">
 
+                        @if(session('status'))
+
+
+                            <p class="mb-0">{{session('status')}}</p>
+
+
+                        @endif
 
                         <h5 class="mb-4">Cesta</h5>
                         @include('flash::message')
@@ -147,7 +153,7 @@
                             </li>
                         </ul>
 
-                        <button type="button" class="btn boton-añadir btn-block waves-effect waves-light">Comprar</button>
+                        <a href="{{url('comprar')}}" class="btn boton-añadir btn-block waves-effect waves-light" style="color: white">Comprar</a>
 
                     </div>
                 </div>

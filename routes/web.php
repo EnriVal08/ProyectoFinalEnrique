@@ -59,3 +59,16 @@ Route::get('equipos','PaginaController@getTodosEquipos');
 Route::get('jugadores','PaginaController@getTodosJugadores');
 
 Route::get('comprar','PaginaController@getComprar');
+
+Route::put('comprar','PaginaController@editarDireccion');
+
+
+//Paypal
+
+Route::get('/paypal/pay', 'PagoController@pagarConPaypal');
+
+Route::get('/paypal/status', 'PagoController@payPalStatus');
+
+Route::get('/eliminar-cesta', 'PaginaController@eliminarCesta');
+
+Route::get('/contrareembolso', 'PaginaController@getContrareembolso');

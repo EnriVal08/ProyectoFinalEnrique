@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cesta;
 use App\Comentario;
+use App\Direcciones;
 use App\Equipo;
 use App\Juego;
 use App\Jugador;
@@ -332,12 +333,84 @@ class PaginaController extends Controller
 
     public function getComprar(){
 
+        $id_usuario = auth()->id();
 
-        return view('pagina.comprar');
+        $direccion = Direcciones::all()->where('id_usuario', '=', $id_usuario);
+
+        $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
+
+        return view('pagina.comprar', array('direccion' => $direccion), array('cesta' => $cesta));
+
+    }
+
+    public function eliminarCesta(){
+
+        $status = session('status');
+
+        $id_usuario = auth()->id();
+
+        $productos = Cesta::all()->where('id_usuario', '=', $id_usuario);
+
+        DB::delete('delete from cesta where id_usuario = '. $id_usuario);
+
+        if(session('pagoCon') == 'paypal'){
+            return redirect('cesta')->with(compact('status'));
+        } else{
+            return redirect('contrareembolso')->with(compact('productos'));
+        }
 
 
 
     }
+
+    public function editarDireccion(Request $request){
+
+
+        $direccion = Direcciones::find($request->input('id'));
+
+        $direccion->pais = $request->input('pais');
+        $direccion->provincia = $request->input('provincia');
+        $direccion->alias = $request->input('alias');
+        $direccion->nif = $request->input('nif');
+        $direccion->nombre = $request->input('nombre');
+        $direccion->apellidos = $request->input('apellidos');
+        $direccion->direccion = $request->input('direccion');
+        $direccion->codigo_postal = $request->input('codigo_postal');
+        $direccion->poblacion = $request->input('poblacion');
+        $direccion->telefono = $request->input('telefono');
+
+
+        $direccion->save();
+
+
+        return redirect('comprar');
+    }
+
+    public function getContrareembolso(){
+        $id_usuario = auth()->id();
+
+        $direccion = Direcciones::all()->where('id_usuario', '=', $id_usuario);
+
+        $cesta = session('productos');
+
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+
+        $fecha = Carbon::now();
+
+
+        /*Fecha inicial envío*/
+
+
+        $suma = $fecha->addDay(5);
+
+        $mes = $meses[($suma->format('n')) - 1];
+
+        $envio = $suma->format('d') . ' de ' . $mes;
+
+        return view('pagina.contrareembolso', array('direccion' => $direccion), array('cesta' => $cesta))->with(compact('envio'));
+    }
+
 
 
 }
