@@ -74,6 +74,7 @@ class PagoController extends Controller
             return redirect('/cesta')->with('status');
         }
 
+
         $payment = Payment::get($paymentId, $this->apiContext);
 
         $execution = new PaymentExecution();
