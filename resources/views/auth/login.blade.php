@@ -6,9 +6,25 @@
 
 <section class="login-register">
 
-<div style="padding-top: 120px">
-    @include('flash::message')
-</div>
+    <div  style="padding-top: 120px; margin-bottom: 10px">
+        <div class="mx-auto" style="max-width: 500px;">
+            @include('flash::message')
+
+        </div>
+
+        @if($errors->any())
+
+            <div class="alert alert-danger alert-dismissable mx-auto" style="max-width: 500px;">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Error en el Login:</strong>
+                <hr>
+                    <li>No hay ningún usuario con ese email y contraseña</li>
+                    <hr>
+            </div>
+        @endif
+
+
+    </div>
 
 <div class="login-register-box">
 

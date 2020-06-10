@@ -31,13 +31,13 @@ class PagoController extends Controller
         );
     }
 
-    public function pagarConPaypal(){
+    public function pagarConPaypal($precio){
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
         $amount = new Amount();
-        $amount->setTotal('3.99');
-        $amount->setCurrency('USD');
+        $amount->setTotal($precio);
+        $amount->setCurrency('EUR');
 
         $transaction = new Transaction();
         $transaction->setAmount($amount);

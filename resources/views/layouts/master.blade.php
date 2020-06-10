@@ -70,6 +70,7 @@ use App\Noticia;$ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get()
 
                 window.location.href = href + "/" + cantidad;
             });
+
     });
 
 
@@ -88,12 +89,6 @@ use App\Noticia;$ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get()
                 }
             });
         });
-    });
-
-    paypal.Button.render({
-        style: {
-            size: 'responsive'
-        }
     });
 
 </script>

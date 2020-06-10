@@ -281,7 +281,7 @@
                        <div class="card-body">
                            <h5 class="mb-4">Pago</h5>
 
-                                    <a class="" href="{{url('/paypal/pay')}}">
+                                    <a class="" href="{{url('/paypal/pay/'.$total)}}">
 
                                         <button class="paypal-button mb-5">
 

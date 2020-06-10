@@ -12,7 +12,16 @@ class Comentario extends Model
         return $this->hasOne('App\Noticia', 'id_noticia');
     }
 
-    public function usuario(){
-        return $this->hasOne('App\User',  'id_usuario');
+    public function usuario($email){
+
+        $usuarios = User::all();
+
+        foreach ($usuarios as $usuario){
+            if ($usuario->email == $email){
+                return $usuario->avatar;
+            }
+        }
+
+        return 'images/avatarDefault.png';
     }
 }

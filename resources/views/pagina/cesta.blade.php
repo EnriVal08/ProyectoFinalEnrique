@@ -20,7 +20,7 @@
                         @if(session('status'))
 
 
-                            <p class="mb-0">{{session('status')}}</p>
+                            <p class="mb-5">{{session('status')}}</p>
 
 
                         @endif

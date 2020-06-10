@@ -54,7 +54,7 @@
             <ul class="list-unstyled">
                 @foreach($noticia->comentarios as $comentario)
                     <li class="media m-3 mb-5">
-                        <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                        <img class="d-flex mr-3" width="80px"  height="80px" src="{{asset($comentario->usuario($comentario->email_usuario))}}" alt="Generic placeholder image">
                         <div class="media-body">
                             <h5 class="mt-0 mb-1 font-weight-bold">{{$comentario->nombre_usuario}}</h5>
                             {{$comentario->descripcion}}
@@ -82,13 +82,13 @@
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-user prefix grey-text"></i>
-                            <input type="text" id="nombre" name="nombre" class="form-control validate">
+                            <input type="text" id="nombre" name="nombre" class="form-control validate" @if(Auth::check()) value="{{auth()->user()->nombre}}"  readonly @endif>
                             <label data-error="wrong" data-success="right" for="nombre">Nombre</label>
                         </div>
 
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
-                            <input type="email" id="email" name="email" class="form-control validate">
+                            <input type="email" id="email" name="email" class="form-control validate" @if(Auth::check()) value="{{auth()->user()->email}}" readonly  @endif>
                             <label data-error="wrong" data-success="right" for="email">Email</label>
                         </div>
 

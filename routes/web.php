@@ -65,7 +65,7 @@ Route::put('comprar','PaginaController@editarDireccion');
 
 //Paypal
 
-Route::get('/paypal/pay', 'PagoController@pagarConPaypal');
+Route::get('/paypal/pay/{precio}', 'PagoController@pagarConPaypal');
 
 Route::get('/paypal/status', 'PagoController@payPalStatus');
 

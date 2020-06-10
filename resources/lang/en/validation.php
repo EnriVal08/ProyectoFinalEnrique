@@ -130,9 +130,21 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'nombre' => [
+            'required' => 'Debes rellenar el nombre',
+            'max' => 'El nombre debe de tener un máximo de 10 carácteres',
+            'min' => 'El nombre debe de tener un mínimo de 4 carácteres',
         ],
+        'email' => [
+            'required' => 'Debes rellenar el email',
+        ],
+
+        'password' => [
+            'required' => 'Debes rellenar la contraseña',
+            'min' => 'La contraseña debe de tener 8 o más carácteres',
+        ],
+
+
     ],
 
     /*

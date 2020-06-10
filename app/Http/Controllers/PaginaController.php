@@ -191,6 +191,18 @@ class PaginaController extends Controller
     public function registrarUsuario(Request $request)
     {
 
+        $this->validate($request, [
+            'nombre' => 'required|max:10|min:4',
+            'email' => 'required',
+            'password' => 'required|min:8',
+        ]);
+
+        if ($request->input('password') != $request->input('password_confirmation')){
+            flash('Las contraseñas no coinciden')->error()->important();
+
+            return redirect('/register');
+        }
+
         $email = $request->input('email');
 
         if (User::where('email', $email)->exists()) {
@@ -204,7 +216,13 @@ class PaginaController extends Controller
             $user->email = $email;
             $user->password = bcrypt($request->input('password'));
             $user->rol = 'cliente';
-            $user->avatar = 'imagenes/avatarDefault.jpg';
+
+
+            if ($request->file('foto') != NULL){
+                $user->avatar = $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
+            } else{
+               $user->avatar = 'images/avatarDefault.jpg';
+            }
 
             $user->save();
 
@@ -339,7 +357,9 @@ class PaginaController extends Controller
 
         $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
-        return view('pagina.comprar', array('direccion' => $direccion), array('cesta' => $cesta));
+        $total = $this->total();
+
+        return view('pagina.comprar', array('direccion' => $direccion), array('cesta' => $cesta))->with(compact('total'));
 
     }
 
