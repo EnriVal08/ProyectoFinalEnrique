@@ -82,19 +82,19 @@
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <i class="fas fa-user prefix grey-text"></i>
-                            <input type="text" id="nombre" name="nombre" class="form-control validate" @if(Auth::check()) value="{{auth()->user()->nombre}}"  readonly @endif>
+                            <input type="text" id="nombre" name="nombre" class="form-control validate" @if(Auth::check()) value="{{auth()->user()->nombre}}"  readonly @endif required>
                             <label data-error="wrong" data-success="right" for="nombre">Nombre</label>
                         </div>
 
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
-                            <input type="email" id="email" name="email" class="form-control validate" @if(Auth::check()) value="{{auth()->user()->email}}" readonly  @endif>
+                            <input type="email" id="email" name="email" class="form-control validate" @if(Auth::check()) value="{{auth()->user()->email}}" readonly  @endif required>
                             <label data-error="wrong" data-success="right" for="email">Email</label>
                         </div>
 
                         <div class="md-form">
                             <i class="fas fa-pencil prefix grey-text"></i>
-                            <textarea type="text" id="texto" name="texto" class="md-textarea form-control" rows="4"></textarea>
+                            <textarea type="text" id="texto" name="texto" class="md-textarea form-control" rows="4" required></textarea>
                             <label data-error="wrong" data-success="right" for="texto">Comentario</label>
                         </div>
 

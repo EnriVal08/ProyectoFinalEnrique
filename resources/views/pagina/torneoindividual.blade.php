@@ -36,7 +36,7 @@
                 <article class="torneo-arriba">
                     <div class="col mr-auto">
                         <figure>
-                            <img class="logo-torneo" src="{{$torneo->juego->logo}}">
+                            <img class="logo-torneo" src="{{asset($torneo->juego->logo)}}">
                         </figure>
                     </div>
                     <div class="premio">

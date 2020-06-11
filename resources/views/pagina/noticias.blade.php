@@ -34,10 +34,10 @@
 
             <aside>
                 <article class="barra-ultimas-noticias">
-                    <form method="get" action="">
+                    <!--<form method="get" action="">
                         <button type="submit"><i class="fa fa-search"></i></button>
                         <input type="text" class="search_field" placeholder="Search">
-                    </form>
+                    </form>-->
                 </article>
                 <article class="barra-ultimas-noticias">
                     <h3>Ultimas noticas</h3>
