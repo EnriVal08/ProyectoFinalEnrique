@@ -145,6 +145,42 @@ return [
         ],
 
 
+        /*Validar direccion*/
+
+        'pais' => [
+            'required' => 'Debes rellenar el pais',
+        ],
+        'provincia' => [
+            'required' => 'Debes rellenar la provincia',
+        ],
+
+        'alias' => [
+            'required' => 'Debes rellenar el alias',
+        ],
+
+        'nif' => [
+            'required' => 'Debes rellenar el nif',
+        ],
+        'nombreD' => [
+            'required' => 'Debes rellenar el nombre',
+        ],
+        'apellidos' => [
+            'required' => 'Debes rellenar los apellidos',
+        ],
+        'direccion' => [
+            'required' => 'Debes rellenar la direccion',
+        ],
+        'codigo_postal' => [
+            'required' => 'Debes rellenar el codigo_postal',
+        ],
+        'poblacion' => [
+            'required' => 'Debes rellenar la poblacion',
+        ],
+        'telefono' => [
+            'required' => 'Debes rellenar el telefono',
+        ],
+
+
     ],
 
     /*

@@ -48,7 +48,7 @@
     <section class="login-register">
 
         <div  style="padding-top: 120px; margin-bottom: 10px">
-            <div class="mx-auto" style="max-width: 500px;">
+            <div class="mx-auto" style="max-width: 500px; text-align: center">
                 @include('flash::message')
 
             </div>
@@ -101,7 +101,7 @@
                     <input type="text" placeholder="Avatar (opcional)" readonly>
 
                     <div class="fileUpload">
-                        <input type="file" name="foto" id="file" value="" hidden>
+                        <input type="file" name="foto" id="file" value="" hidden accept=".jpg,.png" onchange="validar()">
                         <label for="file" id="selector">Seleccionar archivo (.png .jpg)</label>
 
                     </div>
@@ -125,6 +125,18 @@
 
     const fileInput=document.getElementById("file");
     fileInput.addEventListener("change", loader);
+
+    function validar() {
+        // Obtener nombre de archivo
+        let archivo = document.getElementById('archivo').value,
+            // Obtener extensión del archivo
+            extension = archivo.substring(archivo.lastIndexOf('.'),archivo.length);
+        // Si la extensión obtenida no está incluida en la lista de valores
+        // del atributo "accept", mostrar un error.
+        if(document.getElementById('archivo').getAttribute('accept').split(',').indexOf(extension) < 0) {
+            alert('Archivo inválido. No se permite la extensión ' + extension);
+        }
+    }
 
 </script>
 

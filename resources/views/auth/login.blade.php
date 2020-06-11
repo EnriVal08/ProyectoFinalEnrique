@@ -7,7 +7,7 @@
 <section class="login-register">
 
     <div  style="padding-top: 120px; margin-bottom: 10px">
-        <div class="mx-auto" style="max-width: 500px;">
+        <div class="mx-auto" style="max-width: 500px; text-align: center">
             @include('flash::message')
 
         </div>

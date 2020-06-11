@@ -26,7 +26,10 @@
                         @endif
 
                         <h5 class="mb-4">Cesta</h5>
-                        @include('flash::message')
+                            <div class="mx-auto" style="max-width: 500px; text-align: center">
+                                @include('flash::message')
+
+                            </div>
 
 
 

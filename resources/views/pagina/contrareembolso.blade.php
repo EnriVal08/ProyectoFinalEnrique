@@ -57,7 +57,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
 
-                            <h5 class="mb-4">Llegada prevista a {{$direccion[0]->direccion }}</h5>
+                            <h5 class="mb-4">Llegada prevista a {{$direccion->direccion }}</h5>
 
                             <p class="mb-0">{{ $envio }}</p>
                         </div>

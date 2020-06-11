@@ -167,7 +167,7 @@ class PaginaController extends Controller
     }
 
 
-    private function total()
+    public function total()
     {
 
         $id_usuario = auth()->id();
@@ -238,7 +238,6 @@ class PaginaController extends Controller
 
         $id_usuario = auth()->id();
 
-        if ($id_usuario != NULL) {
             $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
             $existe = false;
@@ -278,13 +277,7 @@ class PaginaController extends Controller
 
             }
 
-        } else {
 
-            flash('Debes de logearte para poder añadir productos a tu cesta')->warning();
-
-            return redirect('/producto/' . $request->id_producto);
-
-        }
 
 
     }
@@ -353,7 +346,10 @@ class PaginaController extends Controller
 
         $id_usuario = auth()->id();
 
-        $direccion = Direcciones::all()->where('id_usuario', '=', $id_usuario);
+
+        $direccion = DB::table('direcciones')
+            ->where('id_usuario', $id_usuario)
+            ->first();
 
         $cesta = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
@@ -380,10 +376,22 @@ class PaginaController extends Controller
         }
 
 
-
     }
 
     public function editarDireccion(Request $request){
+
+        $this->validate($request, [
+            'pais' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+        ]);
 
 
         $direccion = Direcciones::find($request->input('id'));
@@ -392,7 +400,7 @@ class PaginaController extends Controller
         $direccion->provincia = $request->input('provincia');
         $direccion->alias = $request->input('alias');
         $direccion->nif = $request->input('nif');
-        $direccion->nombre = $request->input('nombre');
+        $direccion->nombre = $request->input('nombreD');
         $direccion->apellidos = $request->input('apellidos');
         $direccion->direccion = $request->input('direccion');
         $direccion->codigo_postal = $request->input('codigo_postal');
@@ -409,9 +417,11 @@ class PaginaController extends Controller
     public function getContrareembolso(){
         $id_usuario = auth()->id();
 
-        $direccion = Direcciones::all()->where('id_usuario', '=', $id_usuario);
-
+        $direccion = DB::table('direcciones')
+            ->where('id_usuario', $id_usuario)
+            ->first();
         $cesta = session('productos');
+
 
         $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
@@ -429,6 +439,47 @@ class PaginaController extends Controller
         $envio = $suma->format('d') . ' de ' . $mes;
 
         return view('pagina.contrareembolso', array('direccion' => $direccion), array('cesta' => $cesta))->with(compact('envio'));
+    }
+
+
+    public function añadirDireccion(Request $request){
+
+        $this->validate($request, [
+            'pais' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+
+        ]);
+
+
+        $direccion = new Direcciones();
+
+        $direccion->pais = $request->pais;
+        $direccion->id_usuario = auth()->id();
+        $direccion->provincia = $request->provincia;
+        $direccion->alias = $request->alias;
+        $direccion->nif = $request->nif;
+        $direccion->nombre = $request->nombreD;
+        $direccion->apellidos = $request->apellidos;
+        $direccion->direccion = $request->direccion;
+        $direccion->codigo_postal = $request->codigo_postal;
+        $direccion->poblacion = $request->provincia;
+        $direccion->telefono = $request->telefono;
+
+
+
+        $direccion->save();
+
+        return redirect('comprar');
+
+
     }
 
 

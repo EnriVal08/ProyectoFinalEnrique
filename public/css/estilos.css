@@ -1448,13 +1448,13 @@ figure{
 
 #notfound {
     position: relative;
-    height: 50vh;
+    height: 60vh;
 }
 
 #notfound .notfound {
     position: absolute;
     left: 50%;
-    top: 75%;
+    top: 80%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);

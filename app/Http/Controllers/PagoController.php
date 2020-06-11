@@ -31,12 +31,16 @@ class PagoController extends Controller
         );
     }
 
-    public function pagarConPaypal($precio){
+    public function pagarConPaypal(){
+
+
+        $total = (new PaginaController)->total();
+
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
         $amount = new Amount();
-        $amount->setTotal($precio);
+        $amount->setTotal($total);
         $amount->setCurrency('EUR');
 
         $transaction = new Transaction();
@@ -71,7 +75,7 @@ class PagoController extends Controller
 
         if (!$paymentId || !$payerId || !$token){
             $status = 'No se pudo proceder con el pago a través de Paypal';
-            return redirect('/cesta')->with('status');
+            return redirect('/cesta')->with(compact('status'));
         }
 
 

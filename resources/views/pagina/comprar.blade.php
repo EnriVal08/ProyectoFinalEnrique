@@ -73,27 +73,45 @@
                    <div class="card mb-3">
                        <div class="card-body">
 
+                           @if($errors->any())
+
+                               <div class="alert alert-danger alert-dismissable mx-auto" style="max-width: 500px;">
+                                   <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                   <strong>Error en el Registro:</strong>
+                                   <hr>
+                                   @foreach($errors->all() as $error)
+                                       <li>{{$error}}</li>
+                                       <hr>
+                                   @endforeach
+                               </div>
+                           @endif
+
                            <h5 class="mb-4">Dirección de envío</h5>
 
-                           @if(count($direccion) >= 1)
 
-                           <p class="mb-3">{{$direccion[0]->alias}}</p>
+                           <div class="mx-auto" style="max-width: 500px; text-align: center">
+                               @include('flash::message')
 
-                           <p class="mb-2 text-muted small">{{$direccion[0]->nombre}} {{$direccion[0]->apellidos}}</p>
+                           </div>
+                           @if($direccion != null)
+
+                           <p class="mb-3">{{$direccion->alias}}</p>
+
+                           <p class="mb-2 text-muted small">{{$direccion->nombre}} {{$direccion->apellidos}}</p>
 
 
-                           <p class="mb-2 text-muted small">{{$direccion[0]->direccion}}</p>
+                           <p class="mb-2 text-muted small">{{$direccion->direccion}}</p>
 
 
-                           <p class="mb-2 text-muted small">{{$direccion[0]->codigo_postal}} {{$direccion[0]->poblacion}}, {{$direccion[0]->pais}}</p>
+                           <p class="mb-2 text-muted small">{{$direccion->codigo_postal}} {{$direccion->poblacion}}, {{$direccion->provincia}}, {{$direccion->pais}}</p>
 
 
-                           <p class="mb-3 text-muted small">Tel {{$direccion[0]->telefono}}</p>
+                           <p class="mb-3 text-muted small">Tel {{$direccion->telefono}}</p>
 
                            @endif
 
 
-                           @if(count($direccion) >= 1)
+                           @if($direccion != null)
 
 
                            <a class="btn purple-gradient" data-toggle="modal" data-target="#modalContactFormEditar">Editar dirección</a>
@@ -123,14 +141,14 @@
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-flag prefix grey-text"></i>
-                                                                       <input type="text" id="pais" name="pais" class="form-control validate" value="{{$direccion[0]->pais}}">
+                                                                       <input type="text" id="pais" name="pais" class="form-control validate" value="{{$direccion->pais}}">
                                                                        <label data-error="wrong" data-success="right" for="pais">País</label>
                                                                    </div>
                                                                </div>
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-city prefix grey-text"></i>
-                                                                       <input type="text" id="provincia" name="provincia" class="form-control validate" value="{{$direccion[0]->provincia}}">
+                                                                       <input type="text" id="provincia" name="provincia" class="form-control validate" value="{{$direccion->provincia}}">
                                                                        <label data-error="wrong" data-success="right" for="provincia">Elige provincia</label>
                                                                    </div>
                                                                </div>
@@ -142,14 +160,14 @@
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-user-circle prefix grey-text"></i>
-                                                                       <input type="text" id="alias" name="alias" class="form-control validate" value="{{$direccion[0]->alias}}">
+                                                                       <input type="text" id="alias" name="alias" class="form-control validate" value="{{$direccion->alias}}">
                                                                        <label data-error="wrong" data-success="right" for="alias">Alias (casa, trabajo...)</label>
                                                                    </div>
                                                                </div>
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-address-card prefix grey-text"></i>
-                                                                       <input type="text" id="nif" name="nif" class="form-control validate" value="{{$direccion[0]->nif}}">
+                                                                       <input type="text" id="nif" name="nif" class="form-control validate" value="{{$direccion->nif}}">
                                                                        <label data-error="wrong" data-success="right" for="nif">CIF/NIF/NIE</label>
                                                                    </div>
                                                                </div>
@@ -162,14 +180,14 @@
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-user prefix grey-text"></i>
-                                                                       <input type="text" id="nombre" name="nombre" class="form-control validate" value="{{$direccion[0]->nombre}}">
-                                                                       <label data-error="wrong" data-success="right" for="nombre">Nombre</label>
+                                                                       <input type="text" id="nombreD" name="nombreD" class="form-control validate" value="{{$direccion->nombre}}">
+                                                                       <label data-error="wrong" data-success="right" for="nombreD">Nombre</label>
                                                                    </div>
                                                                </div>
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-user prefix grey-text"></i>
-                                                                       <input type="text" id="apellidos" name="apellidos" class="form-control validate" value="{{$direccion[0]->apellidos}}">
+                                                                       <input type="text" id="apellidos" name="apellidos" class="form-control validate" value="{{$direccion->apellidos}}">
                                                                        <label data-error="wrong" data-success="right" for="apellidos">Apellidos</label>
                                                                    </div>
                                                                </div>
@@ -182,14 +200,14 @@
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-map-marker-alt prefix grey-text"></i>
-                                                                       <input type="text" id="direccion" name="direccion" class="form-control validate" value="{{$direccion[0]->direccion}}">
+                                                                       <input type="text" id="direccion" name="direccion" class="form-control validate" value="{{$direccion->direccion}}">
                                                                        <label data-error="wrong" data-success="right" for="direccion">Direccion</label>
                                                                    </div>
                                                                </div>
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-thumbtack prefix grey-text"></i>
-                                                                       <input type="text" id="codigo_postal" name="codigo_postal" class="form-control validate" value="{{$direccion[0]->codigo_postal}}">
+                                                                       <input type="text" id="codigo_postal" name="codigo_postal" class="form-control validate" value="{{$direccion->codigo_postal}}">
                                                                        <label data-error="wrong" data-success="right" for="codigo_postal">Código Postal</label>
                                                                    </div>
                                                                </div>
@@ -201,14 +219,14 @@
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-home prefix grey-text"></i>
-                                                                       <input type="text" id="poblacion" name="poblacion" class="form-control validate" value="{{$direccion[0]->poblacion}}">
+                                                                       <input type="text" id="poblacion" name="poblacion" class="form-control validate" value="{{$direccion->poblacion}}">
                                                                        <label data-error="wrong" data-success="right" for="poblacion">Población</label>
                                                                    </div>
                                                                </div>
                                                                <div class="col-xs-12 col-lg-6">
                                                                    <div class="md-form p-0">
                                                                        <i class="fas fa-phone prefix grey-text"></i>
-                                                                       <input type="text" id="telefono" name="telefono" class="form-control validate" value="{{$direccion[0]->telefono}}">
+                                                                       <input type="text" id="telefono" name="telefono" class="form-control validate" value="{{$direccion->telefono}}">
                                                                        <label data-error="wrong" data-success="right" for="telefono">Teléfono</label>
                                                                    </div>
                                                                </div>
@@ -217,7 +235,7 @@
 
                                                    </div>
 
-                                                    <input type="hidden" value="{{$direccion[0]->id}}" name="id" id="id">
+                                                    <input type="hidden" value="{{$direccion->id}}" name="id" id="id">
                                                </div>
                                                <div class="modal-footer d-flex justify-content-center">
                                                    <button type="submit" class="btn purple-gradient">Guardar Dirección <i class="fas fa-paper-plane-o ml-1"></i></button>
@@ -281,7 +299,7 @@
                        <div class="card-body">
                            <h5 class="mb-4">Pago</h5>
 
-                                    <a class="" href="{{url('/paypal/pay/'.$total)}}">
+                                    <a class="" href="{{url('/paypal/pay')}}">
 
                                         <button class="paypal-button mb-5">
 
@@ -325,7 +343,7 @@
 
 
 
-           <form id="añadir" method="POST" action="">
+           <form id="añadir" method="POST" action="{{ route('añadirDireccion') }}">
 
                {{csrf_field()}}
 
@@ -388,8 +406,8 @@
                                            <div class="col-xs-12 col-lg-6">
                                                <div class="md-form p-0">
                                                    <i class="fas fa-user prefix grey-text"></i>
-                                                   <input type="text" id="nombre" name="nombre" class="form-control validate">
-                                                   <label data-error="wrong" data-success="right" for="nombre">Nombre</label>
+                                                   <input type="text" id="nombreD" name="nombreD" class="form-control validate">
+                                                   <label data-error="wrong" data-success="right" for="nombreD">Nombre</label>
                                                </div>
                                            </div>
                                            <div class="col-xs-12 col-lg-6">

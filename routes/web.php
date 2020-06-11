@@ -31,19 +31,19 @@ Route::get('tienda','PaginaController@getTienda');
 
 Route::get('producto/{id}', 'PaginaController@getProducto');
 
-Route::get('cesta','PaginaController@getCesta');
+Route::get('cesta','PaginaController@getCesta')->middleware('auth');
 
 
 Route::get('cesta/update/{producto}/{cantidad?}',  [
     'as' => 'cart-update',
-    'uses' => 'PaginaController@update']);
+    'uses' => 'PaginaController@update'])->middleware('auth');
 
 Auth::routes();
 
 Route::post('registrar', 'PaginaController@registrarUsuario')->name('registrarUsuario');
 
 
-Route::post('añadir', 'PaginaController@añadir')->name('añadir');
+Route::post('añadir', 'PaginaController@añadir')->name('añadir')->middleware('añadir-productos');
 
 
 Route::delete('/cesta/eliminar/{id}', 'PaginaController@eliminar');
@@ -58,17 +58,19 @@ Route::get('equipos','PaginaController@getTodosEquipos');
 
 Route::get('jugadores','PaginaController@getTodosJugadores');
 
-Route::get('comprar','PaginaController@getComprar');
+Route::get('comprar','PaginaController@getComprar')->middleware('auth')->middleware('comprobar');
 
-Route::put('comprar','PaginaController@editarDireccion');
+Route::put('comprar','PaginaController@editarDireccion')->middleware('auth')->middleware('comprobar');
+
+Route::post('añadir-direccion','PaginaController@añadirDireccion')->name('añadirDireccion')->middleware('auth');
 
 
 //Paypal
 
-Route::get('/paypal/pay/{precio}', 'PagoController@pagarConPaypal');
+Route::get('/paypal/pay', 'PagoController@pagarConPaypal')->middleware('auth')->middleware('comprobar')->middleware('existe-direccion');
 
-Route::get('/paypal/status', 'PagoController@payPalStatus');
+Route::get('/paypal/status', 'PagoController@payPalStatus')->middleware('auth')->middleware('comprobar');
 
-Route::get('/eliminar-cesta', 'PaginaController@eliminarCesta');
+Route::get('/eliminar-cesta', 'PaginaController@eliminarCesta')->middleware('auth')->middleware('comprobar')->middleware('existe-direccion');
 
-Route::get('/contrareembolso', 'PaginaController@getContrareembolso');
+Route::get('/contrareembolso', 'PaginaController@getContrareembolso')->middleware('auth')->middleware('existe-direccion')->middleware('comprobar-compra');
