@@ -185,6 +185,7 @@ h2{
     flex-direction: column;
     justify-content: flex-end;
     background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    width: 100%;
 }
 
 .categoria{
@@ -1325,7 +1326,7 @@ figure{
 }
 
 
-.pagina-producto a{
+.nav-tabs a{
     color: #6931f9;
     text-decoration: none;
     font-weight: 700;
@@ -1619,6 +1620,7 @@ figure{
     background-color: #202028;
     max-width: 370px;
     max-height: 230px;
+    margin-bottom: 15px;
 }
 
 
@@ -1813,4 +1815,13 @@ ul.miembros-equipo{
 
 .md-form{
     margin: 0!important;
+}
+
+textarea {
+    overflow-y: scroll !important;
+}
+
+.boton-añadir:hover
+{
+    color: white;
 }

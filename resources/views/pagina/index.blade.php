@@ -3,24 +3,25 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                @for($i = 1; $i<count($juegos); $i++)
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}"></li>
+                @endfor
         </ol>
         <div class="carousel-inner">
 
-            @foreach($juegos as $objeto)
-                @if($objeto->id == $primerJuego->id)
+            @foreach($juegos as $juego)
+                @if($juego->id == $primerJuego->id)
                     <div class="carousel-item  active">
                 @endif
-                   @if($objeto->id != $primerJuego->id)
+                   @if($juego->id != $primerJuego->id)
                     <div class="carousel-item">
                 @endif
-                        <div class="imagen" style="background-image: url('{{$objeto->foto}}')">
+                        <div class="imagen" style="background-image: url('{{$juego->foto}}')">
                         </div>
                         <div class="carousel-caption">
-                            <span>{{$objeto->nombre}}</span>
-                            <h1>{{$objeto->titulo}}</h1>
-                            <a href="{{url('/juego/'.$objeto->id)}}" class="boton">Saber más <i class="fas fa-arrow-right"></i></a>
+                            <span>{{$juego->nombre}}</span>
+                            <h1>{{$juego->titulo}}</h1>
+                            <a href="{{url('/juego/'.$juego->id)}}" class="boton">Saber más <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
             @endforeach

@@ -10,6 +10,25 @@
             <figure class="caja-figura">
                 <img class="img-fluid" src="{{$noticia->foto}}">
             </figure>
+            @if(auth()->user()->rol == 'admin')
+
+            <div class="row">
+                <div class="col mt-3"  align="center" style="color: white">
+                    <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarNoticia" style="display:inline">
+                        <i class="fas fa-edit"></i>
+                        Editar noticia
+                    </a>
+                </div>
+                <div class="col mt-3"  align="center" style="color: white">
+                    <a type="button" href="{{url('eliminar-noticia/'.$noticia->id)}}" class="boton-añadir" style="display:inline">
+                        <i class="fas fa-trash-alt"></i>
+                        Eliminar noticia
+                    </a>
+                </div>
+            </div>
+
+
+            @endif
             <div class="wrapper">
                 <div class="redes-sociales">
                     <ul class="lista-redes">
@@ -104,6 +123,56 @@
                     <div class="modal-footer d-flex justify-content-center">
                         <button type="submit" class="btn purple-gradient">Publicar <i class="fas fa-paper-plane-o ml-1"></i></button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form method="POST" action="{{route('editar-noticia')}}">
+        {{method_field('PUT')}}
+        {{csrf_field()}}
+
+        <div class="modal fade" id="modalEditarNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Editar Noticia</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3 ">
+                        <div class="md-form mb-5 mt-5">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <textarea type="text" id="tituloEditarNoticia" name="tituloEditarNoticia" class="md-textarea form-control" rows="2" required>{{$noticia->titulo}}</textarea>
+                            <label data-error="wrong" data-success="right" for="tituloEditarNoticia">Titulo</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <textarea type="text" id="descripcionEditarNoticia" name="descripcionEditarNoticia" class="md-textarea form-control mt-4" rows="4" required>{{$noticia->descripcion}}</textarea>
+                            <label data-error="wrong" data-success="right" for="descripcionEditarNoticia">Descripción</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <input type="text" id="fechaEditarNoticia" name="fechaEditarNoticia" class="form-control validate mt-4" value="{{$noticia->fecha}}" required>
+                            <label data-error="wrong" data-success="right" for="fechaEditarNoticia">Fecha (Ej: 04 de mayo de 2020)</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <input type="text" id="fotoEditarNoticia" name="fotoEditarNoticia" class="form-control validate mt-4" value="{{$noticia->foto}}" required>
+                            <label data-error="wrong" data-success="right" for="fotoEditarNoticia">Foto (url de la foto)</label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <input type="reset" class="btn purple-gradient-rgba" value="Restablecer valores">
+                        <button type="submit" class="btn purple-gradient">Editar Noticia <i class="fas fa-paper-plane-o ml-1"></i></button>
+                    </div>
+                    <input type="hidden" name="id_noticia"  id="id_noticia" value="{{$noticia->id}}">
                 </div>
             </div>
         </div>

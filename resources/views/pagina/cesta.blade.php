@@ -11,6 +11,7 @@
 
         <div class="row">
 
+@if(count($cesta)>=1)
 
             <div class="col-lg-8">
 
@@ -185,6 +186,55 @@
 -->
 
             </div>
+
+    @else
+                <div class="col-lg-12">
+
+                    <div class="card wish-list mb-3">
+                        <div class="card-body">
+
+                            @if(session('status'))
+
+
+                                <p class="mb-5">{{session('status')}}</p>
+
+
+                            @endif
+
+
+                            <h5 class="mb-4">Cesta</h5>
+
+                                <div class="mx-auto" style="max-width: 500px; text-align: center">
+                                    @include('flash::message')
+
+                                </div>
+
+                            <p class="mb-4">Su cesta está vacia</p>
+
+                            <a type="button" href="{{url('/tienda')}}" class="btn boton-añadir" style="display:inline; color: white">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ir a tienda
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+
+                            <h5 class="mb-4">Aceptamos</h5>
+
+                            <img class="mr-2" width="45px"
+                                 src="https://z9t4u9f6.stackpathcdn.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
+                                 alt="PayPal acceptance mark">
+                        </div>
+                    </div>
+                </div>
+
+
+
+    @endif
+
 
         </div>
 

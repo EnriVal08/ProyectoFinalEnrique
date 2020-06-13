@@ -24,8 +24,10 @@
 </head>
 
 <body>
-
-@include('partials.navbar')
+@php
+    use App\Juego;$juegos=Juego::all();
+@endphp
+@include('partials.navbar', array('juegos' => $juegos))
 
 <div>
     @yield('content')
@@ -90,6 +92,8 @@ use App\Noticia;$ultimas_noticias=Noticia::take(5)->orderby('id', 'DESC')->get()
             });
         });
     });
+
+
 
 </script>
 </body>

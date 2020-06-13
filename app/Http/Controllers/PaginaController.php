@@ -9,6 +9,7 @@ use App\Equipo;
 use App\Juego;
 use App\Jugador;
 use App\Noticia;
+use App\Pedidos;
 use App\Producto;
 use App\Torneo;
 use App\User;
@@ -16,6 +17,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\DocBlock\Tags\Author;
 use function GuzzleHttp\Promise\all;
 
 class PaginaController extends Controller
@@ -25,7 +27,7 @@ class PaginaController extends Controller
         $juegos = Juego::all();
 
         /*Para poner el primer juego como active en el carousel*/
-        $primerJuego = Juego::find(1);
+        $primerJuego = Juego::first();
 
         $noticias = Noticia::take(3)->orderby('id', 'DESC')->get();
 
@@ -367,6 +369,55 @@ class PaginaController extends Controller
 
         $productos = Cesta::all()->where('id_usuario', '=', $id_usuario);
 
+
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+
+        $fecha = Carbon::now();
+
+
+        /*Fecha inicial envío*/
+
+
+        $suma = $fecha->addDay(5);
+
+        $mes = $meses[($suma->format('n')) - 1];
+
+        $envio = $suma->format('d') . ' de ' . $mes;
+
+
+        $pedido = new Pedidos();
+
+
+        $pedido->id_cliente = $id_usuario;
+        $pedido->fecha = $envio;
+
+        $pedido->save();
+
+
+
+        $pedidoNuevo = DB::table('pedidos')->where('id_cliente', '=', $id_usuario)->where('fecha', '=', $envio)->latest()->get();
+
+
+
+        foreach ($productos as $productosUsuario){
+            foreach($productosUsuario->productos as $producto){
+
+                DB::table('historial_pedidos')->insert([
+                    ['id_pedido' =>  $pedidoNuevo[0]->id, 'id_producto' => $producto->id, "cantidad" => $productosUsuario->cantidad]
+                ]);
+
+            }
+
+
+        }
+
+
+
+
+
+
+
         DB::delete('delete from cesta where id_usuario = '. $id_usuario);
 
         if(session('pagoCon') == 'paypal'){
@@ -482,7 +533,456 @@ class PaginaController extends Controller
 
     }
 
+    public function getPerfil(){
 
+
+        $usuario = DB::table('users')
+            ->where('id', auth()->id())
+            ->first();
+
+
+        return view('pagina.perfil')->with(compact('usuario'));
+
+
+    }
+
+    public function getHistorialPedidos(){
+
+
+        $pedidos = Pedidos::where('id_cliente', '=', auth()->id())->paginate(1);
+
+        return view('pagina.historialPedidos')->with(compact( 'pedidos'));
+
+    }
+
+    public function modificarPerfil(Request $request){
+
+        $this->validate($request, [
+            'nombre' => 'required|max:10|min:4',
+            'email' => 'required',
+        ]);
+
+
+        $usuario = User::findOrFail(auth()->user()->id);
+
+
+        if((auth()->user()->email == $request->email) && (auth()->user()->nombre == $request->nombre) && ($request->file('foto') == NULL)){
+
+        } else{
+
+            if ((User::where('email', $request->email)->exists()) && (auth()->user()->email != $request->email)) {
+                flash('El email que has introducido ya se encuentra registrado en nuestra base de datos')->error()->important();
+                return redirect('perfil');
+            }
+
+            $usuario->nombre = $request->input('nombre');
+            $usuario->email = $request->input('email');
+
+            if ($request->file('foto') != NULL){
+                $usuario->avatar = $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
+            }
+
+            $usuario->save();
+
+            flash("Se han modificado correctamente tus datos")->success();
+            return redirect('perfil');
+
+        }
+
+
+
+        return redirect('perfil');
+
+
+
+    }
+
+    public function añadirJuego(Request $request){
+
+        /*
+        $this->validate($request, [
+            'nombre' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+        ]);
+*/
+
+        $juego = new Juego();
+
+        $juego->nombre = $request->nombreJuego;
+        $juego->titulo = $request->tituloJuego;
+        $juego->descripcion = $request->descripcionJuego;
+        $juego->foto = $request->fotoJuego;
+        $juego->video = $request->videoJuego;
+
+        if ($request->file('logoJuego') != NULL){
+            $juego->logo = $request->file('logoJuego')->move('images', $request->file('logoJuego')->getClientOriginalName());
+        }
+
+
+        $juego->save();
+
+        return redirect('/');
+
+
+    }
+
+    public function añadirNoticia(Request $request){
+
+        /*
+        $this->validate($request, [
+            'nombre' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+        ]);
+*/
+
+        $noticia = new Noticia();
+
+        $noticia->titulo = $request->tituloNoticia;
+        $noticia->descripcion = $request->descripcionNoticia;
+        $noticia->fecha = $request->fechaNoticia;
+        $noticia->foto = $request->fotoNoticia;
+
+        $noticia->id_creador = auth()->id();
+
+
+
+        $noticia->save();
+
+        return redirect('/');
+
+
+    }
+
+
+    public function añadirTorneo(Request $request){
+
+        /*
+        $this->validate($request, [
+            'nombre' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+        ]);
+*/
+
+        $torneo = new Torneo();
+
+        $torneo->titulo = $request->tituloTorneo;
+        $torneo->id_juego = $request->id_juego;
+        $torneo->foto = $request->fotoTorneo;
+        $torneo->fecha = $request->fechaTorneo;
+        $torneo->ubicacion = $request->ubicacionTorneo;
+        $torneo->descripcion = $request->descripcionTorneo;
+        $torneo->premio = $request->premioTorneo;
+        $torneo->logo = $request->logoTorneo;
+        $torneo->link = $request->linkTorneo;
+
+        $torneo->save();
+
+        return redirect('/');
+
+
+    }
+
+
+    public function editarNoticia(Request $request){
+
+        /*
+        $this->validate($request, [
+            'nombre' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+        ]);
+*/
+
+        $noticia = Noticia::find($request->input('id_noticia'));
+
+        $noticia->titulo = $request->tituloEditarNoticia;
+        $noticia->descripcion = $request->descripcionEditarNoticia;
+        $noticia->fecha = $request->fechaEditarNoticia;
+        $noticia->foto = $request->fotoEditarNoticia;
+
+
+
+
+        $noticia->save();
+
+        return redirect()->back();
+
+
+    }
+
+    public function eliminarNoticia($id){
+
+
+        $noticia = Noticia::find($id);
+
+        $comentarios = Comentario::where('id_noticia', $id)->delete();
+
+        $noticia->delete();
+
+        return redirect('noticias');
+
+
+    }
+
+
+    public function editarJuego(Request $request){
+
+        /*
+        $this->validate($request, [
+            'nombre' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+        ]);
+*/
+
+        $juego = Juego::find($request->input('id_juego'));
+
+        $juego->nombre = $request->nombreEditarJuego;
+        $juego->titulo = $request->tituloEditarJuego;
+        $juego->descripcion = $request->descripcionEditarJuego;
+        $juego->foto = $request->fotoEditarJuego;
+        $juego->video = $request->videoEditarJuego;
+
+        if ($request->file('logoEditarJuego') != NULL){
+            $juego->logo = $request->file('logoEditarJuego')->move('images', $request->file('logoEditarJuego')->getClientOriginalName());
+        }
+
+
+
+        $juego->save();
+
+        return redirect()->back();
+
+
+    }
+
+
+    public function eliminarJuego($id){
+
+
+        $juego = Juego::find($id);
+
+
+        $torneoJuego = $juego->torneo;
+
+        if ($torneoJuego != NULL){
+            return redirect('/');
+        }
+
+
+        $juego->delete();
+
+        return redirect('/');
+
+
+    }
+
+
+    public function editarTorneo(Request $request){
+
+        /*
+        $this->validate($request, [
+            'nombre' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+        ]);
+*/
+
+        $torneo = Torneo::find($request->input('id_torneo'));
+
+        $torneo->titulo = $request->tituloEditarTorneo;
+        $torneo->id_juego = $request->id_juegoEditar;
+        $torneo->foto = $request->fotoEditarTorneo;
+        $torneo->fecha = $request->fechaEditarTorneo;
+        $torneo->ubicacion = $request->ubicacionEditarTorneo;
+        $torneo->descripcion = $request->descripcionEditarTorneo;
+        $torneo->premio = $request->premioEditarTorneo;
+        $torneo->logo = $request->logoEditarTorneo;
+        $torneo->link = $request->linkEditarTorneo;
+
+        $torneo->save();
+
+        return redirect()->back();
+
+
+    }
+
+
+    public function eliminarTorneo($id){
+
+
+        $torneo = Torneo::find($id);
+
+
+        $equipos_juegan_torneos = DB::delete('delete from equipos_juegan_torneos where id_torneo = '.$torneo->id);
+
+
+        $torneo->delete();
+
+        return redirect('torneos');
+
+
+    }
+
+
+
+
+    public function añadirEquipoAlTorneo(Request $request){
+
+
+        DB::table('equipos_juegan_torneos')->insert([
+            ['id_torneo' =>  $request->input('id_torneo'), 'id_equipo' => $request->input('id_equipo')]
+        ]);
+
+        return redirect()->back();
+
+
+    }
+
+
+    public function eliminarEquipoParticipante($idequipo, $idtorneo){
+
+
+
+        DB::delete('delete from equipos_juegan_torneos where id_equipo = '.$idequipo.' AND id_torneo = '. $idtorneo);
+
+
+
+        return redirect()->back();
+
+
+    }
+
+
+    public function editarEquipo($id, Request $request){
+
+        $equipo = Equipo::find($id);
+
+        $equipo->nombre = $request->nombreEditarEquipo;
+        $equipo->logo = $request->logoEditarTorneo;
+        $equipo->pais = $request->paisEditarTorneo;
+        $equipo->descripcion = $request->descripcionEditarTorneo;
+        $equipo->fondo = $request->fondoEditarTorneo;
+
+        $equipo->save();
+
+        return redirect()->back();
+
+
+    }
+
+
+
+    public function eliminarEquipo($id){
+
+
+        $equipo = Equipo::find($id);
+
+        DB::delete('delete from equipos_juegan_torneos where id_equipo = '.$id);
+
+        $jugadores = Jugador::where('id_equipo', $id)->update(['id_equipo' => NULL]);;
+
+
+        $equipo->delete();
+
+        return redirect('torneos');
+
+
+    }
+
+    public function editarJugador($id, Request $request){
+
+        $jugador = Jugador::find($id);
+
+        $jugador->nombre = $request->nombreEditarJugador;
+        $jugador->nombre_completo = $request->nombreCompletoEditarJugador;
+        $jugador->id_equipo = $request->id_equipoJugador;
+
+        $jugador->edad = $request->edadEditarJugador;
+        $jugador->pais = $request->paisEditarJugador;
+        $jugador->descripcion = $request->descripcionEditarJugador;
+        $jugador->fondo = $request->fondoEditarJugador;
+
+        if ($request->file('imagenEditarJugador') != NULL){
+            $jugador->foto = $request->file('imagenEditarJugador')->move('images', $request->file('imagenEditarJugador')->getClientOriginalName());
+        }
+
+
+        $jugador->save();
+
+        return redirect()->back();
+
+
+    }
+
+    public function eliminarJugador($id){
+
+
+        $jugador = Jugador::find($id);
+
+
+        $jugador->delete();
+
+        return redirect('torneos');
+
+
+    }
+
+    public function eliminarJugadorDelEquipo($id){
+
+
+        $jugador = Jugador::where('id', $id)->update(['id_equipo' => NULL]);
+
+
+        return redirect('torneos');
+
+
+    }
 
 }
 

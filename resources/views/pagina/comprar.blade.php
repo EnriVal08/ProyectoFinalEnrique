@@ -108,10 +108,7 @@
 
                            <p class="mb-3 text-muted small">Tel {{$direccion->telefono}}</p>
 
-                           @endif
 
-
-                           @if($direccion != null)
 
 
                            <a class="btn purple-gradient" data-toggle="modal" data-target="#modalContactFormEditar">Editar dirección</a>
@@ -299,9 +296,14 @@
                        <div class="card-body">
                            <h5 class="mb-4">Pago</h5>
 
-                                    <a class="" href="{{url('/paypal/pay')}}">
 
-                                        <button class="paypal-button mb-5">
+                           @if($direccion == null)
+
+                               <p class="mb-4">Debes de añadir una dirección de envío antes de proceder con el pago</p>
+
+                           @endif
+
+                                        <button onclick="window.location='{{ route('paypal') }}'" class="paypal-button mb-5" @if($direccion == null) disabled @endif>
 
                                             <span class="paypal-button-title">
                                               Pagar ahora con
@@ -313,22 +315,19 @@
 
                                         </button>
 
-                                    </a>
 
 
                                         <span class="paypal-logo">
                                             o
                                         </span>
 
-                                   <a class="" href="{{url('/eliminar-cesta')}}">
 
-                                       <button class="contrareembolso-button mt-5">
+                                       <button onclick="window.location='{{ route('eliminar-cesta') }}'" class="contrareembolso-button mt-5" @if($direccion == null) disabled @endif>
 
                                            Pago contrareembolso
 
                                        </button>
 
-                                   </a>
 
                        </div>
 
