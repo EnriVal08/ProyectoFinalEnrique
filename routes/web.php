@@ -40,10 +40,10 @@ Route::get('cesta/update/{producto}/{cantidad?}',  [
 
 Auth::routes();
 
-Route::post('registrar', 'PaginaController@registrarUsuario')->name('registrarUsuario');
+Route::post('registrar', 'UsuarioController@registrarUsuario')->name('registrarUsuario');
 
 
-Route::post('añadir', 'PaginaController@añadir')->name('añadir')->middleware('añadir-productos');
+Route::post('añadir', 'AñadirController@añadir')->name('añadir')->middleware('añadir-productos');
 
 
 Route::delete('/cesta/eliminar/{id}', 'PaginaController@eliminar');
@@ -60,9 +60,9 @@ Route::get('jugadores','PaginaController@getTodosJugadores');
 
 Route::get('comprar','PaginaController@getComprar')->middleware('auth')->middleware('comprobar');
 
-Route::put('comprar','PaginaController@editarDireccion')->middleware('auth')->middleware('comprobar');
+Route::put('comprar','EditarController@editarDireccion')->middleware('auth')->middleware('comprobar');
 
-Route::post('añadir-direccion','PaginaController@añadirDireccion')->name('añadirDireccion')->middleware('auth');
+Route::post('añadir-direccion','AñadirController@añadirDireccion')->name('añadirDireccion')->middleware('auth');
 
 
 //Paypal
@@ -71,14 +71,14 @@ Route::get('/paypal/pay', 'PagoController@pagarConPaypal')->middleware('auth')->
 
 Route::get('/paypal/status', 'PagoController@payPalStatus')->middleware('auth')->middleware('comprobar');
 
-Route::get('/eliminar-cesta', 'PaginaController@eliminarCesta')->middleware('auth')->middleware('comprobar')->middleware('existe-direccion')->name('eliminar-cesta');
+Route::get('/eliminar-cesta', 'UsuarioController@eliminarCesta')->middleware('auth')->middleware('comprobar')->middleware('existe-direccion')->name('eliminar-cesta');
 
 Route::get('/contrareembolso', 'PaginaController@getContrareembolso')->middleware('auth')->middleware('existe-direccion')->middleware('comprobar-compra');
 
 
-Route::get('perfil','PaginaController@getPerfil')->name('perfil')->middleware('auth');
+Route::get('perfil','UsuarioController@getPerfil')->name('perfil')->middleware('auth');
 
-Route::put('perfil','PaginaController@modificarPerfil')->name('modificar-perfil')->middleware('auth');
+Route::put('perfil','UsuarioController@modificarPerfil')->name('modificar-perfil')->middleware('auth');
 
 
 Route::get('historialPedidos','PaginaController@getHistorialPedidos')->name('historial')->middleware('auth');
@@ -89,46 +89,46 @@ Route::get('historialPedidos','PaginaController@getHistorialPedidos')->name('his
 
 
 /*Añadir*/
-Route::post('añadir-juego','PaginaController@añadirJuego')->name('añadir-juego')->middleware('auth', 'rol');
+Route::post('añadir-juego','AñadirController@añadirJuego')->name('añadir-juego')->middleware('auth', 'rol');
 
-Route::post('añadir-noticia','PaginaController@añadirNoticia')->name('añadir-noticia')->middleware('auth', 'rol');
+Route::post('añadir-noticia','AñadirController@añadirNoticia')->name('añadir-noticia')->middleware('auth', 'rol');
 
-Route::post('añadir-torneo','PaginaController@añadirTorneo')->name('añadir-torneo')->middleware('auth', 'rol');
+Route::post('añadir-torneo','AñadirController@añadirTorneo')->name('añadir-torneo')->middleware('auth', 'rol');
 
-Route::post('añadir-equipoAlTorneo','PaginaController@añadirEquipoAlTorneo')->name('añadir-equipoAlTorneo')->middleware('auth', 'rol');
+Route::post('añadir-equipoAlTorneo','AñadirController@añadirEquipoAlTorneo')->name('añadir-equipoAlTorneo')->middleware('auth', 'rol');
 
-Route::post('añadir-producto','PaginaController@añadirProducto')->name('añadir-producto')->middleware('auth', 'rol');
+Route::post('añadir-producto','AñadirController@añadirProducto')->name('añadir-producto')->middleware('auth', 'rol');
 
 
 /*Editar*/
 
-Route::put('editar-noticia','PaginaController@editarNoticia')->name('editar-noticia')->middleware('auth', 'rol');
+Route::put('editar-noticia','EditarController@editarNoticia')->name('editar-noticia')->middleware('auth', 'rol');
 
-Route::put('editar-juego','PaginaController@editarJuego')->name('editar-juego')->middleware('auth', 'rol');
+Route::put('editar-juego','EditarController@editarJuego')->name('editar-juego')->middleware('auth', 'rol');
 
-Route::put('editar-torneo','PaginaController@editarTorneo')->name('editar-torneo')->middleware('auth', 'rol');
+Route::put('editar-torneo','EditarController@editarTorneo')->name('editar-torneo')->middleware('auth', 'rol');
 
-Route::put('editar-equipo/{id}','PaginaController@editarEquipo')->name('editar-equipo')->middleware('auth', 'rol');
+Route::put('editar-equipo/{id}','EditarController@editarEquipo')->name('editar-equipo')->middleware('auth', 'rol');
 
-Route::put('editar-jugador/{id}','PaginaController@editarJugador')->name('editar-jugador')->middleware('auth', 'rol');
+Route::put('editar-jugador/{id}','EditarController@editarJugador')->name('editar-jugador')->middleware('auth', 'rol');
 
-Route::put('editar-producto/{id}','PaginaController@editarProducto')->name('editar-producto')->middleware('auth', 'rol');
+Route::put('editar-producto/{id}','EditarController@editarProducto')->name('editar-producto')->middleware('auth', 'rol');
 
 
 /*Eliminar*/
 
-Route::get('eliminar-noticia/{id}','PaginaController@eliminarNoticia')->name('eliminar-noticia')->middleware('auth', 'rol');
+Route::get('eliminar-noticia/{id}','EliminarController@eliminarNoticia')->name('eliminar-noticia')->middleware('auth', 'rol');
 
-Route::get('eliminar-juego/{id}','PaginaController@eliminarJuego')->name('eliminar-juego')->middleware('auth', 'rol');
+Route::get('eliminar-juego/{id}','EliminarController@eliminarJuego')->name('eliminar-juego')->middleware('auth', 'rol');
 
-Route::get('eliminar-torneo/{id}','PaginaController@eliminarTorneo')->name('eliminar-torneo')->middleware('auth', 'rol');
+Route::get('eliminar-torneo/{id}','EliminarController@eliminarTorneo')->name('eliminar-torneo')->middleware('auth', 'rol');
 
-Route::get('eliminar-equipoParticipante/{idequipo}/{idtorneo}','PaginaController@eliminarEquipoParticipante')->name('eliminar-equipoParticipante')->middleware('auth', 'rol');
+Route::get('eliminar-equipoParticipante/{idequipo}/{idtorneo}','EliminarController@eliminarEquipoParticipante')->name('eliminar-equipoParticipante')->middleware('auth', 'rol');
 
-Route::get('eliminar-equipo/{id}','PaginaController@eliminarEquipo')->name('eliminar-equipo')->middleware('auth', 'rol');
+Route::get('eliminar-equipo/{id}','EliminarController@eliminarEquipo')->name('eliminar-equipo')->middleware('auth', 'rol');
 
-Route::get('eliminar-jugador/{id}','PaginaController@eliminarJugador')->name('eliminar-jugador')->middleware('auth', 'rol');
+Route::get('eliminar-jugador/{id}','EliminarController@eliminarJugador')->name('eliminar-jugador')->middleware('auth', 'rol');
 
-Route::get('eliminar-jugadorDelEquipo/{id}','PaginaController@eliminarJugadorDelEquipo')->name('eliminar-jugadorDelEquipo')->middleware('auth', 'rol');
+Route::get('eliminar-jugadorDelEquipo/{id}','EliminarController@eliminarJugadorDelEquipo')->name('eliminar-jugadorDelEquipo')->middleware('auth', 'rol');
 
-Route::get('eliminar-producto/{id}','PaginaController@eliminarProducto')->name('eliminar-producto')->middleware('auth', 'rol');
+Route::get('eliminar-producto/{id}','EliminarController@eliminarProducto')->name('eliminar-producto')->middleware('auth', 'rol');

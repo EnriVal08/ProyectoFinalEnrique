@@ -97,4 +97,6 @@ class PagoController extends Controller
         return redirect('/cesta')->with(compact('status'));
 
     }
+
+
 }
