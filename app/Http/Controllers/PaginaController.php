@@ -220,7 +220,7 @@ class PaginaController extends Controller
             $user->rol = 'cliente';
 
 
-            if ($request->file('foto') != NULL){
+            if ($request->file('foto')->move('images', $request->file('foto')->getClientOriginalName()) != NULL){
                 $user->avatar = $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
             } else{
                $user->avatar = 'images/avatarDefault.jpg';
