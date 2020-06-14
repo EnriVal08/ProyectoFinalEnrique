@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'comprobar-compra' => \App\Http\Middleware\ComprobarCompra::class,
         'añadir-productos' => \App\Http\Middleware\AñadirProductos::class,
         'existe-direccion' => \App\Http\Middleware\ExisteDireccion::class,
+        'rol' => \App\Http\Middleware\Rol::class,
     ];
 }

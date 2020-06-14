@@ -984,6 +984,69 @@ class PaginaController extends Controller
 
     }
 
+
+    public function añadirProducto(Request $request){
+
+        /*
+        $this->validate($request, [
+            'nombre' => 'required',
+            'provincia' => 'required',
+            'alias' => 'required',
+            'nif' => 'required',
+            'nombreD' => 'required',
+            'apellidos' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'poblacion' => 'required',
+            'telefono' => 'required',
+        ]);
+*/
+
+        $producto = new Producto();
+
+        $producto->nombre = $request->nombreProducto;
+        $producto->precio = $request->precioProducto;
+        $producto->foto = $request->fotoProducto;
+        $producto->descripcion = $request->descripcionProducto;
+        $producto->categoria = $request->categoriaProducto;
+
+        $producto->save();
+
+        return redirect('/');
+
+
+    }
+
+    public function editarProducto($id, Request $request){
+
+        $producto = Producto::find($id);
+
+        $producto->nombre = $request->nombreEditarProducto;
+        $producto->precio = $request->precioEditarProducto;
+        $producto->foto = $request->fotoEditarProducto;
+        $producto->categoria = $request->categoriaEditarProducto;
+        $producto->descripcion = $request->descripcionEditarProducto;
+
+
+        $producto->save();
+
+        return redirect()->back();
+
+
+    }
+
+    public function eliminarProducto($id){
+
+
+        $producto = Producto::find($id)->delete();
+
+
+        return redirect('tienda');
+
+
+
+    }
+
 }
 
 

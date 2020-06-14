@@ -10,38 +10,47 @@
             <figure class="caja-figura">
                 <img class="img-fluid" src="{{$juego->foto}}">
             </figure>
-            @if(auth()->user()->rol == 'admin')
 
-                <div class="row">
-                    <div class="col mt-3"  align="center" style="color: white">
-                        <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarJuego" style="display:inline">
-                            <i class="fas fa-edit"></i>
-                            Editar juego
-                        </a>
-                    </div>
-                    @if($juego->torneo != NULL)
-                        <div class="col mt-3"  align="center" style="color: black">
-                            <button type="button" class="boton-añadir" style="display:inline" disabled>
-                                <i class="fas fa-trash-alt"></i>
-                                Eliminar juego
-                            </button>
-                            <br><br>
-                            <span>No puedes eliminar el juego porque pertenece a un torneo activo</span>
 
+            @if(Auth::check())
+
+                @if(auth()->user()->rol == 'admin')
+
+                    <div class="row">
+                        <div class="col mt-3"  align="center" style="color: white">
+                            <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarJuego" style="display:inline">
+                                <i class="fas fa-edit"></i>
+                                Editar juego
+                            </a>
                         </div>
+                        @if($juego->torneo != NULL)
+                            <div class="col mt-3"  align="center" style="color: black">
+                                <button type="button" class="boton-añadir" style="display:inline" disabled>
+                                    <i class="fas fa-trash-alt"></i>
+                                    Eliminar juego
+                                </button>
+                                <br><br>
+                                <span>No puedes eliminar el juego porque pertenece a un torneo activo</span>
 
-                    @else
-                    <div class="col mt-3"  align="center" style="color: white">
-                        <a type="button" href="{{url('eliminar-juego/'.$juego->id)}}" class="boton-añadir" style="display:inline" >
-                            <i class="fas fa-trash-alt"></i>
-                            Eliminar juego
-                        </a>
+                            </div>
+
+                        @else
+                            <div class="col mt-3"  align="center" style="color: white">
+                                <a type="button" href="{{url('eliminar-juego/'.$juego->id)}}" class="boton-añadir" style="display:inline" >
+                                    <i class="fas fa-trash-alt"></i>
+                                    Eliminar juego
+                                </a>
+                            </div>
+                        @endif
                     </div>
-                    @endif
-                </div>
 
 
+                @endif
             @endif
+
+
+
+
             <div class="wrapper">
                 <div class="redes-sociales">
                     <ul class="lista-redes">
@@ -90,13 +99,13 @@
                     </div>
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
-                            <i class="fas fa-user prefix grey-text"></i>
+                            <i class="fas fa-pencil prefix grey-text"></i>
                             <input type="text" id="nombreEditarJuego" name="nombreEditarJuego" class="form-control validate mt-4" value="{{$juego->nombre}}"required>
                             <label data-error="wrong" data-success="right" for="nombreEditarJuego">Nombre</label>
                         </div>
 
                         <div class="md-form mb-5">
-                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <i class="fas fa-pencil prefix grey-text"></i>
                             <input type="text" id="tituloEditarJuego" name="tituloEditarJuego" class="form-control validate mt-4" value="{{$juego->titulo}}" required>
                             <label data-error="wrong" data-success="right" for="tituloEditarJuego">Título</label>
                         </div>
@@ -121,7 +130,7 @@
                         </div>
 
                         <div class="md-form">
-                            <i class="fas fa-user prefix grey-text"></i>
+                            <i class="fas fa-pencil prefix grey-text"></i>
                             <span class="pl-4 ml-3">Logo</span>
                             <br>
                             <input type="file" name="logoEditarJuego">
@@ -130,6 +139,7 @@
                     </div>
                     <input type="hidden" name="id_juego" id="id_juego" value="{{$juego->id}}">
                     <div class="modal-footer d-flex justify-content-center">
+                        <input type="reset" class="btn purple-gradient-rgba" value="Restablecer valores">
                         <button type="submit" class="btn purple-gradient">Editar Juego <i class="fas fa-paper-plane-o ml-1"></i></button>
                     </div>
                 </div>

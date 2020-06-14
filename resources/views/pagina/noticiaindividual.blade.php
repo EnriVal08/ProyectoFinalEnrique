@@ -10,23 +10,29 @@
             <figure class="caja-figura">
                 <img class="img-fluid" src="{{$noticia->foto}}">
             </figure>
-            @if(auth()->user()->rol == 'admin')
 
-            <div class="row">
-                <div class="col mt-3"  align="center" style="color: white">
-                    <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarNoticia" style="display:inline">
-                        <i class="fas fa-edit"></i>
-                        Editar noticia
-                    </a>
-                </div>
-                <div class="col mt-3"  align="center" style="color: white">
-                    <a type="button" href="{{url('eliminar-noticia/'.$noticia->id)}}" class="boton-añadir" style="display:inline">
-                        <i class="fas fa-trash-alt"></i>
-                        Eliminar noticia
-                    </a>
-                </div>
-            </div>
+            @if(Auth::check())
 
+
+                @if(auth()->user()->rol == 'admin')
+
+                <div class="row">
+                    <div class="col mt-3"  align="center" style="color: white">
+                        <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarNoticia" style="display:inline">
+                            <i class="fas fa-edit"></i>
+                            Editar noticia
+                        </a>
+                    </div>
+                    <div class="col mt-3"  align="center" style="color: white">
+                        <a type="button" href="{{url('eliminar-noticia/'.$noticia->id)}}" class="boton-añadir" style="display:inline">
+                            <i class="fas fa-trash-alt"></i>
+                            Eliminar noticia
+                        </a>
+                    </div>
+                </div>
+
+
+                @endif
 
             @endif
             <div class="wrapper">
@@ -144,13 +150,13 @@
                     </div>
                     <div class="modal-body mx-3 ">
                         <div class="md-form mb-5 mt-5">
-                            <i class="fas fa-user prefix grey-text"></i>
-                            <textarea type="text" id="tituloEditarNoticia" name="tituloEditarNoticia" class="md-textarea form-control" rows="2" required>{{$noticia->titulo}}</textarea>
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <textarea type="text" id="tituloEditarNoticia" name="tituloEditarNoticia" class="md-textarea form-control mt-3" rows="2" required>{{$noticia->titulo}}</textarea>
                             <label data-error="wrong" data-success="right" for="tituloEditarNoticia">Titulo</label>
                         </div>
 
                         <div class="md-form">
-                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <i class="fas fa-pencil prefix grey-text"></i>
                             <textarea type="text" id="descripcionEditarNoticia" name="descripcionEditarNoticia" class="md-textarea form-control mt-4" rows="4" required>{{$noticia->descripcion}}</textarea>
                             <label data-error="wrong" data-success="right" for="descripcionEditarNoticia">Descripción</label>
                         </div>

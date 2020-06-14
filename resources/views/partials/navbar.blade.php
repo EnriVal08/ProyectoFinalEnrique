@@ -69,7 +69,11 @@
                                     <i class="fas fa-trophy"></i>
                                     Añadir torneo
                                 </a>
-                                @endif
+                                <a type="button" data-toggle="modal" data-target="#modalAñadirProducto" class="btn boton-añadir mb-3 " style="display:inline; color: white">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Añadir producto
+                                </a>
+                            @endif
 
 
 
@@ -120,13 +124,13 @@
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
-                        <i class="fas fa-user prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <input type="text" id="nombreJuego" name="nombreJuego" class="form-control validate" required>
                         <label data-error="wrong" data-success="right" for="nombreJuego">Nombre</label>
                     </div>
 
                     <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <input type="text" id="tituloJuego" name="tituloJuego" class="form-control validate" required>
                         <label data-error="wrong" data-success="right" for="tituloJuego">Título</label>
                     </div>
@@ -151,7 +155,7 @@
                     </div>
 
                     <div class="md-form">
-                        <i class="fas fa-user prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <span class="pl-4 ml-3">Logo</span>
                         <br>
                         <input type="file" name="logoJuego">
@@ -185,13 +189,13 @@
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
-                        <i class="fas fa-user prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <input type="text" id="tituloNoticia" name="tituloNoticia" class="form-control validate" required>
                         <label data-error="wrong" data-success="right" for="tituloNoticia">Titulo</label>
                     </div>
 
                     <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <textarea type="text" id="descripcionNoticia" name="descripcionNoticia" class="md-textarea form-control" rows="3" required></textarea>
                         <label data-error="wrong" data-success="right" for="descripcionNoticia">Descripción</label>
                     </div>
@@ -236,13 +240,13 @@
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
-                        <i class="fas fa-user prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <input type="text" id="tituloTorneo" name="tituloTorneo" class="form-control validate" required>
                         <label data-error="wrong" data-success="right" for="tituloTorneo">Titulo</label>
                     </div>
 
                     <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <span class="pl-4 ml-3">Juego</span>
 
                         <select class="form-control validate" style="margin-left: 37px; margin-top: 10px; width: 90%" id="id_juego" name="id_juego">
@@ -301,6 +305,61 @@
             </div>
         </div>
     </div>
+</form>
+
+<form method="POST" action="{{route('añadir-producto')}}">
+
+{{csrf_field()}}
+
+<div class="modal fade" id="modalAñadirProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Producto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <i class="fas fa-pencil prefix grey-text"></i>
+                    <input type="text" id="nombreProducto" name="nombreProducto" class="form-control validate" required>
+                    <label data-error="wrong" data-success="right" for="nombreProducto">Nombre</label>
+                </div>
+
+                <div class="md-form mb-5">
+                    <i class="fas fa-pencil prefix grey-text"></i>
+                    <input type="number" step=0.01 id="precioProducto" name="precioProducto" class="form-control validate" required>
+                    <label data-error="wrong" data-success="right" for="precioProducto">Precio</label>
+                </div>
+
+                <div class="md-form">
+                    <i class="fas fa-pencil prefix grey-text"></i>
+                    <textarea type="text" id="descripcionProducto" name="descripcionProducto" class="md-textarea form-control" rows="3" required></textarea>
+                    <label data-error="wrong" data-success="right" for="descripcionProducto">Descripción</label>
+                </div>
+
+                <div class="md-form">
+                    <i class="fas fa-pencil prefix grey-text"></i>
+                    <input type="text" id="fotoProducto" name="fotoProducto" class="form-control validate" required>
+                    <label data-error="wrong" data-success="right" for="fotoProducto">Foto (url de la foto)</label>
+                </div>
+
+
+                <div class="md-form">
+                    <i class="fas fa-pencil prefix grey-text"></i>
+                    <input type="text" id="categoriaProducto" name="categoriaProducto" class="form-control validate" required>
+                    <label data-error="wrong" data-success="right" for="categoriaProducto">Categoría (teclado, portatil...)</label>
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" class="btn purple-gradient">Añadir Producto <i class="fas fa-paper-plane-o ml-1"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
 </form>
 
 

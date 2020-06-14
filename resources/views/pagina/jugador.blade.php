@@ -75,25 +75,29 @@
                 </div>
             </article>
         </div>
-        @if(auth()->user()->rol == 'admin')
 
-            <div class="row">
-                <div class="col mt-3"  align="center" style="color: white">
-                    <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarJugador" style="display:inline">
-                        <i class="fas fa-edit"></i>
-                        Editar Jugador
-                    </a>
+        @if(Auth::check())
+
+            @if(auth()->user()->rol == 'admin')
+
+                <div class="row">
+                    <div class="col mt-3"  align="center" style="color: white">
+                        <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarJugador" style="display:inline">
+                            <i class="fas fa-edit"></i>
+                            Editar Jugador
+                        </a>
+                    </div>
+                    <div class="col mt-3"  align="center" style="color: white">
+                        <a type="button" href="{{url('eliminar-jugador/'.$jugador->id)}}" class="boton-añadir" style="display:inline">
+                            <i class="fas fa-trash-alt"></i>
+                            Eliminar Jugador
+                        </a>
+                    </div>
                 </div>
-                <div class="col mt-3"  align="center" style="color: white">
-                    <a type="button" href="{{url('eliminar-jugador/'.$jugador->id)}}" class="boton-añadir" style="display:inline">
-                        <i class="fas fa-trash-alt"></i>
-                        Eliminar Jugador
-                    </a>
-                </div>
-            </div>
 
-
+            @endif
         @endif
+
     </div>
 </section>
 
@@ -113,13 +117,13 @@
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
-                        <i class="fas fa-user prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <input type="text" id="nombreEditarJugador" name="nombreEditarJugador" class="form-control validate mt-3" value="{{$jugador->nombre}}" required>
                         <label data-error="wrong" data-success="right" for="nombreEditarJugador">Nick</label>
                     </div>
 
                     <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <span class="pl-4 ml-3">Equipo al que pertenece</span>
 
                         <select class="form-control validate" style="margin-left: 37px; margin-top: 10px; width: 90%" id="id_equipoJugador" name="id_equipoJugador">
@@ -155,7 +159,7 @@
                     </div>
 
                     <div class="md-form">
-                        <i class="fas fa-user prefix grey-text"></i>
+                        <i class="fas fa-pencil prefix grey-text"></i>
                         <span class="pl-4 ml-3">Foto</span>
                         <br>
                         <input type="file" name="imagenEditarJugador" class="mb-5">
@@ -175,6 +179,7 @@
 
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
+                    <input type="reset" class="btn purple-gradient-rgba" value="Restablecer valores">
                     <button type="submit" class="btn purple-gradient">Editar Jugador <i class="fas fa-paper-plane-o ml-1"></i></button>
                 </div>
             </div>

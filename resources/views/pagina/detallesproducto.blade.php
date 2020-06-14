@@ -30,13 +30,39 @@
                         <input type="hidden" name="id_producto" id="id_producto" value="{{$producto->id}}">
                         <div class="col-sm-9">
                             <button class="boton-añadir" type="submit" name="añadir" value="añadir">Añadir al carrito</button>
+
                         </div>
                     </form>
-                    <span>Categoría: <a href="#" class="categoria-producto">{{$producto->categoria}}</a></span>
+                    <span>Categoría: <a href="#" class="categoria-producto" style="color: #6931f9">{{$producto->categoria}}</a></span>
                 </div>
 
-            </div>
 
+
+            </div>
+            @if(Auth::check())
+
+                @if(auth()->user()->rol == 'admin')
+
+
+                    <div class="row mb-5">
+                        <div class="col mt-3"  align="center" style="color: white">
+                            <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarProducto" style="display:inline">
+                                <i class="fas fa-edit"></i>
+                                Editar producto
+                            </a>
+                        </div>
+
+                        <div class="col mt-3"  align="center" style="color: black">
+                            <a type="button" href="{{url('eliminar-producto/'.$producto->id)}}" class="boton-añadir" style="display:inline" >
+                                <i class="fas fa-trash-alt"></i>
+                                Eliminar producto
+                            </a>
+                        </div>
+                    </div>
+
+                @endif
+
+            @endif
 
                 <div class="container mb-5">
                     <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
@@ -65,4 +91,59 @@
     </section>
 
 
+
+    <form method="POST" action="{{url('editar-producto/'.$producto->id)}}">
+        {{method_field('PUT')}}
+        {{csrf_field()}}
+
+        <div class="modal fade" id="modalEditarProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Producto</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-5">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <input type="text" id="nombreEditarProducto" name="nombreEditarProducto" class="form-control validate" value="{{$producto->nombre}}" required>
+                            <label data-error="wrong" data-success="right" for="nombreEditarProducto">Nombre</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <input type="number" step=0.01 id="precioEditarProducto" name="precioEditarProducto" class="form-control validate" value="{{$producto->precio}}" required>
+                            <label data-error="wrong" data-success="right" for="precioEditarProducto">Precio</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <textarea type="text" id="descripcionEditarProducto" name="descripcionEditarProducto" class="md-textarea form-control mb-5" rows="3" required>{{$producto->descripcion}}</textarea>
+                            <label data-error="wrong" data-success="right" for="descripcionEditarProducto">Descripción</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <input type="text" id="fotoEditarProducto" name="fotoEditarProducto" class="form-control validate" value="{{$producto->foto}}" required>
+                            <label data-error="wrong" data-success="right" for="fotoEditarProducto">Foto (url de la foto)</label>
+                        </div>
+
+
+                        <div class="md-form">
+                            <i class="fas fa-pencil prefix grey-text"></i>
+                            <input type="text" id="categoriaEditarProducto" name="categoriaEditarProducto" class="form-control validate" value="{{$producto->categoria}}" required>
+                            <label data-error="wrong" data-success="right" for="categoriaEditarProducto">Categoría (teclado, portatil...)</label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn purple-gradient">Editar Producto <i class="fas fa-paper-plane-o ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 @endsection

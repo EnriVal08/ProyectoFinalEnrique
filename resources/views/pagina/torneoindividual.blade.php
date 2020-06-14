@@ -67,23 +67,29 @@
                     </div>
                 </article>
             </div>
-            @if(auth()->user()->rol == 'admin')
 
-                <div class="row">
-                    <div class="col mt-3"  align="center" style="color: white">
-                        <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarTorneo" style="display:inline">
-                            <i class="fas fa-edit"></i>
-                            Editar torneo
-                        </a>
-                    </div>
-                    <div class="col mt-3"  align="center" style="color: white">
-                        <a type="button" href="{{url('eliminar-torneo/'.$torneo->id)}}" class="boton-añadir" style="display:inline">
-                            <i class="fas fa-trash-alt"></i>
-                            Eliminar torneo
-                        </a>
-                    </div>
-                </div>
+            @if(Auth::check())
 
+
+                @if(auth()->user()->rol == 'admin')
+
+                    <div class="row">
+                        <div class="col mt-3"  align="center" style="color: white">
+                            <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalEditarTorneo" style="display:inline">
+                                <i class="fas fa-edit"></i>
+                                Editar torneo
+                            </a>
+                        </div>
+                        <div class="col mt-3"  align="center" style="color: white">
+                            <a type="button" href="{{url('eliminar-torneo/'.$torneo->id)}}" class="boton-añadir" style="display:inline">
+                                <i class="fas fa-trash-alt"></i>
+                                Eliminar torneo
+                            </a>
+                        </div>
+                    </div>
+
+
+                @endif
 
             @endif
         </div>
@@ -97,17 +103,22 @@
                     <h2>Equipos participantes</h2>
                 </div>
             </div>
-            @if(auth()->user()->rol == 'admin')
 
-                <div class="row">
-                    <div class="col mt-3 mb-5"  align="center" style="color: white">
-                        <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalAñadirEquipoAlTorneo" style="display:inline">
-                            <i class="fas fa-edit"></i>
-                            Añadir equipo participante
-                        </a>
+            @if(Auth::check())
+
+                @if(auth()->user()->rol == 'admin')
+
+                    <div class="row">
+                        <div class="col mt-3 mb-5"  align="center" style="color: white">
+                            <a type="button" class="boton-añadir" data-toggle="modal" data-target="#modalAñadirEquipoAlTorneo" style="display:inline">
+                                <i class="fas fa-edit"></i>
+                                Añadir equipo participante
+                            </a>
+                        </div>
                     </div>
-                </div>
 
+
+                @endif
 
             @endif
             <ul class="mt-5 lista-torneos active">
@@ -116,12 +127,25 @@
 
                     <div class="caja-equipo caja-torneos mb-5 mt-5">
 
-                        <div align="center" style="color: white; height: 50px; top: -45px; position:relative;">
-                            <a type="button" href="{{url('eliminar-equipoParticipante/'.$equipo->id, $torneo->id)}}" class="boton-añadir" style="display:inline">
-                                <i class="fas fa-trash-alt"></i>
-                                Quitar equipo del torneo
-                            </a>
-                        </div>
+
+
+                        @if(Auth::check())
+
+                            @if(auth()->user()->rol == 'admin')
+
+
+                                <div align="center" style="color: white; height: 50px; top: -45px; position:relative;">
+                                    <a type="button" href="{{url('eliminar-equipoParticipante/'.$equipo->id, $torneo->id)}}" class="boton-añadir" style="display:inline">
+                                        <i class="fas fa-trash-alt"></i>
+                                        Quitar equipo del torneo
+                                    </a>
+                                </div>
+
+
+                            @endif
+
+                        @endif
+
                         <div class="body-equipo">
                             <h3><a href="#">{{$equipo->nombre}}</a></h3>
                             <span>
@@ -173,13 +197,13 @@
                     </div>
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
-                            <i class="fas fa-user prefix grey-text"></i>
+                            <i class="fas fa-pencil prefix grey-text"></i>
                             <input type="text" id="tituloEditarTorneo" name="tituloEditarTorneo" class="form-control validate" value="{{$torneo->titulo}}" required>
                             <label data-error="wrong" data-success="right" for="tituloEditarTorneo">Titulo</label>
                         </div>
 
                         <div class="md-form mb-5">
-                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <i class="fas fa-pencil prefix grey-text"></i>
                             <span class="pl-4 ml-3">Juego</span>
 
                             <select class="form-control validate" style="margin-left: 37px; margin-top: 10px; width: 90%" id="id_juegoEditar" name="id_juegoEditar">
@@ -238,6 +262,7 @@
 
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
+                        <input type="reset" class="btn purple-gradient-rgba" value="Restablecer valores">
                         <button type="submit" class="btn purple-gradient">Editar Torneo <i class="fas fa-paper-plane-o ml-1"></i></button>
                     </div>
                     <input type="hidden" name="id_torneo"  id="id_torneo" value="{{$torneo->id}}">
