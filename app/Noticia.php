@@ -9,7 +9,7 @@ class Noticia extends Model
     protected $table = "noticias";
 
     public function usuario(){
-        return $this->hasOne('App\User', 'id');
+        return $this->hasOne('App\User', 'id', 'id_creador');
     }
 
     public function comentarios(){

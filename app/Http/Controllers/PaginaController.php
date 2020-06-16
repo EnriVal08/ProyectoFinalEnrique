@@ -51,7 +51,7 @@ class PaginaController extends Controller
         $noticia = Noticia::findOrFail($id);
 
 
-        $autor = Noticia::find($noticia->id_creador)->usuario;
+        $autor = Noticia::find($id)->usuario;
 
         return view('pagina.noticiaindividual', array('noticia' => $noticia), array('autor' => $autor));
     }
