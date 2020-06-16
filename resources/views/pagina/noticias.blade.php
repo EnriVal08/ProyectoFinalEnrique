@@ -40,7 +40,7 @@
                     </form>-->
                 </article>
                 <article class="barra-ultimas-noticias">
-                    <h3>Ultimas noticas</h3>
+                    <h3>Últimas noticias</h3>
                     <ul class="post-list">
                         @foreach($ultimas_noticias as $ultima_noticia)
                         <li>
